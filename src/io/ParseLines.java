@@ -2,24 +2,17 @@ package io;
 
 import user.OnlineFriendsAndStatus;
 import user.TimeBasedInformations;
-import user.UserInformations;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ParseLines {
-    public UserInformations parseLines(ArrayList<String> lines) {
-        String[] strings = new String[lines.size()];
+    public TimeBasedInformations parseLines(ArrayList<String> lines) {
         String delims = "[ ]";
 
-        /*first line to parse
-          we have user id and timestamp in this line*/
+        /*first line to parse we have timestamp in this line*/
         String[] firstLineToken = lines.get(0).split(delims);
-
-        //user id will not parsed in here, this is only temporary
-        UserInformations userInformations = new UserInformations();
-        userInformations.setUserId(Long.parseLong(firstLineToken[1]));
 
         TimeBasedInformations timeBasedInformations = new TimeBasedInformations();
         String timestamp = firstLineToken[4] + " " + firstLineToken[5] + " " + firstLineToken[6];
@@ -47,9 +40,11 @@ public class ParseLines {
         String onlineStatusTokens[] = null;
         OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
+        System.out.println(lines.size());
         for (int i = 3; i < lines.size()-2; i++){
             onlineStatusTokens = lines.get(i).split(delims);
 
+            System.out.println(onlineStatusTokens[0]);
             onlineFriendsAndStatus.setFriendUserID(Long.parseLong(onlineStatusTokens[0]));
             onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
             onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);
@@ -59,6 +54,6 @@ public class ParseLines {
 
         timeBasedInformations.setOnlineFriendsList(friensStatusList);
 
-        return userInformations;
+        return timeBasedInformations;
     }
 }
