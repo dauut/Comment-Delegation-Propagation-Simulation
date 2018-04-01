@@ -39,10 +39,11 @@ public class ParseLines {
             timeBasedInformations.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
         }
         String onlineStatusTokens[] = null;
-        OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
+
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
 //        System.out.println(lines.size());
         for (int i = 3; i < lines.size()-2; i++){
+            OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
             onlineStatusTokens = lines.get(i).split(delims);
 
 //            System.out.println(onlineStatusTokens[0]);

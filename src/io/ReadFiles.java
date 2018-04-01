@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ReadFiles {
     public static void main(String[] args) {
         String mainFolderPath = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
-//        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\a";
+//        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\a2";
         File fbUsersFolder = new File(mainFolderPath);
         File[] listOfUsers = fbUsersFolder.listFiles(); // we get all users path in a File lists
         File file = null;
@@ -19,23 +19,23 @@ public class ReadFiles {
         File[] listOfFiles = null;
 
         ArrayList<UserInformations> usersList = new ArrayList<>();
-        UserInformations user = new UserInformations();
-
-        ArrayList<String> lines = new ArrayList<>();
-        ParseLines parseLines = new ParseLines();
-
-        ArrayList<TimeBasedInformations> timeBasedInformationsArrayList = new ArrayList<>();
-        TimeBasedInformations timeBasedInformations = new TimeBasedInformations();
 
         for (int i = 0; i < listOfUsers.length; i++) {
+            UserInformations user = new UserInformations();
+
             user.setUserId(Long.parseLong(listOfUsers[i].getName()));
             System.out.println(user.getUserId());
             folder = new File(listOfUsers[i].toString());
             listOfFiles = folder.listFiles();
+            ArrayList<TimeBasedInformations> timeBasedInformationsArrayList = new ArrayList<>();
 
             for (int j = 0; j < listOfFiles.length; j++) {
-//                System.out.println(listOfFiles[j].toString());
+                TimeBasedInformations timeBasedInformations = new TimeBasedInformations();
+                ParseLines parseLines = new ParseLines();
+                ArrayList<String> lines = new ArrayList<>();
+
                 lines.clear();
+//                System.out.println(listOfFiles[j].toString());
                 file = new File(listOfFiles[j].toString());
                 try {
                     Scanner scanner = new Scanner(file);
@@ -55,6 +55,6 @@ public class ReadFiles {
             user.setUserActivites(timeBasedInformationsArrayList);
             usersList.add(user);
         }
-        System.out.println(usersList);
+        System.out.println("davut");
     }
 }
