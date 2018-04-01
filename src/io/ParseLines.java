@@ -30,21 +30,22 @@ public class ParseLines {
 
         //last line has various information
         String[] lastLineTokens = lines.get(lines.size()-1).split(delims);
-        timeBasedInformations.setIdleFriendsCount(Integer.parseInt(lastLineTokens[1]));
-        timeBasedInformations.setActiveFriendsCount(Integer.parseInt(lastLineTokens[3]));
-        timeBasedInformations.setMobileUsersCount(Integer.parseInt(lastLineTokens[6]));
-        timeBasedInformations.setWebUsersCount(Integer.parseInt(lastLineTokens[9]));
-        timeBasedInformations.setMobileActiveCount(Integer.parseInt(lastLineTokens[12]));
-        timeBasedInformations.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
-
+        if (lastLineTokens[0].equals("idle:")) {
+            timeBasedInformations.setIdleFriendsCount(Integer.parseInt(lastLineTokens[1]));
+            timeBasedInformations.setActiveFriendsCount(Integer.parseInt(lastLineTokens[3]));
+            timeBasedInformations.setMobileUsersCount(Integer.parseInt(lastLineTokens[6]));
+            timeBasedInformations.setWebUsersCount(Integer.parseInt(lastLineTokens[9]));
+            timeBasedInformations.setMobileActiveCount(Integer.parseInt(lastLineTokens[12]));
+            timeBasedInformations.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
+        }
         String onlineStatusTokens[] = null;
         OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
-        System.out.println(lines.size());
+//        System.out.println(lines.size());
         for (int i = 3; i < lines.size()-2; i++){
             onlineStatusTokens = lines.get(i).split(delims);
 
-            System.out.println(onlineStatusTokens[0]);
+//            System.out.println(onlineStatusTokens[0]);
             onlineFriendsAndStatus.setFriendUserID(Long.parseLong(onlineStatusTokens[0]));
             onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
             onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);

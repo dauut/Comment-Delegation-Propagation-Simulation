@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class ReadFiles {
     public static void main(String[] args) {
-//        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
-        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\a";
+        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
+//        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\a";
         File fbUsersFolder = new File(mainFolderPath);
         File[] listOfUsers = fbUsersFolder.listFiles(); // we get all users path in a File lists
         File file = null;
@@ -29,12 +29,12 @@ public class ReadFiles {
 
         for (int i = 0; i < listOfUsers.length; i++) {
             user.setUserId(Long.parseLong(listOfUsers[i].getName()));
-
+            System.out.println(user.getUserId());
             folder = new File(listOfUsers[i].toString());
             listOfFiles = folder.listFiles();
 
             for (int j = 0; j < listOfFiles.length; j++) {
-                System.out.println(listOfFiles[j].toString());
+//                System.out.println(listOfFiles[j].toString());
                 lines.clear();
                 file = new File(listOfFiles[j].toString());
                 try {
@@ -52,11 +52,9 @@ public class ReadFiles {
                     e.printStackTrace();
                 }
             }
-
             user.setUserActivites(timeBasedInformationsArrayList);
             usersList.add(user);
         }
-
-
+        System.out.println(usersList);
     }
 }
