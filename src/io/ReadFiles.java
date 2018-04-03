@@ -55,6 +55,5 @@ public class ReadFiles {
             user.setUserActivites(timeBasedInformationsArrayList);
             usersList.add(user);
         }
-        System.out.println("davut");
     }
 }
