@@ -26,5 +26,3 @@ In this project we looked for
 
 * Repo owner or admin
 * Other community or team contact
-
-#davut tet 123
