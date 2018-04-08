@@ -3,16 +3,16 @@ package user;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class TimeBasedInformations {
-    int onlineFriendsCount;
-    Date currentTimestamp;
-    ArrayList<OnlineFriendsAndStatus> onlineFriendsList = new ArrayList<>();
-    int idleFriendsCount;
-    int activeFriendsCount;
-    int mobileUsersCount;
-    int webUsersCount;
-    int mobileActiveCount;
-    int mobileIdleCount;
+public class TimeBasedInformation {
+    private int onlineFriendsCount;
+    private Date currentTimestamp;
+    private ArrayList<OnlineFriendsAndStatus> onlineFriendsList = new ArrayList<>();
+    private int idleFriendsCount;
+    private int activeFriendsCount;
+    private int mobileUsersCount;
+    private int webUsersCount;
+    private int mobileActiveCount;
+    private int mobileIdleCount;
 
     public int getOnlineFriendsCount() {
         return onlineFriendsCount;

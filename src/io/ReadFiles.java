@@ -1,6 +1,7 @@
 package io;
 
-import user.TimeBasedInformations;
+import constants.Constants;
+import user.TimeBasedInformation;
 import user.UserInformations;
 
 import java.io.File;
@@ -8,15 +9,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+@SuppressWarnings("Duplicates")
 public class ReadFiles {
-    public static void main(String[] args) {
-        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
-//        String mainFolderPath = "C:\\Users\\dauut\\Desktop\\a2";
+    public ArrayList<UserInformations> getUserList() {
+        String mainFolderPath = Constants.getDataPath();
         File fbUsersFolder = new File(mainFolderPath);
         File[] listOfUsers = fbUsersFolder.listFiles(); // we get all users path in a File lists
-        File file = null;
-        File folder = null;
-        File[] listOfFiles = null;
+        File file;
+        File folder;
+        File[] listOfFiles;
 
         ArrayList<UserInformations> usersList = new ArrayList<>();
 
@@ -27,15 +28,14 @@ public class ReadFiles {
             System.out.println(user.getUserId());
             folder = new File(listOfUsers[i].toString());
             listOfFiles = folder.listFiles();
-            ArrayList<TimeBasedInformations> timeBasedInformationsArrayList = new ArrayList<>();
+            ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>();
 
             for (int j = 0; j < listOfFiles.length; j++) {
-                TimeBasedInformations timeBasedInformations = new TimeBasedInformations();
+                TimeBasedInformation timeBasedInformation;
                 ParseLines parseLines = new ParseLines();
                 ArrayList<String> lines = new ArrayList<>();
 
                 lines.clear();
-//                System.out.println(listOfFiles[j].toString());
                 file = new File(listOfFiles[j].toString());
                 try {
                     Scanner scanner = new Scanner(file);
@@ -44,16 +44,17 @@ public class ReadFiles {
                         lines.add(scanner.nextLine());
                     }
                     if (lines.size() > 1) {
-                        timeBasedInformations = parseLines.parseLines(lines);
-                        timeBasedInformationsArrayList.add(timeBasedInformations);
+                        timeBasedInformation = parseLines.parseLines(lines);
+                        timeBasedInformationArrayList.add(timeBasedInformation);
                     }
                     scanner.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
             }
-            user.setUserActivites(timeBasedInformationsArrayList);
+            user.setUserActivites(timeBasedInformationArrayList);
             usersList.add(user);
         }
+        return usersList;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UserInformations {
     private long userId;
-    ArrayList<TimeBasedInformations> userActivites = new ArrayList<>();
+    ArrayList<TimeBasedInformation> userActivites = new ArrayList<>();
 
     public long getUserId() {
         return userId;
@@ -14,11 +14,11 @@ public class UserInformations {
         this.userId = userId;
     }
 
-    public ArrayList<TimeBasedInformations> getUserActivites() {
+    public ArrayList<TimeBasedInformation> getUserActivites() {
         return userActivites;
     }
 
-    public void setUserActivites(ArrayList<TimeBasedInformations> userActivites) {
+    public void setUserActivites(ArrayList<TimeBasedInformation> userActivites) {
         this.userActivites = userActivites;
     }
 
