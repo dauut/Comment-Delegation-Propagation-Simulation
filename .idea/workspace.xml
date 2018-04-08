@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58c9ddb2-8325-4fb7-bb3c-cd507a1d756f" name="Default" comment="data added">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="58c9ddb2-8325-4fb7-bb3c-cd507a1d756f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,8 +62,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="51">
+              <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -324,7 +323,7 @@
       <workItem from="1522579876299" duration="17522000" />
       <workItem from="1523201213966" duration="1473000" />
       <workItem from="1523209930654" duration="752000" />
-      <workItem from="1523210729005" duration="32000" />
+      <workItem from="1523210729005" duration="1992000" />
     </task>
     <task id="LOCAL-00001" summary="Data structure initialized.">
       <created>1522566766816</created>
@@ -375,11 +374,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523201339668</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="conf">
+      <created>1523210782768</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1523210782768</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33375000" />
+    <option name="totallyTimeSpent" value="35335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,7 +405,7 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50402683" side_tool="true" visible="true" weight="0.50842696" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="6" sideWeight="0.50402683" side_tool="true" visible="true" weight="0.50842696" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5558539" weight="0.2767154" />
@@ -407,7 +413,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49785176" weight="0.3295838" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1328859" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973147" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -471,7 +477,8 @@
     <MESSAGE value="fixed some issues" />
     <MESSAGE value="fıxed broken parts of data" />
     <MESSAGE value="data added" />
-    <option name="LAST_COMMIT_MESSAGE" value="data added" />
+    <MESSAGE value="conf" />
+    <option name="LAST_COMMIT_MESSAGE" value="conf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -805,8 +812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="51">
+          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
     </entry>
