@@ -6,7 +6,10 @@ import user.UserInformations;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 @SuppressWarnings("Duplicates")
@@ -43,9 +46,28 @@ public class ReadFiles {
                     while (scanner.hasNext()) {
                         lines.add(scanner.nextLine());
                     }
+                    //control start date and end date -- START
+                    String startDate = Constants.getSimulationStartDate();
+                    String endDate = Constants.getSimulationEndDate();
+                    SimpleDateFormat simpleStartFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+                    Date parsedStartDate = null;
+                    Date parsedEndDate = null;
+                    try {
+                        parsedStartDate = simpleStartFormat.parse(startDate);
+                        parsedEndDate = simpleStartFormat.parse(endDate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    //control start date and end date -- END
+
                     if (lines.size() > 1) {
                         timeBasedInformation = parseLines.parseLines(lines);
-                        timeBasedInformationArrayList.add(timeBasedInformation);
+
+                        //add only between two
+                        if (parsedStartDate != null && parsedEndDate != null && timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
+                                timeBasedInformation.getCurrentTimestamp().before(parsedEndDate)) {
+                            timeBasedInformationArrayList.add(timeBasedInformation);
+                        }
                     }
                     scanner.close();
                 } catch (FileNotFoundException e) {
