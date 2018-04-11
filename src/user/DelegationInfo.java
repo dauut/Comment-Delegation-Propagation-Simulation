@@ -6,7 +6,8 @@ import java.util.Date;
 public class DelegationInfo {
     private long userId;
     private long chainDepth;
-    private ArrayList<DelegationTimeAndUsers> delegationTimeAndUsersList = new ArrayList<DelegationTimeAndUsers>();
+    private ArrayList<Long> delegatedUserIDList;
+    private ArrayList<Date> delegationTimeList;
 
     public long getUserId() {
         return userId;
@@ -24,11 +25,19 @@ public class DelegationInfo {
         this.chainDepth = chainDepth;
     }
 
-    public ArrayList<DelegationTimeAndUsers> getDelegationTimeAndUsersList() {
-        return delegationTimeAndUsersList;
+    public ArrayList<Long> getDelegatedUserIDList() {
+        return delegatedUserIDList;
     }
 
-    public void setDelegationTimeAndUsersList(ArrayList<DelegationTimeAndUsers> delegationTimeAndUsersList) {
-        this.delegationTimeAndUsersList = delegationTimeAndUsersList;
+    public void setDelegatedUserIDList(ArrayList<Long> delegatedUserIDList) {
+        this.delegatedUserIDList = delegatedUserIDList;
+    }
+
+    public ArrayList<Date> getDelegationTimeList() {
+        return delegationTimeList;
+    }
+
+    public void setDelegationTimeList(ArrayList<Date> delegationTimeList) {
+        this.delegationTimeList = delegationTimeList;
     }
 }
