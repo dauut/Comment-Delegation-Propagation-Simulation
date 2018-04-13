@@ -6,7 +6,7 @@ import java.util.Date;
 public class TimeBasedInformation {
     private int onlineFriendsCount;
     private Date currentTimestamp;
-    private ArrayList<OnlineFriendsAndStatus> onlineFriendsList = new ArrayList<>();
+    private ArrayList<OnlineFriendsAndStatus> onlineFriendsList = new ArrayList<OnlineFriendsAndStatus>();
     private int idleFriendsCount;
     private int activeFriendsCount;
     private int mobileUsersCount;
