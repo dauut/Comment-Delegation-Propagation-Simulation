@@ -1,6 +1,5 @@
 package simulation;
 
-import user.OnlineFriendsAndStatus;
 import user.TimeBasedInformation;
 
 import java.util.ArrayList;

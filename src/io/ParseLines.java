@@ -1,6 +1,5 @@
 package io;
 
-import constants.Constants;
 import user.OnlineFriendsAndStatus;
 import user.TimeBasedInformation;
 
