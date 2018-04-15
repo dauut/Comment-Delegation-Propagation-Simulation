@@ -12,15 +12,19 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
         ArrayList<UserInformations> usersList;
+        ArrayList<int[]> statusList;
         ReadFiles getUserFromData = new ReadFiles();
+        StatusChanger statusChanger = new StatusChanger();
         DelegationInfo delegationInfo = new DelegationInfo(); // it may be arraylist in the future
 
         ArrayList<Long> delegatedUserIDList = new ArrayList<>();
         ArrayList<Date> delegationTimeList = new ArrayList<>();
         //boolean isUserOffline = true;
 
+        //load data and variables
         long delegatedUserID;
         usersList = getUserFromData.getUserList();
+        statusList = statusChanger.getUserStatusList(usersList.get(0).getUserActivites().size());
 
         PickUser pickUser = new PickUser();
         delegatedUserID = pickUser.findDelegation(usersList.get(0).getUserActivites().get(0));
