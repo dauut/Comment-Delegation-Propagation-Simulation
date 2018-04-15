@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/commentdelegation.iml" filepath="$PROJECT_DIR$/commentdelegation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommentDelegation.iml" filepath="$PROJECT_DIR$/CommentDelegation.iml" />
     </modules>
   </component>
 </project>
