@@ -33,12 +33,17 @@ public class ReadFiles {
             listOfFiles = folder.listFiles();
             ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>();
 
+            //in every folder
             for (int j = 0; j < listOfFiles.length; j++) {
                 TimeBasedInformation timeBasedInformation;
                 ParseLines parseLines = new ParseLines();
                 ArrayList<String> lines = new ArrayList<>();
 
                 lines.clear();
+
+                //pick iterated file in current folder
+                //read all lines
+                //pass these list to parser
                 file = new File(listOfFiles[j].toString());
                 try {
                     Scanner scanner = new Scanner(file);
@@ -47,6 +52,7 @@ public class ReadFiles {
                         lines.add(scanner.nextLine());
                     }
                     //control start date and end date -- START
+                    // we need these dates for check simulation interval ie: 15 days
                     String startDate = Constants.getSimulationStartDate();
                     String endDate = Constants.getSimulationEndDate();
                     SimpleDateFormat simpleStartFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
@@ -62,9 +68,9 @@ public class ReadFiles {
 
                     if (lines.size() > 1) {
                         timeBasedInformation = parseLines.parseLines(lines);
-
                         //add only between two
-                        if (parsedStartDate != null && parsedEndDate != null && timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
+                        if (parsedStartDate != null && parsedEndDate != null &&
+                                timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
                                 timeBasedInformation.getCurrentTimestamp().before(parsedEndDate)) {
                             timeBasedInformationArrayList.add(timeBasedInformation);
                         }

@@ -39,15 +39,14 @@ public class ParseLines {
             timeBasedInformation.setMobileActiveCount(Integer.parseInt(lastLineTokens[12]));
             timeBasedInformation.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
         }
+
         String onlineStatusTokens[] = null;
 
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
-//        System.out.println(lines.size());
         for (int i = 3; i < lines.size() - 2; i++) {
             OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
             onlineStatusTokens = lines.get(i).split(delims);
 
-//            System.out.println(onlineStatusTokens[0]);
             onlineFriendsAndStatus.setFriendUserID(Long.parseLong(onlineStatusTokens[0]));
             onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
             onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);
