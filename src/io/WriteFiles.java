@@ -19,7 +19,7 @@ public class WriteFiles {
         try {
 
 //            String data = " This is new content";
-            String data = delegatedUserIdList.toString() + "latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
+            String data = delegatedUserIdList.toString() + " || latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
             File file = new File(Constants.getOutputPath());
 
             // if file doesnt exists, then create it
