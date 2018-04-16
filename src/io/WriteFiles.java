@@ -10,13 +10,14 @@ import java.util.ArrayList;
  * write necessary log files
  * */
 public class WriteFiles {
-    public void writeInfoFiles(ArrayList<int[]> arrayList) {
+    public void writeInfoFiles(int count) {
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         try {
 
-            String data = " This is new content";
-            File file = new File("C:\\Users\\dauut\\Desktop\\test.txt");
+//            String data = " This is new content";
+            String data = String.valueOf(count);
+            File file = new File("C:\\Users\\DavutU\\Desktop\\testout\\out.txt");
 
             // if file doesnt exists, then create it
             if (!file.exists()) {
