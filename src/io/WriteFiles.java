@@ -1,23 +1,26 @@
 package io;
 
+import constants.Constants;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /*
  * write necessary log files
  * */
 public class WriteFiles {
-    public void writeInfoFiles(int count) {
+    public void writeInfoFiles(ArrayList<Long> delegatedUserIdList,ArrayList<Date> delegationTimeList, ArrayList<Integer> chainList, String fileName) {
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         try {
 
 //            String data = " This is new content";
-            String data = String.valueOf(count);
-            File file = new File("C:\\Users\\DavutU\\Desktop\\testout\\out.txt");
+            String data = delegatedUserIdList.toString() + "latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
+            File file = new File(Constants.getOutputPath());
 
             // if file doesnt exists, then create it
             if (!file.exists()) {
@@ -30,7 +33,7 @@ public class WriteFiles {
 
             bufferedWriter.write(data);
             bufferedWriter.newLine();
-            System.out.println("Done");
+//            System.out.println("Done");
 
         } catch (IOException e) {
             e.printStackTrace();

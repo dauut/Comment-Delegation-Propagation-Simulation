@@ -37,9 +37,9 @@ public class Main {
         statusList = statusChanger.getUserStatusList(usersList.get(0).getUserActivites().size(), statusChangeCount);
 
         /*
-        * Thus far we have user list with their activities
-        * online and offline times
-        */
+         * Thus far we have user list with their activities
+         * online and offline times
+         */
 
         //turn for every user
         for (int i = 0; i < usersList.size(); i++) {
@@ -49,8 +49,9 @@ public class Main {
             delegationInfo.setUserId(usersList.get(i).getUserId());
 
             // offline time intervals
-            for (int k = 0; k < statusList.size(); k++) {
-                System.out.println("user goes offline start timestampid= "+ statusList.get(k)[0]);
+//            for (int k = 0; k < statusList.size(); k++) {
+            for (int k = 0; k < 1; k++) {
+                System.out.println("user goes offline start timestampid= " + usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getFileName());
                 //start offline time to end offline time
                 // and set first delegation
                 delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
@@ -60,21 +61,24 @@ public class Main {
                 //moveforward during time intervals
                 for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                     /*butun olay burada gerceklesecek
-                    * delegasyon secimleri
-                    * cikti tasarimi ve dosyalarin yazdirilmasi*/
+                     * delegasyon secimleri
+                     * cikti tasarimi ve dosyalarin yazdirilmasi*/
 
                     pickUser = new PickUser();
                     int delegatedOnlineResultIndex;
                     delegatedOnlineResultIndex = pickUser.isDelegatedUserOnline(usersList.get(i).getUserActivites().get(j), delegatedUserIDList);
-                    /*if one of the delegated user not online*/
+                    /*if one of the delegated user not online
+                     * delegate new user */
                     if (-1 == delegatedOnlineResultIndex) {
                         delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
                         delegatedUserIDList.add(delegatedUserID);
                         delegationTimeList.add(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
                         chainList.add(delegatedUserIDList.size());
+                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
                     } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                         //do nothing
 //                        System.out.println("last delegated user still online");
+                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
                     } else {//resize the chain
                         //we have index of older delegated user
                         int counter = delegatedOnlineResultIndex;
@@ -83,11 +87,12 @@ public class Main {
                             delegationTimeList.remove(delegationTimeList.get(counter));
                             chainList.add(delegatedUserIDList.size());
                             counter++;
+                            write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
                         }
                     }
 
                 }
-                System.out.println("user get online for a while, latest timestamp id= " + statusList.get(k)[1]);
+                System.out.println("user get online for a while, latest timestamp id= " + usersList.get(i).getUserActivites().get(statusList.get(k)[1]).getFileName());
 
             }
 
@@ -95,6 +100,7 @@ public class Main {
             delegationInfo.setDelegationTimeList(delegationTimeList);
             delegationInfo.setChainDepth(chainList);
             delegationInfoArrayList.add(delegationInfo);
+            System.out.println();
         }
 
 
