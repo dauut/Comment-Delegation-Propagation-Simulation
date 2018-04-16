@@ -50,7 +50,7 @@ public class Main {
 
             // offline time intervals
             for (int k = 0; k < statusList.size(); k++) {
-
+                System.out.println("user goes offline start timestampid= "+ statusList.get(k)[0]);
                 //start offline time to end offline time
                 // and set first delegation
                 delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
@@ -74,7 +74,7 @@ public class Main {
                         chainList.add(delegatedUserIDList.size());
                     } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                         //do nothing
-                        System.out.println("last delegated user still online");
+//                        System.out.println("last delegated user still online");
                     } else {//resize the chain
                         //we have index of older delegated user
                         int counter = delegatedOnlineResultIndex;
@@ -87,6 +87,7 @@ public class Main {
                     }
 
                 }
+                System.out.println("user get online for a while, latest timestamp id= " + statusList.get(k)[1]);
 
             }
 

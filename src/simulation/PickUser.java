@@ -44,9 +44,15 @@ public class PickUser {
     * */
     public int isDelegatedUserOnline(TimeBasedInformation onlineFriendsList, ArrayList<Long> delegatedList) {
         for (int i = 0; i < delegatedList.size(); i++) {
-            if (onlineFriendsList.getOnlineFriendsList().contains(delegatedList.get(i))) {
-                return i;
+//            if (onlineFriendsList.getOnlineFriendsList().contains(delegatedList.get(i))) {
+//                return i;
+//            }
+            for (int j = 0; j < onlineFriendsList.getOnlineFriendsList().size();j++){
+                if (onlineFriendsList.getOnlineFriendsList().get(j).getFriendUserID() == delegatedList.get(i)){
+                    return i;
+                }
             }
+
         }
         return -1;
     }
