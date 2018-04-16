@@ -42,7 +42,7 @@ public class StatusChanger {
         return scale;
     }
 
-    public ArrayList<int[]> getUserStatusList(int statusChangeCount){
+    public ArrayList<int[]> getUserStatusList(int activitiesLength, int statusChangeCount){
         StatusChanger statusChanger = new StatusChanger();
         ArrayList<int[]> statusList = new ArrayList<>();
         int[] status;
@@ -50,9 +50,9 @@ public class StatusChanger {
         int onlineTime = 0; // it is initially 0 then will change
         int lastOnlineTime = 0; // it is initially 0 then will change
         int counter = 0;
-        while(counter < statusChangeCount && lastOnlineTime + 1  < 21000){
+        while(counter < statusChangeCount && lastOnlineTime + 1  < activitiesLength){
             intervalRange = ThreadLocalRandom.current().nextInt(0, 1440); //between 0 to 1 day
-            status = statusChanger.returnOnlineOfflineTimeScale(21000, lastOnlineTime, onlineTime, intervalRange);
+            status = statusChanger.returnOnlineOfflineTimeScale(activitiesLength, lastOnlineTime, onlineTime, intervalRange);
             statusList.add(status);
             onlineTime = ThreadLocalRandom.current().nextInt(0, 960); // 0 - 16 hours range
             lastOnlineTime = status[1];
