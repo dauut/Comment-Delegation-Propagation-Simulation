@@ -35,7 +35,7 @@ public class ReadFiles {
 
             //in every folder
             for (int j = 0; j < listOfFiles.length; j++) {
-                TimeBasedInformation timeBasedInformation;
+                TimeBasedInformation timeBasedInformation = new TimeBasedInformation();
                 ParseLines parseLines = new ParseLines();
                 ArrayList<String> lines = new ArrayList<>();
 
@@ -68,6 +68,7 @@ public class ReadFiles {
 
                     if (lines.size() > 1) {
                         timeBasedInformation = parseLines.parseLines(lines);
+                        timeBasedInformation.setFileName(listOfFiles[j].toString());
                         //add only between two
                         if (parsedStartDate != null && parsedEndDate != null &&
                                 timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
