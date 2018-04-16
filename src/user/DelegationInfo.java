@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class DelegationInfo {
     private long userId;
-    private long chainDepth;
+    private ArrayList<Integer> chainDepth;
     private ArrayList<Long> delegatedUserIDList;
     private ArrayList<Date> delegationTimeList;
 
@@ -17,11 +17,11 @@ public class DelegationInfo {
         this.userId = userId;
     }
 
-    public long getChainDepth() {
+    public ArrayList<Integer> getChainDepth() {
         return chainDepth;
     }
 
-    public void setChainDepth(long chainDepth) {
+    public void setChainDepth(ArrayList<Integer> chainDepth) {
         this.chainDepth = chainDepth;
     }
 

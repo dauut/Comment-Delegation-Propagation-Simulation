@@ -13,6 +13,15 @@ public class TimeBasedInformation {
     private int webUsersCount;
     private int mobileActiveCount;
     private int mobileIdleCount;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public int getOnlineFriendsCount() {
         return onlineFriendsCount;
