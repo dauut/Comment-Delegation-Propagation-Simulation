@@ -1,11 +1,13 @@
 package io;
 
 import constants.Constants;
+import user.DelegationInfo;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -47,6 +49,21 @@ public class WriteFiles {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public void deleteFile(String filePath){
+        File file = new File(filePath);
+        if (file.exists()) {
+            try {
+                Files.deleteIfExists(file.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList){
+
     }
 }
 
