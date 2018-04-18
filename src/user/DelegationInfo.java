@@ -5,9 +5,27 @@ import java.util.Date;
 
 public class DelegationInfo {
     private long userId;
-    private ArrayList<Integer> chainDepth;
-    private ArrayList<Long> delegatedUserIDList;
-    private ArrayList<Date> delegationTimeList;
+    private int totalOfflineTime;
+    private int totalOfflineCount;
+    private ArrayList<ArrayList<Integer>> chainDepth;
+    private ArrayList<ArrayList<Long>> delegatedUserIDList;
+    private ArrayList<ArrayList<Date>> delegationTimeList;
+
+    public int getTotalOfflineCount() {
+        return totalOfflineCount;
+    }
+
+    public void setTotalOfflineCount(int totalOfflineCount) {
+        this.totalOfflineCount = totalOfflineCount;
+    }
+
+    public int getTotalOfflineTime() {
+        return totalOfflineTime;
+    }
+
+    public void setTotalOfflineTime(int totalOfflineTime) {
+        this.totalOfflineTime = totalOfflineTime;
+    }
 
     public long getUserId() {
         return userId;
@@ -17,27 +35,27 @@ public class DelegationInfo {
         this.userId = userId;
     }
 
-    public ArrayList<Integer> getChainDepth() {
+    public ArrayList<ArrayList<Integer>> getChainDepth() {
         return chainDepth;
     }
 
-    public void setChainDepth(ArrayList<Integer> chainDepth) {
+    public void setChainDepth(ArrayList<ArrayList<Integer>> chainDepth) {
         this.chainDepth = chainDepth;
     }
 
-    public ArrayList<Long> getDelegatedUserIDList() {
+    public ArrayList<ArrayList<Long>> getDelegatedUserIDList() {
         return delegatedUserIDList;
     }
 
-    public void setDelegatedUserIDList(ArrayList<Long> delegatedUserIDList) {
+    public void setDelegatedUserIDList(ArrayList<ArrayList<Long>> delegatedUserIDList) {
         this.delegatedUserIDList = delegatedUserIDList;
     }
 
-    public ArrayList<Date> getDelegationTimeList() {
+    public ArrayList<ArrayList<Date>> getDelegationTimeList() {
         return delegationTimeList;
     }
 
-    public void setDelegationTimeList(ArrayList<Date> delegationTimeList) {
+    public void setDelegationTimeList(ArrayList<ArrayList<Date>> delegationTimeList) {
         this.delegationTimeList = delegationTimeList;
     }
 }
