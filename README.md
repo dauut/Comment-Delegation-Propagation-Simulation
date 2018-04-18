@@ -1,3 +1,3 @@
-# POSN - Personal Online Social Network Comment Delegation #
+[POSN - Personal Online Social Network Comment Delegation](https://github.com/posn/POSN-app) #
  
-### [coming soon]
+[coming soon]
