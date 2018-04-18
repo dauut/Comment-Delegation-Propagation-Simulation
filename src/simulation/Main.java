@@ -71,6 +71,7 @@ public class Main {
                 delegatedUserIDList.add(delegatedUserID);
                 delegationTimeList.add(usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getCurrentTimestamp());
                 chainList.add(delegatedUserIDList.size());
+
                 //moveforward during time intervals
                 for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                     pickUser = new PickUser();
@@ -88,11 +89,18 @@ public class Main {
                         delegationTimeList.add(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
                         chainList.add(delegatedUserIDList.size());
                         System.out.println("new delegation = " + delegatedUserID);
-                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
+
+                        /*
+                        * Unclear parameters In Order;
+                        * j: TimestampIdex,
+                        * i: userIndex,
+                        * k: StatusList Index
+                        * */
+                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
                     } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                         //do nothing
                         //System.out.println("last delegated user still online = " + delegatedUserID);
-                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
+                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
                     } else {
                         System.out.println("one of the older delegation come back = " + delegatedUserIDList.get(delegatedOnlineResultIndex).toString());
                         //resize the chain
@@ -103,7 +111,7 @@ public class Main {
                         }
                         System.out.println("new list  = " + delegatedUserIDList);
                         chainList.add(delegatedUserIDList.size());
-                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName());
+                        write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
                     }
 
                 }
@@ -120,7 +128,7 @@ public class Main {
             delegationInfo.setTotalOfflineTime(totalOfflineTime);
             delegationInfo.setTotalOfflineCount(statusList.size());
             delegationInfoArrayList.add(delegationInfo);
-
+            write.writeAllResult(delegationInfoArrayList, i);
             System.out.println();
         }
 
