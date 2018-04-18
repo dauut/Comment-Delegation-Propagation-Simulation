@@ -14,8 +14,8 @@ public class PickUser {
     public long findRandomDelegation(TimeBasedInformation timeBasedInformation) {
 
         // in case size error
+        long delegated;
         int sizeOnlineFriend = timeBasedInformation.getOnlineFriendsList().size();
-        long delegated = timeBasedInformation.getOnlineFriendsList().get(sizeOnlineFriend/2).getFriendUserID();;
         int randomIndexOfUser = ThreadLocalRandom.current().nextInt(0, sizeOnlineFriend + 1);
 
         //avoid from indexoutofboundexception
