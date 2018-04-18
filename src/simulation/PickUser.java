@@ -12,8 +12,10 @@ import java.util.concurrent.ThreadLocalRandom;
 * */
 public class PickUser {
     public long findRandomDelegation(TimeBasedInformation timeBasedInformation) {
-        long delegated;
+
+        // in case size error
         int sizeOnlineFriend = timeBasedInformation.getOnlineFriendsList().size();
+        long delegated = timeBasedInformation.getOnlineFriendsList().get(sizeOnlineFriend/2).getFriendUserID();;
         int randomIndexOfUser = ThreadLocalRandom.current().nextInt(0, sizeOnlineFriend + 1);
 
         //avoid from indexoutofboundexception
@@ -26,10 +28,6 @@ public class PickUser {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("IndexOutOfBoundsException, sizeOnlineFriend=" + sizeOnlineFriend +
                     ", randomIndexOfUser="+ randomIndexOfUser);
-        }finally {
-            //if something goes wrong then set the an user
-            //which is in the middle of list
-            delegated=timeBasedInformation.getOnlineFriendsList().get(sizeOnlineFriend/2).getFriendUserID();
         }
 
         //System.out.println("picked index = " + randomIndexOfUser + " Delegated userid = " + delegated);

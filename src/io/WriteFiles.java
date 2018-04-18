@@ -38,7 +38,7 @@ public class WriteFiles {
         String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
                 userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
                 chainList.toString() + " || " + " || latest file = " + fileName;
-        File file = new File(Constants.getOutputPath());
+        File file = new File(Constants.getOutputPath() + "_" + userList.get(userIndex).getUserId() + ".txt");
         writeFile(file, data);
 
     }
@@ -100,7 +100,7 @@ public class WriteFiles {
 //        }
 //    }
     public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser) {
-        File file = new File(Constants.getGeneralInfoOutputPath());
+        File file = new File(Constants.getGeneralInfoOutputPath() + "_" + delegationInfosArrayList.get(indexOfUser).getUserId()+ ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;

@@ -67,7 +67,7 @@ public class Main {
                 //start offline time to end offline time
                 // and set first delegation
                 delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
-                System.out.println("Firs delegation = " + delegatedUserID);
+                System.out.println("First delegation = " + delegatedUserID);
                 delegatedUserIDList.add(delegatedUserID);
                 delegationTimeList.add(usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getCurrentTimestamp());
                 chainList.add(delegatedUserIDList.size());
