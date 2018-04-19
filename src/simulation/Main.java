@@ -24,6 +24,7 @@ public class Main {
         ArrayList<Long> delegatedUserIDList = new ArrayList<>();
         ArrayList<Date> delegationTimeList = new ArrayList<>();
         ArrayList<Integer> chainList = new ArrayList<>();
+        CollectUsers collectUsers = new CollectUsers();
         WriteFiles write = new WriteFiles();
         boolean isUserOffline = true;
 
@@ -43,9 +44,9 @@ public class Main {
          */
 
         //turn for every user
-        write.deleteFile(Constants.getOutputPath());
         for (int i = 0; i < usersList.size(); i++) {
             System.out.println("simulation start for user = " + usersList.get(i).getUserId());
+            collectUsers.findUserOnlineOfflineTimes(usersList,i);
             delegationInfo = new DelegationInfo();
             statusList.clear();
             statusList = statusChanger.getUserStatusList(usersList.get(i).getUserActivites().size(), statusChangeCount);
@@ -59,11 +60,10 @@ public class Main {
                 delegatedUserIDList = new ArrayList<>();
                 delegationTimeList = new ArrayList<>();
                 chainList = new ArrayList<>();
-                //delegatedUserlistList = new ArrayList<>();
-                //delegatedUserTimeListList = new ArrayList<>();
+
+                //calculate total offline time during simulation
                 totalOfflineTime = totalOfflineTime + (statusList.get(k)[1] - statusList.get(k)[0]);
-                //for (int k = 0; k < 1; k++) {  //only one offline interval
-                //System.out.println("user goes offline start timestampid= " + usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getFileName());
+
                 //start offline time to end offline time
                 // and set first delegation
                 delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
