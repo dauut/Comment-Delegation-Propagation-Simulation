@@ -1,8 +1,6 @@
 package io;
 
-import com.sun.org.apache.bcel.internal.generic.DUP;
 import constants.Constants;
-import org.omg.PortableInterceptor.ORBInitInfoPackage.DuplicateName;
 import user.DelegationInfo;
 import user.UserInformations;
 
@@ -11,7 +9,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /*
@@ -22,15 +22,16 @@ public class WriteFiles {
     public void writeInfoFiles(ArrayList<Long> delegatedUserIdList, ArrayList<Date> delegationTimeList,
                                ArrayList<Integer> chainList, String fileName, int theTimestampIndex,
                                ArrayList<UserInformations> userList, int userIndex, int theTour) {
-//        File dir;
-//        dir = new File("C:\\Users\\DavutU\\Desktop\\testout\\" + userList.get(userIndex).getUserId());
-//        if (!dir.exists()) {
-//            if (dir.mkdir()) {
-//                System.out.println("Directory is created! " + userList.get(userIndex).getUserId());
-//            } else {
-//                System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
-//            }
-//        }
+        File dir;
+        String dirPath = Constants.getOutputFolderPath()+ "\\" + userList.get(userIndex).getUserId();
+        dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Directory is created! " + userList.get(userIndex).getUserId());
+            } else {
+                System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
+            }
+        }
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
 //        WriteFiles writeFiles = new WriteFiles();
@@ -38,9 +39,19 @@ public class WriteFiles {
         String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
                 userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
                 chainList.toString() + " || " + " || latest file = " + fileName;
-        File file = new File(Constants.getOutputPath() + "_" + userList.get(userIndex).getUserId() + ".txt");
+        File file = new File(dirPath +"\\"+ "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
         writeFile(file, data);
 
+        /*
+        * DD/MM/yyyy hh:mm format
+        * */
+        File chainFlow = new File(dirPath+"\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
+        String dateString = sdf.format(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp());
+//        String chainData = theTour + ". " + userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()
+//                + " || " + chainList.toString();
+        String chainData = theTour + ". " + dateString + " || " + chainList.toString();
+        writeFile(chainFlow, chainData);
     }
 
     public void deleteFile(String filePath) {
@@ -54,65 +65,29 @@ public class WriteFiles {
         }
     }
 
-    //    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList) {
-////        File file = new File("C:\\Users\\DavutU\\Desktop\\testout\\"+delegationInfosArrayList);
-//        File dir;
-//        File file;
-//        File generalInfoFile;
-//        for (int i = 0; i < delegationInfosArrayList.size(); i++) {
-//            generalInfoFile = new File("C:\\Users\\DavutU\\Desktop\\testout\\" + delegationInfosArrayList.get(i).getUserId() + "\\info.txt");
-//            BufferedWriter bufferedWriter = null;
-//            FileWriter fileWriter = null;
-//            String generalInfo = "User id = " + delegationInfosArrayList.get(i).getUserId() + "; TotalOfflineTime = " +
-//                    delegationInfosArrayList.get(i).getTotalOfflineTime() + "; TotalOfflineCount = " +
-//                    delegationInfosArrayList.get(i).getTotalOfflineCount();
-//            dir = new File("C:\\Users\\DavutU\\Desktop\\testout\\" + delegationInfosArrayList.get(i).getUserId());
-//            if (!dir.exists()) {
-//                if (dir.mkdir()) {
-//                    System.out.println("Directory is created! " + delegationInfosArrayList.get(i).getUserId());
-//                } else {
-//                    System.out.println("Failed to create directory! " + delegationInfosArrayList.get(i).getUserId());
-//                }
-//            }
-//            int fileNameCounter = 0;
-//            writeFile(generalInfoFile, generalInfo);
-//            for (int k = 0; k < delegationInfosArrayList.get(i).getDelegatedUserIDList().size(); k++) {
-//                file = new File("C:\\Users\\DavutU\\Desktop\\testout\\" + delegationInfosArrayList.get(i).getUserId() + "\\testnum_" + fileNameCounter + ".txt");
-//                ArrayList<Long> tmpDelegatedUserIDList;
-//                ArrayList<Date> tmpDelegationTimeList;
-//                ArrayList<Integer> tmpChainDepth;
-//
-//                tmpDelegatedUserIDList = delegationInfosArrayList.get(i).getDelegatedUserIDList().get(k);
-//                tmpDelegationTimeList = delegationInfosArrayList.get(i).getDelegationTimeList().get(k);
-//                tmpChainDepth = delegationInfosArrayList.get(i).getChainDepth().get(k);
-//                for (int j = 0; j < tmpDelegatedUserIDList.size(); j++) {
-//                    String data = tmpDelegatedUserIDList.get(j).toString() + " || " +
-//                            tmpDelegationTimeList.get(j).toString() + " || " +
-//                            tmpChainDepth.get(j).toString();
-//                    writeFile(file, data);
-//
-//                }
-//
-//
-//                fileNameCounter++;
-//            }
-//
-//        }
-//    }
     public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser) {
-        File file = new File(Constants.getGeneralInfoOutputPath() + "_" + delegationInfosArrayList.get(indexOfUser).getUserId()+ ".txt");
+        String dirPath = Constants.getOutputFolderPath()+ "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
+        File file = new File(dirPath+"\\" + "Simulation_general_info_" + delegationInfosArrayList.get(indexOfUser).getUserId() + ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;
 
-        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId()+
-                "; TotalOfflineTime = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() +
-                "; TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount();
+        ArrayList<Integer> longestChainLengthList = new ArrayList<>();
+        ArrayList<Integer> longestChainDelegationTourList = new ArrayList<>();
+        int longestChainDepth;
+        int longestChainDelegationTour;
+        for (int i = 0; i < delegationInfosArrayList.get(indexOfUser).getChainDepth().size(); i++) {
+            longestChainLengthList.add(Collections.max(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i)));
+            longestChainDelegationTourList.add(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i).size());
+        }
+        longestChainDepth = Collections.max(longestChainLengthList);
+        longestChainDelegationTour = Collections.max(longestChainDelegationTourList);
 
-        String line1 = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId()+
-                "; Days = " + days + "; hours = "+ hours+ "; minutes = "+ minutes +
-                "; TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount();
-        writeFile(file, line1);
+        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
+                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
+                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
+                "; Longest Chain Depth = " + longestChainDepth;// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
+        writeFile(file, line);
     }
 
     private void writeFile(File file, String line) {
