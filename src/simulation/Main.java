@@ -101,7 +101,7 @@ public class Main {
                         //do nothing
                         //System.out.println("last delegated user still online = " + delegatedUserID);
                         write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
-                    } else {
+                    } else{
                         System.out.println("one of the older delegation come back = " + delegatedUserIDList.get(delegatedOnlineResultIndex).toString());
                         //resize the chain
                         //we have index of older delegated user
