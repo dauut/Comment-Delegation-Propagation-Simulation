@@ -8,9 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 /*
-* this class pick delegated user
-* it needs time based information of current time
-* */
+ * this class pick delegated user
+ * it needs time based information of current time
+ * */
 public class PickUser {
     public long findRandomDelegation(TimeBasedInformation timeBasedInformation) {
 
@@ -20,7 +20,7 @@ public class PickUser {
         int randomIndexOfUser = ThreadLocalRandom.current().nextInt(0, sizeOnlineFriend + 1);
 
         //avoid from indexoutofboundexception
-        if(randomIndexOfUser == sizeOnlineFriend){
+        if (randomIndexOfUser == sizeOnlineFriend) {
             randomIndexOfUser = randomIndexOfUser - 1;
         }
 
@@ -28,7 +28,7 @@ public class PickUser {
             delegated = timeBasedInformation.getOnlineFriendsList().get(randomIndexOfUser).getFriendUserID();
         } catch (IndexOutOfBoundsException e) {
             System.out.println("IndexOutOfBoundsException, sizeOnlineFriend=" + sizeOnlineFriend +
-                    ", randomIndexOfUser="+ randomIndexOfUser);
+                    ", randomIndexOfUser=" + randomIndexOfUser);
         }
 
         //System.out.println("picked index = " + randomIndexOfUser + " Delegated userid = " + delegated);
@@ -38,16 +38,16 @@ public class PickUser {
 
 
     /*
-    * took online friends list and check if one of the
-    * delegated user is online that current time
-    * */
+     * took online friends list and check if one of the
+     * delegated user is online that current time
+     * */
     public int isDelegatedUserOnline(TimeBasedInformation onlineFriendsList, ArrayList<Long> delegatedList) {
         for (int i = 0; i < delegatedList.size(); i++) {
 //            if (onlineFriendsList.getOnlineFriendsList().contains(delegatedList.get(i))) {
 //                return i;
 //            }
-            for (int j = 0; j < onlineFriendsList.getOnlineFriendsList().size();j++){
-                if (onlineFriendsList.getOnlineFriendsList().get(j).getFriendUserID() == delegatedList.get(i)){
+            for (int j = 0; j < onlineFriendsList.getOnlineFriendsList().size(); j++) {
+                if (onlineFriendsList.getOnlineFriendsList().get(j).getFriendUserID() == delegatedList.get(i)) {
                     return i;
                 }
             }
@@ -55,17 +55,46 @@ public class PickUser {
         }
         return -1;
     }
+
     /*we have solid information about userID so it should contain that ID*/
-    public int findUserIndexForOfflineSatatusList(Long userId, ArrayList<OfflineStatusStructure> offlineStatusList){
+    public int findUserIndexForOfflineSatatusList(Long userId, ArrayList<OfflineStatusStructure> offlineStatusList) {
         int index = 0;
         boolean find = false;
 
-        while(!find || index<offlineStatusList.size()){
-            if (userId == offlineStatusList.get(index).getUserID()){
+        while (!find || index < offlineStatusList.size()) {
+            if (userId == offlineStatusList.get(index).getUserID()) {
                 find = true;
             }
+            index++;
         }
 
         return index;
+    }
+
+    public ArrayList<int[]> parsedStatus(ArrayList<OfflineStatusStructure> offlineStatusStructureArrayList, int userIndex) {
+        ArrayList<int[]> statusList = new ArrayList<>();
+        int statusListIndex = 0;
+        int index = 0;
+        int tmp;
+        while (index < offlineStatusStructureArrayList.get(userIndex).getUserstatusList().size()) {
+
+            if (index == offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index)
+                    && index + 1 == offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index) + 1) {
+                tmp = index;
+                statusList.get(statusListIndex)[0] = tmp;
+                tmp = 0;
+                index++;
+            } else if (index + 1 != offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index) + 1) {
+                statusList.get(statusListIndex)[1] = index;
+                statusListIndex++;
+                index++;
+            }else{
+                index++;
+            }
+
+        }
+
+
+        return statusList;
     }
 }
