@@ -1,6 +1,7 @@
 package simulation;
 
 import user.TimeBasedInformation;
+import user.offline.OfflineStatusStructure;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -54,6 +55,17 @@ public class PickUser {
         }
         return -1;
     }
+    /*we have solid information about userID so it should contain that ID*/
+    public int findUserIndexForOfflineSatatusList(Long userId, ArrayList<OfflineStatusStructure> offlineStatusList){
+        int index = 0;
+        boolean find = false;
 
+        while(!find || index<offlineStatusList.size()){
+            if (userId == offlineStatusList.get(index).getUserID()){
+                find = true;
+            }
+        }
 
+        return index;
+    }
 }

@@ -1,11 +1,10 @@
 package statistics;
 
 import user.TimeBasedInformation;
-import user.UserFriendsOfflineStatus;
+import user.offline.UserFriendsOfflineStatus;
 import user.UserInformations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
 
@@ -21,7 +20,6 @@ public class CollectUsersOfflineTimeStatus {
         UserFriendsOfflineStatus userFriendsOfflineStatus;
         ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
         ArrayList<Long> allFriendList;
-        HashSet<Long> currentOnlineList = new HashSet<>();
         allFriendList = findAllOnlineFrineds(usersList, userIndex);
         ArrayList<Integer> offlineTimes;
         ArrayList<Integer> onlineTimes;

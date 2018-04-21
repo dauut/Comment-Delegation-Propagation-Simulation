@@ -2,7 +2,7 @@ package statistics;
 
 import constants.Constants;
 import io.ReadFiles;
-import user.UserFriendsOfflineStatus;
+import user.offline.UserFriendsOfflineStatus;
 import user.UserInformations;
 
 import java.io.BufferedWriter;
@@ -20,6 +20,7 @@ public class Collect {
          * it is an expensive action so we will write output to the text file
          * Runtime = 4035.098144041 seconds 1 hour 07 minutes
          * */
+
         long startTime = System.nanoTime();
         ArrayList<UserInformations> usersList;
         ReadFiles getUserFromData = new ReadFiles();

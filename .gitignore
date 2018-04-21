@@ -1,3 +1,14 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/libraries/
 /src/test/Test.java
+/src/Test.java
+out/production/commentdelegation/Test.class
+out/production/commentdelegation/constants/
+out/production/commentdelegation/io/WriteFiles.class
+out/production/commentdelegation/simulation/
+out/production/commentdelegation/statistics/
+out/production/commentdelegation/user/DelegationInfo.class
+out/production/commentdelegation/user/TimeBasedInformation.class
+out/production/commentdelegation/user/UserFriendsOfflineStatus.class
+src/Test.java
+/.idea/
