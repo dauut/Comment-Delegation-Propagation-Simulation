@@ -4,14 +4,23 @@ import java.util.ArrayList;
 
 public class UserFriendsOfflineStatus {
     private long friendUserId;
-    private ArrayList<int[]> friendOfflineStatus;
+    private ArrayList<Integer> friendOfflineStatus;
+    private ArrayList<Integer> friendOnlineStatus;
 
-    public ArrayList<int[]> getFriendOfflineStatus() {
+    public ArrayList<Integer> getFriendOfflineStatus() {
         return friendOfflineStatus;
     }
 
-    public void setFriendOfflineStatus(ArrayList<int[]> friendOfflineStatus) {
+    public void setFriendOfflineStatus(ArrayList<Integer> friendOfflineStatus) {
         this.friendOfflineStatus = friendOfflineStatus;
+    }
+
+    public ArrayList<Integer> getFriendOnlineStatus() {
+        return friendOnlineStatus;
+    }
+
+    public void setFriendOnlineStatus(ArrayList<Integer> friendOnlineStatus) {
+        this.friendOnlineStatus = friendOnlineStatus;
     }
 
     public long getFriendUserId() {

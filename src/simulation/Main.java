@@ -24,7 +24,7 @@ public class Main {
         ArrayList<Long> delegatedUserIDList = new ArrayList<>();
         ArrayList<Date> delegationTimeList = new ArrayList<>();
         ArrayList<Integer> chainList = new ArrayList<>();
-        CollectUsers collectUsers = new CollectUsers();
+        //CollectUsers collectUsers = new CollectUsers();
         WriteFiles write = new WriteFiles();
         boolean isUserOffline = true;
 
@@ -42,11 +42,11 @@ public class Main {
          * Thus far we have user list with their activities
          * online and offline times
          */
-
         //turn for every user
         for (int i = 0; i < usersList.size(); i++) {
+
             System.out.println("simulation start for user = " + usersList.get(i).getUserId());
-            collectUsers.findUserOnlineOfflineTimes(usersList,i);
+            //collectUsers.findUserOnlineOfflineTimes(usersList,i);
             delegationInfo = new DelegationInfo();
             statusList.clear();
             statusList = statusChanger.getUserStatusList(usersList.get(i).getUserActivites().size(), statusChangeCount);
