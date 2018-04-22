@@ -22,12 +22,10 @@ public class Main {
         PickUser pickUser = new PickUser();
         ArrayList<DelegationInfo> delegationInfoArrayList = new ArrayList<>();
         DelegationInfo delegationInfo; // it may be arraylist in the future
-        ArrayList<Long> delegatedUserIDList = new ArrayList<>();
-        ArrayList<Date> delegationTimeList = new ArrayList<>();
-        ArrayList<Integer> chainList = new ArrayList<>();
-        //CollectUsers collectUsers = new CollectUsers();
+        ArrayList<Long> delegatedUserIDList;
+        ArrayList<Date> delegationTimeList;
+        ArrayList<Integer> chainList;
         WriteFiles write = new WriteFiles();
-        boolean isUserOffline = true;
 
         //load data and variables
         long delegatedUserID;
