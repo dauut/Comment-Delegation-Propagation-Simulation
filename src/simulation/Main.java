@@ -76,8 +76,8 @@ public class Main {
                     pickUser = new PickUser();
                     int delegatedOnlineResultIndex;
                     /*
-                    *
-                    * */
+                     *
+                     * */
                     delegatedOnlineResultIndex = pickUser.isDelegatedUserOnline(usersList.get(i).getUserActivites().get(j), delegatedUserIDList);
 
                     /*if one of the delegated user not online
@@ -90,17 +90,17 @@ public class Main {
                         System.out.println("new delegation = " + delegatedUserID);
 
                         /*
-                        * Unclear parameters In Order;
-                        * j: TimestampIndex,
-                        * i: userIndex,
-                        * k: StatusList Index
-                        * */
+                         * Unclear parameters In Order;
+                         * j: TimestampIndex,
+                         * i: userIndex,
+                         * k: StatusList Index
+                         * */
                         write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
                     } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                         //do nothing
                         //System.out.println("last delegated user still online = " + delegatedUserID);
                         write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
-                    } else{
+                    } else {
                         System.out.println("one of the older delegation come back = " + delegatedUserIDList.get(delegatedOnlineResultIndex).toString());
                         //resize the chain
                         //we have index of older delegated user
