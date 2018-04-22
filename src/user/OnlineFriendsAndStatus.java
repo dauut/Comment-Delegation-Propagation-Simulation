@@ -29,4 +29,5 @@ public class OnlineFriendsAndStatus {
         this.deviceType = deviceType;
     }
 
+
 }
