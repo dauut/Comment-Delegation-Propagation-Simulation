@@ -9,21 +9,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
+* it returns object of MostOnlineFriendsList
+* */
 public class FindMostOnlineFriends {
-    public static void main(String[] args) {
-        ArrayList<UserInformations> usersList;
+    public ArrayList<MostOnlineFriends> findMostOnlineFriendsList(ArrayList<UserInformations> usersList){
+        //ArrayList<UserInformations> usersList;
         ReadFiles getUserFromData = new ReadFiles();
-        FindMostOnlineFriends mostOnlineFriend = new FindMostOnlineFriends();
+        FindMostOnlineFriends findMostOnlineFriend;
         usersList = getUserFromData.getUserList();
-        MostOnlineFriends mostOnlineFriends = new MostOnlineFriends();
+        MostOnlineFriends mostOnlineFriends;
+        ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList = new ArrayList<>();
         for (int i = 0; i < usersList.size(); i++){
-            mostOnlineFriend = new FindMostOnlineFriends();
+            mostOnlineFriends = new MostOnlineFriends();
+            findMostOnlineFriend = new FindMostOnlineFriends();
             mostOnlineFriends.setUserID(usersList.get(i).getUserId());
-            mostOnlineFriends.setMostOnlineFriendsList(mostOnlineFriend.findMostOnlineFriends(usersList,i));
+            mostOnlineFriends.setMostOnlineFriendsList(findMostOnlineFriend.findMostOnlineFriends(usersList,i));
+            mostOnlineFriendsArrayList.add(mostOnlineFriends);
         }
-
-
+        return mostOnlineFriendsArrayList;
     }
 
     private ArrayList<Long> findMostOnlineFriends(ArrayList<UserInformations> usersList, int userIndex) {
