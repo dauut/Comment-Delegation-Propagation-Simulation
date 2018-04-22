@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("Duplicates")
 public class Main {
     public static void main(String[] args) throws ParseException {
 
@@ -64,7 +65,7 @@ public class Main {
                 //calculate total offline time during simulation
                 totalOfflineTime = totalOfflineTime + (statusList.get(k)[1] - statusList.get(k)[0]);
 
-                //start offline time to end offline time
+                // start offline time to end offline time
                 // and set first delegation
                 delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
                 System.out.println("First delegation = " + delegatedUserID);
@@ -92,7 +93,7 @@ public class Main {
 
                         /*
                         * Unclear parameters In Order;
-                        * j: TimestampIdex,
+                        * j: TimestampIndex,
                         * i: userIndex,
                         * k: StatusList Index
                         * */

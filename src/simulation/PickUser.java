@@ -57,43 +57,52 @@ public class PickUser {
     }
 
     /*we have solid information about userID so it should contain that ID*/
-    public int findUserIndexForOfflineSatatusList(Long userId, ArrayList<OfflineStatusStructure> offlineStatusList) {
+    public int[] findUserIndexForOfflineSatatusList(Long userId, ArrayList<OfflineStatusStructure> offlineStatusList) {
+        int[] result = new int[2];
         int index = 0;
         boolean find = false;
+        int endIndex = 0;
 
-        while (!find || index < offlineStatusList.size()) {
+        while (!find && index < offlineStatusList.size()) {
             if (userId == offlineStatusList.get(index).getUserID()) {
                 find = true;
             }
             index++;
         }
 
-        return index;
-    }
+        index = index - 1;
+        endIndex = index;
+        find = false;
 
-    public ArrayList<int[]> parsedStatus(ArrayList<OfflineStatusStructure> offlineStatusStructureArrayList, int userIndex) {
-        ArrayList<int[]> statusList = new ArrayList<>();
-        int statusListIndex = 0;
-        int index = 0;
-        int tmp;
-        while (index < offlineStatusStructureArrayList.get(userIndex).getUserstatusList().size()) {
-
-            if (index == offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index)
-                    && index + 1 == offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index) + 1) {
-                tmp = index;
-                statusList.get(statusListIndex)[0] = tmp;
-                tmp = 0;
-                index++;
-            } else if (index + 1 != offlineStatusStructureArrayList.get(userIndex).getUserstatusList().get(index) + 1) {
-                statusList.get(statusListIndex)[1] = index;
-                statusListIndex++;
-                index++;
-            }else{
-                index++;
+        while (!find && endIndex <offlineStatusList.size()){
+            if (userId != offlineStatusList.get(endIndex).getUserID()){
+                find = true;
             }
-
+            endIndex++;
         }
 
+        endIndex = endIndex - 1;
+
+        result[0] = index;
+        result[1] = endIndex;
+        System.out.println("start index = " + index + " end index = "  +endIndex);
+        return result;
+    }
+    /*
+    * take a bulk session to parts
+    *
+    * */
+    public ArrayList<int[]> parsedStatus(OfflineStatusStructure offlineStatusStructure) {
+        ArrayList<int[]> statusList = new ArrayList<>();
+        int[] status = new int[2];
+        int counter = offlineStatusStructure.getUserstatusList().get(0);
+        while(counter < offlineStatusStructure.getUserstatusList().size()){
+            if(offlineStatusStructure.getUserstatusList().get(counter) + 1 == offlineStatusStructure.getUserstatusList().get(counter +1)){
+                counter++;
+            }else{
+
+            }
+        }
 
         return statusList;
     }

@@ -65,7 +65,7 @@ public class CollectUsersOfflineTimeStatus {
     }
 
 
-    private ArrayList<Long> findAllOnlineFrineds(ArrayList<UserInformations> usersList, int userIndex) {
+    public ArrayList<Long> findAllOnlineFrineds(ArrayList<UserInformations> usersList, int userIndex) {
         HashSet<Long> allOnlineUsers = new HashSet<>();
         for (int i = 0; i < usersList.get(userIndex).getUserActivites().size(); i++) {
             TimeBasedInformation timeBasedInformation = new TimeBasedInformation();
