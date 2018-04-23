@@ -6,7 +6,8 @@ import user.UserInformations;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FindMostDisjointFriends {
@@ -33,7 +34,7 @@ public class FindMostDisjointFriends {
         return mostDisjointFriendsArrayList;
     }
 
-    private void findMostDisjointFriends(ArrayList<UserInformations> usersList, int userIndex, ArrayList<int[]> statusList) {
+    private ArrayList<Long> findMostDisjointFriends(ArrayList<UserInformations> usersList, int userIndex, ArrayList<int[]> statusList) {
         ArrayList<Long> userOnlineFriendsList;
         CollectUsersOfflineTimeStatus userFriendsOnline = new CollectUsersOfflineTimeStatus();
         userOnlineFriendsList = userFriendsOnline.findAllOnlineFrineds(usersList, userIndex);
@@ -47,17 +48,29 @@ public class FindMostDisjointFriends {
          * */
 
         for (int k = 0; k < statusList.size() - 1; k++) { // we have interrupted time intervals
-            int onlineFriendsIterator = 0;
             for (int j = statusList.get(k)[0]; j < statusList.get(k)[1]; j++) { //one time interval
-                while (onlineFriendsIterator < disjointFriendsStatistics.size()) {
-                    if (usersList.get(userIndex).getUserActivites().get(j).getOnlineFriendsHashSet().contains(
-//delete here
-                    )) {
-
-
+                for (int x = 0; x < usersList.get(userIndex).getUserActivites().get(j).getOnlineFriendsList().size(); x++) {
+                    if (disjointFriendsStatistics.containsKey(
+                            usersList.get(userIndex).getUserActivites()
+                                    .get(j).getOnlineFriendsList().get(x).getFriendUserID())
+                            ) {
+                        disjointFriendsStatistics.put(usersList.get(userIndex).getUserActivites().
+                                        get(j).getOnlineFriendsList().get(k).getFriendUserID(),
+                                disjointFriendsStatistics.get(usersList.get(userIndex).getUserActivites().
+                                        get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
                     }
                 }
             }
         }
+
+        List<Map.Entry<Long, Integer>> list = new ArrayList<>(disjointFriendsStatistics.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        ArrayList<Long> sortedDisjointFriendsStatistics = new ArrayList<>();
+
+        for (int k = list.size() - 1; k > 0; k--) {
+            sortedDisjointFriendsStatistics.add(list.get(k).getKey());
+        }
+
+        return sortedDisjointFriendsStatistics;
     }
 }
