@@ -86,7 +86,7 @@ public class WriteFiles {
         String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
                 "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
                 "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
-                "; Longest Chain Depth = " + longestChainDepth;// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
+                "; Longest Chain Depth = " + longestChainDepth + "; Interrupted Session Count:" + delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount();// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
         writeFile(file, line);
     }
 
