@@ -7,9 +7,18 @@ public class DelegationInfo {
     private long userId;
     private int totalOfflineTime;
     private int totalOfflineCount;
+    private int interruptedSessionCount;
     private ArrayList<ArrayList<Integer>> chainDepth;
     private ArrayList<ArrayList<Long>> delegatedUserIDList;
     private ArrayList<ArrayList<Date>> delegationTimeList;
+
+    public int getInterruptedSessionCount() {
+        return interruptedSessionCount;
+    }
+
+    public void setInterruptedSessionCount(int interruptedSessionCount) {
+        this.interruptedSessionCount = interruptedSessionCount;
+    }
 
     public int getTotalOfflineCount() {
         return totalOfflineCount;
