@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     public static void main(String[] args) throws ParseException {
         Main main = new Main();
-        main.randomUserDelegationSimulation(Constants.getRandomDelegation());
+        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation());
     }
 
     private void randomUserDelegationSimulation(String delegationType) {
@@ -35,6 +35,7 @@ public class Main {
         WriteFiles write = new WriteFiles();
         ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList = new ArrayList<>();
         FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
+
         //load data and variables
         long delegatedUserID;
         usersList = getUserFromData.getUserList();
@@ -74,11 +75,11 @@ public class Main {
 
                 // start offline time to end offline time
                 // and set first delegation
-                if(delegationType.equals(Constants.getRandomDelegation())){
+                if (delegationType.equals(Constants.getRandomDelegation())) {
                     delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
-                }else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())){
-                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
-                }else {
+                } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
+                    delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostOnlineFriendsArrayList.get(i));
+                } else {
                     delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
                 }
 
@@ -87,7 +88,7 @@ public class Main {
                 delegationTimeList.add(usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getCurrentTimestamp());
                 chainList.add(delegatedUserIDList.size());
 
-                //moveforward during time intervals
+                //move forward during time intervals
                 for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                     pickUser = new PickUser();
                     int delegatedOnlineResultIndex;
@@ -99,7 +100,13 @@ public class Main {
                     /*if one of the delegated user not online
                      * delegate new user */
                     if (-1 == delegatedOnlineResultIndex) {
-                        delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
+                        if (delegationType.equals(Constants.getRandomDelegation())) {
+                            delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
+                        } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
+                            delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostOnlineFriendsArrayList.get(i));
+                        } else {
+                            delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
+                        }
                         delegatedUserIDList.add(delegatedUserID);
                         delegationTimeList.add(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
                         chainList.add(delegatedUserIDList.size());

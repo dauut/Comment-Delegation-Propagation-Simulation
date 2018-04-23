@@ -1,5 +1,6 @@
 package simulation;
 
+import jdk.nashorn.internal.ir.WhileNode;
 import user.MostOnlineFriends;
 import user.TimeBasedInformation;
 import user.offline.OfflineStatusStructure;
@@ -44,9 +45,6 @@ public class PickUser {
      * */
     public int isDelegatedUserOnline(TimeBasedInformation onlineFriendsList, ArrayList<Long> delegatedList) {
         for (int i = 0; i < delegatedList.size(); i++) {
-//            if (onlineFriendsList.getOnlineFriendsList().contains(delegatedList.get(i))) {
-//                return i;
-//            }
             for (int j = 0; j < onlineFriendsList.getOnlineFriendsList().size(); j++) {
                 if (onlineFriendsList.getOnlineFriendsList().get(j).getFriendUserID() == delegatedList.get(i)) {
                     return i;
@@ -62,7 +60,7 @@ public class PickUser {
         int[] result = new int[2];
         int index = 0;
         boolean find = false;
-        int endIndex = 0;
+        int endIndex;
 
         while (!find && index < offlineStatusList.size()) {
             if (userId == offlineStatusList.get(index).getUserID()) {
@@ -90,8 +88,24 @@ public class PickUser {
         return result;
     }
 
-    public long pickMostOnlineFriendsAsDelegatedUser(MostOnlineFriends mostOnlineFriends, long userID) {
+    public long findAndPickMostOnlineFriendsAsDelegatedUser(TimeBasedInformation timeBasedInformation, MostOnlineFriends mostOnlineFriends) {
         long delegatedUserId = 0;
+        int sizeCurrentOnlineFriends = timeBasedInformation.getOnlineFriendsList().size();
+        int i = 0;
+        boolean find = false;
+
+        while (!find && i < mostOnlineFriends.getMostOnlineFriendsList().size()){
+            if (timeBasedInformation.getOnlineFriendsHashSet().contains(mostOnlineFriends.getMostOnlineFriendsList().get(i))){
+                find = true;
+                System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
+                delegatedUserId = mostOnlineFriends.getMostOnlineFriendsList().get(i);
+            }else{
+                i++;
+            }
+
+        }
+
+
 
         return delegatedUserId;
     }

@@ -2,6 +2,7 @@ package user;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class TimeBasedInformation {
     private int onlineFriendsCount;
@@ -13,7 +14,16 @@ public class TimeBasedInformation {
     private int webUsersCount;
     private int mobileActiveCount;
     private int mobileIdleCount;
+    private HashSet<Long> onlineFriendsHashSet;
     private String fileName;
+
+    public HashSet<Long> getOnlineFriendsHashSet() {
+        return onlineFriendsHashSet;
+    }
+
+    public void setOnlineFriendsHashSet(HashSet<Long> onlineFriendsHashSet) {
+        this.onlineFriendsHashSet = onlineFriendsHashSet;
+    }
 
     public String getFileName() {
         return fileName;

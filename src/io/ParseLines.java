@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class ParseLines {
     public TimeBasedInformation parseLines(ArrayList<String> lines) {
@@ -40,20 +41,21 @@ public class ParseLines {
             timeBasedInformation.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
         }
 
-        String onlineStatusTokens[] = null;
-
+        String onlineStatusTokens[];
+        HashSet<Long> onlineFriendsHashSet = new HashSet<>();
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
         for (int i = 3; i < lines.size() - 2; i++) {
             OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
             onlineStatusTokens = lines.get(i).split(delims);
 
             onlineFriendsAndStatus.setFriendUserID(Long.parseLong(onlineStatusTokens[0]));
+            onlineFriendsHashSet.add(Long.parseLong(onlineStatusTokens[0]));
             onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
             onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);
 
             friensStatusList.add(onlineFriendsAndStatus);
         }
-
+        timeBasedInformation.setOnlineFriendsHashSet(onlineFriendsHashSet);
         timeBasedInformation.setOnlineFriendsList(friensStatusList);
 
         return timeBasedInformation;
