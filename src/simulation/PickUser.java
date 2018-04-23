@@ -1,5 +1,6 @@
 package simulation;
 
+import user.MostOnlineFriends;
 import user.TimeBasedInformation;
 import user.offline.OfflineStatusStructure;
 
@@ -74,8 +75,8 @@ public class PickUser {
         endIndex = index;
         find = false;
 
-        while (!find && endIndex <offlineStatusList.size()){
-            if (userId != offlineStatusList.get(endIndex).getUserID()){
+        while (!find && endIndex < offlineStatusList.size()) {
+            if (userId != offlineStatusList.get(endIndex).getUserID()) {
                 find = true;
             }
             endIndex++;
@@ -85,21 +86,29 @@ public class PickUser {
 
         result[0] = index;
         result[1] = endIndex;
-        System.out.println("start index = " + index + " end index = "  +endIndex);
+        System.out.println("start index = " + index + " end index = " + endIndex);
         return result;
     }
+
+    public long pickMostOnlineFriendsAsDelegatedUser(MostOnlineFriends mostOnlineFriends, long userID) {
+        long delegatedUserId = 0;
+
+        return delegatedUserId;
+    }
+
+
     /*
-    * take a bulk session to parts
-    *
-    * */
+     * take a bulk session to parts
+     * retired
+     * */
     public ArrayList<int[]> parsedStatus(OfflineStatusStructure offlineStatusStructure) {
         ArrayList<int[]> statusList = new ArrayList<>();
         int[] status = new int[2];
         int counter = offlineStatusStructure.getUserstatusList().get(0);
-        while(counter < offlineStatusStructure.getUserstatusList().size()){
-            if(offlineStatusStructure.getUserstatusList().get(counter) + 1 == offlineStatusStructure.getUserstatusList().get(counter +1)){
+        while (counter < offlineStatusStructure.getUserstatusList().size()) {
+            if (offlineStatusStructure.getUserstatusList().get(counter) + 1 == offlineStatusStructure.getUserstatusList().get(counter + 1)) {
                 counter++;
-            }else{
+            } else {
 
             }
         }

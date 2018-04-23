@@ -12,3 +12,4 @@ out/production/commentdelegation/user/TimeBasedInformation.class
 out/production/commentdelegation/user/UserFriendsOfflineStatus.class
 src/Test.java
 /.idea/
+/src/simulation/Main2.java

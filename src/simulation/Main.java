@@ -3,7 +3,9 @@ package simulation;
 import constants.Constants;
 import io.ReadFiles;
 import io.WriteFiles;
+import statistics.FindMostOnlineFriends;
 import user.DelegationInfo;
+import user.MostOnlineFriends;
 import user.UserInformations;
 
 import java.text.ParseException;
@@ -14,6 +16,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @SuppressWarnings("Duplicates")
 public class Main {
     public static void main(String[] args) throws ParseException {
+        Main main = new Main();
+        main.randomUserDelegationSimulation(Constants.getRandomDelegation());
+    }
+
+    private void randomUserDelegationSimulation(String delegationType) {
 
         ArrayList<UserInformations> usersList;
         ArrayList<int[]> statusList;
@@ -26,10 +33,12 @@ public class Main {
         ArrayList<Date> delegationTimeList;
         ArrayList<Integer> chainList;
         WriteFiles write = new WriteFiles();
-
+        ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList = new ArrayList<>();
+        FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
         //load data and variables
         long delegatedUserID;
         usersList = getUserFromData.getUserList();
+        mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
 
         //how many times he/she will be offline during 15 days
         int statusChangeCount = ThreadLocalRandom.current().nextInt(20, 40);
@@ -65,7 +74,14 @@ public class Main {
 
                 // start offline time to end offline time
                 // and set first delegation
-                delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                if(delegationType.equals(Constants.getRandomDelegation())){
+                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                }else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())){
+                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                }else {
+                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                }
+
                 System.out.println("First delegation = " + delegatedUserID);
                 delegatedUserIDList.add(delegatedUserID);
                 delegationTimeList.add(usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getCurrentTimestamp());
@@ -130,6 +146,7 @@ public class Main {
             write.writeAllResult(delegationInfoArrayList, i);
             System.out.println();
         }
+
 
     }
 }

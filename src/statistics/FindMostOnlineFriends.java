@@ -17,7 +17,7 @@ public class FindMostOnlineFriends {
         //ArrayList<UserInformations> usersList;
         ReadFiles getUserFromData = new ReadFiles();
         FindMostOnlineFriends findMostOnlineFriend;
-        usersList = getUserFromData.getUserList();
+        //usersList = getUserFromData.getUserList();
         MostOnlineFriends mostOnlineFriends;
         ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList = new ArrayList<>();
         for (int i = 0; i < usersList.size(); i++){
