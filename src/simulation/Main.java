@@ -13,11 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-@SuppressWarnings("Duplicates")
+@SuppressWarnings("Duplicates" )
 public class Main {
     public static void main(String[] args) throws ParseException {
         Main main = new Main();
+        long startTime = System.nanoTime();
         main.randomUserDelegationSimulation(Constants.getRandomDelegation());
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        double seconds = (double) totalTime / 1000000000.0;
+        System.out.println("seconds = " + seconds);
+        System.out.println("minutes = " + seconds / 60);
+        System.out.println("hours = " + seconds / 3600);
     }
 
     private void randomUserDelegationSimulation(String delegationType) {
@@ -91,14 +98,14 @@ public class Main {
                 //move forward during time intervals
                 for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                     if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
-                        System.out.println("There is no user for delegation, end this session");
+                        System.out.println("There is no user for delegation, end this session" );
                         j = statusList.get(k)[1];
                         interruptedSessionCount++;
                     } else {
                         pickUser = new PickUser();
                         int delegatedOnlineResultIndex;
                         /*
-                         *
+                         * check delegated user still online or not
                          * */
                         delegatedOnlineResultIndex = pickUser.isDelegatedUserOnline(usersList.get(i).getUserActivites().get(j), delegatedUserIDList);
 
@@ -163,14 +170,3 @@ public class Main {
 
     }
 }
-
-//Date settings
-        /*
-        Date simulationStartDate = null;
-        Date simulationEndDate = null;
-        SimpleDateFormat simpleStartFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-        simulationStartDate = simpleStartFormat.parse(Constants.getSimulationStartDate());
-        simulationEndDate = simpleStartFormat.parse(Constants.getSimulationEndDate());
-        DateTime simulationStart = new DateTime(simulationStartDate);
-        DateTime simulationEnd = new DateTime(simulationEndDate);
-        */

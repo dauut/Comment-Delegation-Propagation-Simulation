@@ -10,7 +10,7 @@ public final class Constants {
     private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\DavutU\\Desktop\\testout\\simulationGeneralInfo";
 */
     //home
-    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status1";
+    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
     private static final String OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulation";
     private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulationGeneralInfo";
     private static final String OUTPUT_FOLDER_PATH = "C:\\Users\\dauut\\Desktop\\testout";

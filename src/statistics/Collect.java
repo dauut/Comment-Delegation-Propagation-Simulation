@@ -38,7 +38,6 @@ public class Collect {
             userFriendsOfflineStatusList = collectUsersOfflineTimeStatus.findUserOnlineOfflineTimes(usersList, i);
             collect.writeFile(userFriendsOfflineStatusList, usersList.get(i).getUserId() );
         }
-        System.out.println("lets see what happens");
         long endTime   = System.nanoTime();
         long totalTime = endTime - startTime;
         double seconds = (double)totalTime / 1000000000.0;
