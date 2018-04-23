@@ -51,8 +51,11 @@ public class ReadCollectedInformation {
                     while (scanner.hasNext()) {
                         line = scanner.nextLine();
                     }
+
+                    /*read files without brackets and other not numeric chars */
                     String lineWithoutBrackets = line.replaceAll("[\\[\\]]", "");
                     lineWithoutBrackets = lineWithoutBrackets.replaceAll("\\s+", "");
+                    //put a line with comma separated to an array list
                     tmpstatusList = Stream.of(lineWithoutBrackets.split(","))
                             .map(Integer::parseInt)
                             .collect(Collectors.toList());
