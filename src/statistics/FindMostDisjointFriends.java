@@ -31,6 +31,10 @@ public class FindMostDisjointFriends {
         return mostDisjointFriendsArrayList;
     }
 
+    /*
+    * find and sort most disjoint friends for designated user
+    *
+    * */
     private ArrayList<Long> findMostDisjointFriends(ArrayList<UserInformations> usersList,
                                                     int userIndex, ArrayList<int[]> statusList) {
         ArrayList<Long> userOnlineFriendsList;
@@ -41,9 +45,6 @@ public class FindMostDisjointFriends {
         for (int i = 0; i < userOnlineFriendsList.size(); i++) {
             disjointFriendsStatistics.put(userOnlineFriendsList.get(i), 0);
         }
-        /*
-         * iterate on that current timestamp for online users
-         * */
 
         //turn for every offline session
         int totalDisjoint = 0;
