@@ -73,6 +73,7 @@ public class Main {
             ArrayList<ArrayList<Integer>> chainListList = new ArrayList<>();
             // offline time intervals
             int interruptedSessionCount = 0;
+            int interruptionTime = 0;
             for (int k = 0; k < statusList.size() - 1; k++) {
                 delegatedUserIDList = new ArrayList<>();
                 delegationTimeList = new ArrayList<>();
@@ -99,6 +100,10 @@ public class Main {
                 for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                     if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                         System.out.println("There is no user for delegation, end this session" );
+                        while(usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0){
+                            interruptionTime++;
+                            j++;
+                        }
                         j = statusList.get(k)[1];
                         interruptedSessionCount++;
                     } else {
@@ -162,6 +167,7 @@ public class Main {
             delegationInfo.setTotalOfflineTime(totalOfflineTime);
             delegationInfo.setTotalOfflineCount(statusList.size());
             delegationInfo.setInterruptedSessionCount(interruptedSessionCount);
+            delegationInfo.setInterruptTime(interruptionTime);
             delegationInfoArrayList.add(delegationInfo);
             write.writeAllResult(delegationInfoArrayList, i);
             System.out.println();
