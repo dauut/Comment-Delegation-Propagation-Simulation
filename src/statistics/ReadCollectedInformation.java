@@ -8,10 +8,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+* Read from local files
+* collected offline time intervals for
+* every friends of every user
+* */
 public class ReadCollectedInformation {
     public ArrayList<OfflineStatusStructure> readStatusList() {
         System.out.println("ReadcollectedInformation start");
