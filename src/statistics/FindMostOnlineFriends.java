@@ -9,22 +9,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /*
-* it returns object of MostOnlineFriendsList
-* */
+ * it returns object of MostOnlineFriendsList
+ * */
 public class FindMostOnlineFriends {
-    public ArrayList<MostOnlineFriends> findMostOnlineFriendsList(ArrayList<UserInformations> usersList){
+    public ArrayList<MostOnlineFriends> findMostOnlineFriendsList(ArrayList<UserInformations> usersList) {
         //ArrayList<UserInformations> usersList;
         //ReadFiles getUserFromData = new ReadFiles();
         FindMostOnlineFriends findMostOnlineFriend;
         //usersList = getUserFromData.getUserList();
         MostOnlineFriends mostOnlineFriends;
         ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList = new ArrayList<>();
-        for (int i = 0; i < usersList.size(); i++){
+        for (int i = 0; i < usersList.size(); i++) {
             mostOnlineFriends = new MostOnlineFriends();
             findMostOnlineFriend = new FindMostOnlineFriends();
             mostOnlineFriends.setUserID(usersList.get(i).getUserId());
-            mostOnlineFriends.setMostOnlineFriendsList(findMostOnlineFriend.findMostOnlineFriends(usersList,i));
+            mostOnlineFriends.setMostOnlineFriendsList(findMostOnlineFriend.findMostOnlineFriends(usersList, i));
             mostOnlineFriendsArrayList.add(mostOnlineFriends);
         }
         return mostOnlineFriendsArrayList;
@@ -57,7 +58,7 @@ public class FindMostOnlineFriends {
         list.sort(Map.Entry.comparingByValue());
         ArrayList<Long> sortedMostOnlineFriends = new ArrayList<>();
 
-        for (int k = list.size()-1 ; k > 0;k--){
+        for (int k = list.size() - 1; k > 0; k--) {
             sortedMostOnlineFriends.add(list.get(k).getKey());
         }
 

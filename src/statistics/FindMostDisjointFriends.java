@@ -4,10 +4,7 @@ import simulation.StatusChanger;
 import user.MostDisjointFriends;
 import user.UserInformations;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class FindMostDisjointFriends {
@@ -34,7 +31,8 @@ public class FindMostDisjointFriends {
         return mostDisjointFriendsArrayList;
     }
 
-    private ArrayList<Long> findMostDisjointFriends(ArrayList<UserInformations> usersList, int userIndex, ArrayList<int[]> statusList) {
+    private ArrayList<Long> findMostDisjointFriends(ArrayList<UserInformations> usersList,
+                                                    int userIndex, ArrayList<int[]> statusList) {
         ArrayList<Long> userOnlineFriendsList;
         CollectUsersOfflineTimeStatus userFriendsOnline = new CollectUsersOfflineTimeStatus();
         userOnlineFriendsList = userFriendsOnline.findAllOnlineFrineds(usersList, userIndex);
@@ -47,17 +45,24 @@ public class FindMostDisjointFriends {
          * iterate on that current timestamp for online users
          * */
 
-        for (int k = 0; k < statusList.size() - 1; k++) { // we have interrupted time intervals
-            for (int j = statusList.get(k)[0]; j < statusList.get(k)[1]; j++) { //one time interval
-                for (int x = 0; x < usersList.get(userIndex).getUserActivites().get(j).getOnlineFriendsList().size(); x++) {
-                    if (disjointFriendsStatistics.containsKey(
-                            usersList.get(userIndex).getUserActivites()
-                                    .get(j).getOnlineFriendsList().get(x).getFriendUserID())
-                            ) {
-                        disjointFriendsStatistics.put(usersList.get(userIndex).getUserActivites().
-                                        get(j).getOnlineFriendsList().get(k).getFriendUserID(),
-                                disjointFriendsStatistics.get(usersList.get(userIndex).getUserActivites().
-                                        get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
+        //turn for every offline session
+        int totalDisjoint = 0;
+        for (int i = 0; i < statusList.size(); i++) {
+            //turn during that specified time interval
+            for (int j = statusList.get(i)[0]; j < statusList.get(i)[1]; j++) {
+                Iterator iter = usersList.get(userIndex).getUserActivites().get(j).getOnlineFriendsHashSet().iterator();
+
+                // turn for every online user in that time interval activity
+                while (iter.hasNext()){
+                    long friendUserId = (long) iter.next();
+                    for (long disjointUserId: disjointFriendsStatistics.keySet()){
+                        if (disjointUserId == friendUserId){
+                            if (disjointFriendsStatistics.containsKey(friendUserId)) {
+                                disjointFriendsStatistics.put(friendUserId,
+                                        disjointFriendsStatistics.get(friendUserId) + 1);
+                                totalDisjoint+=1;
+                            }
+                        }
                     }
                 }
             }
