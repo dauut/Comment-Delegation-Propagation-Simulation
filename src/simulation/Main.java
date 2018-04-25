@@ -59,7 +59,8 @@ public class Main {
          * online and offline times
          */
         //turn for every user
-        for (int i = 0; i < usersList.size(); i++) {
+//        for (int i = 0; i < usersList.size(); i++) {
+        for (int i = 0; i < 1; i++) {
 
             System.out.println("simulation start for user = " + usersList.get(i).getUserId());
             //collectUsers.findUserOnlineOfflineTimes(usersList,i);
