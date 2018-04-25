@@ -23,7 +23,7 @@ public class WriteFiles {
                                ArrayList<Integer> chainList, String fileName, int theTimestampIndex,
                                ArrayList<UserInformations> userList, int userIndex, int theTour) {
         File dir;
-        String dirPath = Constants.getOutputFolderPath()+ "\\" + userList.get(userIndex).getUserId();
+        String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
         dir = new File(dirPath);
         if (!dir.exists()) {
             if (dir.mkdir()) {
@@ -39,19 +39,22 @@ public class WriteFiles {
         String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
                 userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
                 chainList.toString() + " || " + " || latest file = " + fileName;
-        File file = new File(dirPath +"\\"+ "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
+        File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
         writeFile(file, data);
 
         /*
         * DD/MM/yyyy hh:mm format
         * */
-        File chainFlow = new File(dirPath+"\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
+        File chainFlow = new File(dirPath + "\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
         String dateString = sdf.format(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp());
 //        String chainData = theTour + ". " + userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()
 //                + " || " + chainList.toString();
+        TableBuilder tb = new TableBuilder();
+        tb.addRow(String.valueOf(theTour), dateString, chainList.toString());
+
         String chainData = theTour + ". " + dateString + " || " + chainList.toString();
-        writeFile(chainFlow, chainData);
+        writeFile(chainFlow, tb.toString());
     }
 
     public void deleteFile(String filePath) {
@@ -66,8 +69,8 @@ public class WriteFiles {
     }
 
     public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser) {
-        String dirPath = Constants.getOutputFolderPath()+ "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
-        File file = new File(dirPath+"\\" + "Simulation_general_info_" + delegationInfosArrayList.get(indexOfUser).getUserId() + ".txt");
+        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
+        File file = new File(dirPath + "\\" + "Simulation_general_info_" + delegationInfosArrayList.get(indexOfUser).getUserId() + ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;
@@ -82,13 +85,25 @@ public class WriteFiles {
         }
         longestChainDepth = Collections.max(longestChainLengthList);
         longestChainDelegationTour = Collections.max(longestChainDelegationTourList);
-
-        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
-                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
-                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
-                "; Longest Chain Depth = " + longestChainDepth + "; Interrupted Session Count:" + delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount() +
-                "\n interruption total time = " + delegationInfosArrayList.get(indexOfUser).getInterruptTime();// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
-        writeFile(file, line);
+        TableBuilder tb = new TableBuilder();
+        tb.addRow(" UserId", " Offline Days", " Hours", " Minutes"
+                , " TotalOfflineCount", " Longest Chain Depth", " Interrupted Session Count"
+                , " interruption total time", "\n");
+//        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
+//                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
+//                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
+//                "; Longest Chain Depth = " + longestChainDepth + "; Interrupted Session Count:" + delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount() +
+//                "\n interruption total time = " + delegationInfosArrayList.get(indexOfUser).getInterruptTime();// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
+//        writeFile(file, line);
+        tb.addRow( String.valueOf(delegationInfosArrayList.get(indexOfUser).getUserId())
+                , String.valueOf(days)
+                , String.valueOf(hours)
+                , String.valueOf(minutes)
+                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount())
+                , String.valueOf(longestChainDepth)
+                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount())
+                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptTime()));
+        writeFile(file, tb.toString());
     }
 
     private void writeFile(File file, String line) {
