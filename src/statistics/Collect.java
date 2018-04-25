@@ -29,7 +29,7 @@ public class Collect {
         //gather all user list
         usersList = getUserFromData.getUserList();
 
-        ArrayList<UserFriendsOfflineStatus> userFriendsOfflineStatusList = new ArrayList<>();
+        ArrayList<UserFriendsOfflineStatus> userFriendsOfflineStatusList;
 
         for (int i = 0; i < usersList.size(); i++) {
             //this type object should be recreated
