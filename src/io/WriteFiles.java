@@ -22,6 +22,7 @@ public class WriteFiles {
     public void writeInfoFiles(ArrayList<Long> delegatedUserIdList, ArrayList<Date> delegationTimeList,
                                ArrayList<Integer> chainList, String fileName, int theTimestampIndex,
                                ArrayList<UserInformations> userList, int userIndex, int theTour) {
+        TableBuilder tb = new TableBuilder();
         File dir;
         String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
         dir = new File(dirPath);
@@ -36,12 +37,18 @@ public class WriteFiles {
         FileWriter fileWriter = null;
 //        WriteFiles writeFiles = new WriteFiles();
         // String data = delegatedUserIdList.toString() + " || " + delegationTimeList.toString() + " || " + chainList.toString() + " || latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
-        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
-                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
-                chainList.toString() + " || " + " || latest file = " + fileName;
-        File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
-        writeFile(file, data);
+//        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
+//                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
+//                chainList.toString() + " || " + " || latest file = " + fileName;
 
+        tb.addRow(String.valueOf(theTour),
+                delegatedUserIdList.toString(),
+                String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()),
+                chainList.toString(),
+                fileName);
+        File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
+//        writeFile(file, data);
+        writeFile(file,tb.toString());
         /*
         * DD/MM/yyyy hh:mm format
         * */
@@ -50,8 +57,8 @@ public class WriteFiles {
         String dateString = sdf.format(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp());
 //        String chainData = theTour + ". " + userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()
 //                + " || " + chainList.toString();
-        TableBuilder tb = new TableBuilder();
-        tb.addRow(String.valueOf(theTour), dateString, chainList.toString());
+        tb = new TableBuilder();
+        tb.addRow(String.valueOf(theTour), dateString,String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getOnlineFriendsList().size()), chainList.toString());
 
         String chainData = theTour + ". " + dateString + " || " + chainList.toString();
         writeFile(chainFlow, tb.toString());
