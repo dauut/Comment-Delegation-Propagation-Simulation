@@ -85,6 +85,9 @@ public class Main2 {
             int interruptedSessionCount = 0;
             int interruptionTime = 0;
             int offlineIndex = 0;
+            while(usersList.get(i).getUserId() != offlineStatusStructuresList.get(offlineIndex).getUserID()){
+                offlineIndex++;
+            }
             while(usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()){
                 statusList = new ArrayList<>();
                 long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
