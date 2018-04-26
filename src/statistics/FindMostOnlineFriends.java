@@ -15,6 +15,7 @@ import java.util.Map;
  * */
 public class FindMostOnlineFriends {
     public ArrayList<MostOnlineFriends> findMostOnlineFriendsList(ArrayList<UserInformations> usersList) {
+        System.out.println("findMostOnlineFriendsList start");
         //ArrayList<UserInformations> usersList;
         //ReadFiles getUserFromData = new ReadFiles();
         FindMostOnlineFriends findMostOnlineFriend;
