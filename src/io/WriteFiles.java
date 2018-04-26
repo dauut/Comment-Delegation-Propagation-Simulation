@@ -41,11 +41,15 @@ public class WriteFiles {
 //                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
 //                chainList.toString() + " || " + " || latest file = " + fileName;
 
+//        tb.addRow(String.valueOf(theTour),
+//                delegatedUserIdList.toString(),
+//                String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()),
+//                chainList.toString(),
+//                fileName);
         tb.addRow(String.valueOf(theTour),
                 delegatedUserIdList.toString(),
                 String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()),
-                chainList.toString(),
-                fileName);
+                chainList.toString());
         //File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
         File file = new File(dirPath + "\\" + friendUserID + "_Simulation" + ".txt");
 //        writeFile(file, data);
@@ -79,26 +83,36 @@ public class WriteFiles {
     }
 
     public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID) {
+        File dir;
         String dirPath = Constants.getOutputFolderPath() + "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
-        File file = new File(dirPath + "\\" + friendUserID + "_Simulation_general_info" + ".txt");
+        dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Directory is created! " + delegationInfosArrayList.get(indexOfUser).getUserId());
+            } else {
+                System.out.println("Failed to create directory! " + delegationInfosArrayList.get(indexOfUser).getUserId());
+            }
+        }
+//        File file = new File(dirPath + "\\" + friendUserID + "_Simulation_general_info" + ".txt");
+        File file = new File(dirPath + "\\" + "Simulation_general_info" + ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;
 
         ArrayList<Integer> longestChainLengthList = new ArrayList<>();
-        ArrayList<Integer> longestChainDelegationTourList = new ArrayList<>();
+       // ArrayList<Integer> longestChainDelegationTourList = new ArrayList<>();
         int longestChainDepth;
-        int longestChainDelegationTour;
+        //int longestChainDelegationTour;
         for (int i = 0; i < delegationInfosArrayList.get(indexOfUser).getChainDepth().size(); i++) {
             longestChainLengthList.add(Collections.max(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i)));
-            longestChainDelegationTourList.add(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i).size());
+            //longestChainDelegationTourList.add(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i).size());
         }
         longestChainDepth = Collections.max(longestChainLengthList);
-        longestChainDelegationTour = Collections.max(longestChainDelegationTourList);
+        //longestChainDelegationTour = Collections.max(longestChainDelegationTourList);
         TableBuilder tb = new TableBuilder();
         tb.addRow(" UserId", " Offline Days", " Hours", " Minutes"
                 , " TotalOfflineCount", " Longest Chain Depth", " Interrupted Session Count"
-                , " interruption total time", "\n");
+                , " interruption total time", "Timeinterval of FriendID", "\n");
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
 //                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
 //                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
@@ -112,7 +126,8 @@ public class WriteFiles {
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount())
                 , String.valueOf(longestChainDepth)
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount())
-                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptTime()));
+                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptTime())
+                , String.valueOf(friendUserID));
         writeFile(file, tb.toString());
     }
 
