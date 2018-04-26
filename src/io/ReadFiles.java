@@ -15,6 +15,7 @@ import java.util.Scanner;
 @SuppressWarnings("Duplicates")
 public class ReadFiles {
     public ArrayList<UserInformations> getUserList() {
+        System.out.println("Collect all users information for once! ");
         String mainFolderPath = Constants.getDataPath();
         File fbUsersFolder = new File(mainFolderPath);
         File[] listOfUsers = fbUsersFolder.listFiles(); // we get all users path in a File lists

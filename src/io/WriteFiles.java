@@ -21,7 +21,7 @@ import java.util.Date;
 public class WriteFiles {
     public void writeInfoFiles(ArrayList<Long> delegatedUserIdList, ArrayList<Date> delegationTimeList,
                                ArrayList<Integer> chainList, String fileName, int theTimestampIndex,
-                               ArrayList<UserInformations> userList, int userIndex, int theTour) {
+                               ArrayList<UserInformations> userList, int userIndex, int theTour, long friendUserID) {
         TableBuilder tb = new TableBuilder();
         File dir;
         String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
@@ -46,19 +46,22 @@ public class WriteFiles {
                 String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()),
                 chainList.toString(),
                 fileName);
-        File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
+        //File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
+        File file = new File(dirPath + "\\" + friendUserID + "_Simulation" + ".txt");
 //        writeFile(file, data);
-        writeFile(file,tb.toString());
+        writeFile(file, tb.toString());
         /*
         * DD/MM/yyyy hh:mm format
         * */
-        File chainFlow = new File(dirPath + "\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
+//        File chainFlow = new File(dirPath + "\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
+        File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
         String dateString = sdf.format(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp());
 //        String chainData = theTour + ". " + userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()
 //                + " || " + chainList.toString();
         tb = new TableBuilder();
-        tb.addRow(String.valueOf(theTour), dateString,String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getOnlineFriendsList().size()), chainList.toString());
+        tb.addRow(String.valueOf(theTour), dateString, String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getOnlineFriendsList().size()), chainList.toString());
 
         String chainData = theTour + ". " + dateString + " || " + chainList.toString();
         writeFile(chainFlow, tb.toString());
@@ -75,9 +78,9 @@ public class WriteFiles {
         }
     }
 
-    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser) {
+    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID) {
         String dirPath = Constants.getOutputFolderPath() + "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
-        File file = new File(dirPath + "\\" + "Simulation_general_info_" + delegationInfosArrayList.get(indexOfUser).getUserId() + ".txt");
+        File file = new File(dirPath + "\\" + friendUserID + "_Simulation_general_info" + ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;
@@ -102,7 +105,7 @@ public class WriteFiles {
 //                "; Longest Chain Depth = " + longestChainDepth + "; Interrupted Session Count:" + delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount() +
 //                "\n interruption total time = " + delegationInfosArrayList.get(indexOfUser).getInterruptTime();// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
 //        writeFile(file, line);
-        tb.addRow( String.valueOf(delegationInfosArrayList.get(indexOfUser).getUserId())
+        tb.addRow(String.valueOf(delegationInfosArrayList.get(indexOfUser).getUserId())
                 , String.valueOf(days)
                 , String.valueOf(hours)
                 , String.valueOf(minutes)
