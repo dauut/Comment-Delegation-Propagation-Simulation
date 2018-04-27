@@ -2,6 +2,7 @@ package simulation;
 
 import constants.Constants;
 import io.ReadFiles;
+import io.TableBuilder;
 import io.WriteFiles;
 import statistics.FindMostOnlineFriends;
 import statistics.StatusListParser;
@@ -11,6 +12,7 @@ import user.UserInformations;
 import user.offline.OfflineStatusStructure;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,6 +48,9 @@ public class Main2 {
         ArrayList<OfflineStatusStructure> offlineStatusStructuresList;
         StatusListParser parser = new StatusListParser();
         FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
+        TableBuilder tb = new TableBuilder();
+        ArrayList<String> tbList = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
 
         //load data and variables
         long delegatedUserID;
@@ -90,6 +95,7 @@ public class Main2 {
 
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
                 statusList = new ArrayList<>();
+                chainListList = new ArrayList<>();
                 long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
                 int interruptedSessionCount = 0;
                 int interruptionTime = 0;
@@ -97,6 +103,10 @@ public class Main2 {
                 System.out.println("Delegation timeline for = " + friendUserID);
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
                 for (int k = 0; k < statusList.size() - 1; k++) {
+
+                    /*with this list we collect the every session then write
+                    * thats give us magnificent performance improvement*/
+                    tbList = new ArrayList<>();
                     delegatedUserIDList = new ArrayList<>();
                     delegationTimeList = new ArrayList<>();
                     chainList = new ArrayList<>();
@@ -120,6 +130,7 @@ public class Main2 {
                     chainList.add(delegatedUserIDList.size());
                     //move forward during time intervals
                     for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
+                        tb = new TableBuilder();
                         if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                             //System.out.println("There is no user for delegation, end this session");
                             while (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
@@ -151,17 +162,24 @@ public class Main2 {
                                 chainList.add(delegatedUserIDList.size());
                                 //System.out.println("new delegation = " + delegatedUserID);
 
+
+                                String dateString = sdf.format(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
+                                tb.addRow(String.valueOf(k), dateString, String.valueOf(usersList.get(i).getUserActivites().get(j).getOnlineFriendsList().size()), chainList.toString());
+                                tbList.add(tb.toString()+"\n");
                                 /*
                                  * Unclear parameters In Order;
                                  * j: TimestampIndex,
                                  * i: userIndex,
                                  * k: StatusList Index
                                  * */
-                                write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
+                                //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
                             } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                                 //do nothing
                                 //System.out.println("last delegated user still online = " + delegatedUserID);
-                                write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
+                                String dateString = sdf.format(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
+                                tb.addRow(String.valueOf(k), dateString, String.valueOf(usersList.get(i).getUserActivites().get(j).getOnlineFriendsList().size()), chainList.toString());
+                                tbList.add(tb.toString()+"\n");
+                                //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
                             } else {
                                 //System.out.println("one of the older delegation come back = " + delegatedUserIDList.get(delegatedOnlineResultIndex).toString());
                                 //resize the chain
@@ -172,7 +190,10 @@ public class Main2 {
                                 }
                                 //System.out.println("new list  = " + delegatedUserIDList);
                                 chainList.add(delegatedUserIDList.size());
-                                write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
+                                String dateString = sdf.format(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
+                                tb.addRow(String.valueOf(k), dateString, String.valueOf(usersList.get(i).getUserActivites().get(j).getOnlineFriendsList().size()), chainList.toString());
+                                tbList.add(tb.toString()+"\n");
+                                //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k, friendUserID);
                             }
 
                         }
@@ -181,7 +202,9 @@ public class Main2 {
                         delegatedUserTimeListList.add(delegationTimeList);
                         chainListList.add(chainList);
                     }
+                    write.arrayListWrite(usersList,i,tbList,friendUserID);
                 }
+
                 delegationInfo.setDelegatedUserIDList(delegatedUserlistList);
                 delegationInfo.setDelegationTimeList(delegatedUserTimeListList);
                 delegationInfo.setChainDepth(chainListList);
