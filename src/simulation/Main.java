@@ -46,7 +46,7 @@ public class Main {
         //load data and variables
         long delegatedUserID;
         usersList = getUserFromData.getUserList();
-        mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
+        //mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
 
         //how many times he/she will be offline during 15 days
         int statusChangeCount = ThreadLocalRandom.current().nextInt(20, 40);
@@ -136,11 +136,11 @@ public class Main {
                              * i: userIndex,
                              * k: StatusList Index
                              * */
-                            //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
+                            write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k,1);
                         } else if (delegatedUserIDList.get(delegatedUserIDList.size() - 1).equals(delegatedUserIDList.get(delegatedOnlineResultIndex))) {
                             //do nothing
                             //System.out.println("last delegated user still online = " + delegatedUserID);
-                            //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
+                            write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k,1);
                         } else {
                             System.out.println("one of the older delegation come back = " + delegatedUserIDList.get(delegatedOnlineResultIndex).toString());
                             //resize the chain
@@ -151,7 +151,7 @@ public class Main {
                             }
                             System.out.println("new list  = " + delegatedUserIDList);
                             chainList.add(delegatedUserIDList.size());
-                            //write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k);
+                            write.writeInfoFiles(delegatedUserIDList, delegationTimeList, chainList, usersList.get(i).getUserActivites().get(j).getFileName(), j, usersList, i, k,1);
                         }
 
                     }
@@ -170,7 +170,7 @@ public class Main {
             delegationInfo.setInterruptedSessionCount(interruptedSessionCount);
             delegationInfo.setInterruptTime(interruptionTime);
             delegationInfoArrayList.add(delegationInfo);
-            //write.writeAllResult(delegationInfoArrayList, i);
+            write.writeAllResult(delegationInfoArrayList, i,1);
             System.out.println();
         }
 

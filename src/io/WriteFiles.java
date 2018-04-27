@@ -33,13 +33,13 @@ public class WriteFiles {
                 System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
             }
         }
-        BufferedWriter bufferedWriter = null;
-        FileWriter fileWriter = null;
+//        BufferedWriter bufferedWriter = null;
+//        FileWriter fileWriter = null;
 //        WriteFiles writeFiles = new WriteFiles();
         // String data = delegatedUserIdList.toString() + " || " + delegationTimeList.toString() + " || " + chainList.toString() + " || latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
-//        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
-//                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
-//                chainList.toString() + " || " + " || latest file = " + fileName;
+        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
+                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
+                chainList.toString() + " || " + " || latest file = " + fileName;
 
 //        tb.addRow(String.valueOf(theTour),
 //                delegatedUserIdList.toString(),
@@ -52,8 +52,8 @@ public class WriteFiles {
                 chainList.toString());
         //File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
         File file = new File(dirPath + "\\" + friendUserID + "_Simulation" + ".txt");
-//        writeFile(file, data);
-        writeFile(file, tb.toString());
+        writeFile(file, data);
+        //writeFile(file, tb.toString());
         /*
         * DD/MM/yyyy hh:mm format
         * */
