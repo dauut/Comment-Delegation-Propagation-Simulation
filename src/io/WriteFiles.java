@@ -37,9 +37,9 @@ public class WriteFiles {
 //        FileWriter fileWriter = null;
 //        WriteFiles writeFiles = new WriteFiles();
         // String data = delegatedUserIdList.toString() + " || " + delegationTimeList.toString() + " || " + chainList.toString() + " || latest file = " + fileName;// + " " + delegationTimeList.toString() + " " + chainList.toString();
-        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
-                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
-                chainList.toString() + " || " + " || latest file = " + fileName;
+//        String data = theTour + ". " + delegatedUserIdList.toString() + " || " +
+//                userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp() + " || " +
+//                chainList.toString() + " || " + " || latest file = " + fileName;
 
 //        tb.addRow(String.valueOf(theTour),
 //                delegatedUserIdList.toString(),
@@ -51,8 +51,8 @@ public class WriteFiles {
                 String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp()),
                 chainList.toString());
         //File file = new File(dirPath + "\\" + "Simulation_" + userList.get(userIndex).getUserId() + ".txt");
-        File file = new File(dirPath + "\\" + friendUserID + "_Simulation" + ".txt");
-        writeFile(file, data);
+//        File file = new File(dirPath + "\\" + friendUserID + "_Simulation" + ".txt");
+//        writeFile(file, data);
         //writeFile(file, tb.toString());
         /*
         * DD/MM/yyyy hh:mm format
@@ -130,6 +130,24 @@ public class WriteFiles {
                 , String.valueOf(friendUserID));
         writeFile(file, tb.toString());
     }
+
+    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID){
+        TableBuilder tb = new TableBuilder();
+        File dir;
+        String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
+        dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Directory is created! " + userList.get(userIndex).getUserId());
+            } else {
+                System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
+            }
+        }
+
+        File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
+        writeFile(chainFlow, tableBuilder.toString());
+    }
+
 
     private void writeFile(File file, String line) {
         BufferedWriter bufferedWriter = null;
