@@ -17,7 +17,7 @@ public class StatusListParser {
         for (int k = 0; k < userList.size(); k++) {
             long userID = userList.get(k).getUserId();
             int userIterator = 0;
-            while (offlineStatusStructuresList.get(userIterator).getUserID() != userID){
+            while (userIterator < offlineStatusStructuresList.size() && offlineStatusStructuresList.get(userIterator).getUserID() != userID){
                 userIterator++;
             }
 

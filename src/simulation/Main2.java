@@ -47,7 +47,7 @@ public class Main2 {
         ArrayList<OfflineStatusStructure> offlineStatusStructuresList;
         StatusListParser parser = new StatusListParser();
         FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
-        TableBuilder tb ;
+        TableBuilder tb;
         ArrayList<String> tbList;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
 
@@ -88,7 +88,7 @@ public class Main2 {
             // offline time intervals
 
             int offlineIndex = 0;
-            while (usersList.get(i).getUserId() != offlineStatusStructuresList.get(offlineIndex).getUserID()) {
+            while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() != offlineStatusStructuresList.get(offlineIndex).getUserID()) {
                 offlineIndex++;
             }
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
