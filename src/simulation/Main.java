@@ -170,8 +170,7 @@ public class Main {
             delegationInfo.setInterruptedSessionCount(interruptedSessionCount);
             delegationInfo.setInterruptTime(interruptionTime);
             delegationInfoArrayList.add(delegationInfo);
-            write.writeAllResult(delegationInfoArrayList, i,1);
-            System.out.println();
+            write.writeAllResult(delegationInfoArrayList, i,1,1);
         }
 
 

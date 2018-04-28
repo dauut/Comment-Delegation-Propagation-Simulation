@@ -55,8 +55,8 @@ public class WriteFiles {
 //        writeFile(file, data);
         //writeFile(file, tb.toString());
         /*
-        * DD/MM/yyyy hh:mm format
-        * */
+         * DD/MM/yyyy hh:mm format
+         * */
 //        File chainFlow = new File(dirPath + "\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
         File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
 
@@ -82,15 +82,15 @@ public class WriteFiles {
         }
     }
 
-    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID) {
+    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID, long mainUserId) {
         File dir;
-        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationInfosArrayList.get(indexOfUser).getUserId();
+        String dirPath = Constants.getOutputFolderPath() + "\\" + mainUserId;
         dir = new File(dirPath);
         if (!dir.exists()) {
             if (dir.mkdir()) {
-                System.out.println("Directory is created! " + delegationInfosArrayList.get(indexOfUser).getUserId());
+                System.out.println("Directory is created! " + mainUserId);
             } else {
-                System.out.println("Failed to create directory! " + delegationInfosArrayList.get(indexOfUser).getUserId());
+                System.out.println("Failed to create directory! " + mainUserId);
             }
         }
 //        File file = new File(dirPath + "\\" + friendUserID + "_Simulation_general_info" + ".txt");
@@ -100,7 +100,7 @@ public class WriteFiles {
         int minutes = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() % 60;
 
         ArrayList<Integer> longestChainLengthList = new ArrayList<>();
-       // ArrayList<Integer> longestChainDelegationTourList = new ArrayList<>();
+        // ArrayList<Integer> longestChainDelegationTourList = new ArrayList<>();
         int longestChainDepth;
         //int longestChainDelegationTour;
         for (int i = 0; i < delegationInfosArrayList.get(indexOfUser).getChainDepth().size(); i++) {
@@ -131,8 +131,7 @@ public class WriteFiles {
         writeFile(file, tb.toString());
     }
 
-    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID){
-        TableBuilder tb = new TableBuilder();
+    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID) {
         File dir;
         String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
         dir = new File(dirPath);
@@ -145,7 +144,13 @@ public class WriteFiles {
         }
 
         File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
-        writeFile(chainFlow, tableBuilder.toString());
+        String formattedString = tableBuilder.toString()
+                .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();
+        writeFile(chainFlow, formattedString);
+//        writeFile(chainFlow, tableBuilder.toString());
     }
 
 

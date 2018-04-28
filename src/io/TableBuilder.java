@@ -48,7 +48,7 @@ public class TableBuilder
                     StringUtils.rightPad(
                         StringUtils.defaultString(
                             row[colNum]), colWidths[colNum]));
-                buf.append(' ');
+                buf.append('\t');
             }
  
             //buf.append('\n');

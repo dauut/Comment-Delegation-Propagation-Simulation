@@ -29,8 +29,8 @@ public class PickUser {
         try {
             delegated = timeBasedInformation.getOnlineFriendsList().get(randomIndexOfUser).getFriendUserID();
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("IndexOutOfBoundsException, sizeOnlineFriend=" + sizeOnlineFriend +
-                    ", randomIndexOfUser=" + randomIndexOfUser);
+//            System.out.println("IndexOutOfBoundsException, sizeOnlineFriend=" + sizeOnlineFriend +
+//                    ", randomIndexOfUser=" + randomIndexOfUser);
         }
 
         //System.out.println("picked index = " + randomIndexOfUser + " Delegated userid = " + delegated);
