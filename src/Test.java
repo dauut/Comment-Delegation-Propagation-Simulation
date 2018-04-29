@@ -1,51 +1,22 @@
-import constants.Constants;
-import io.ReadFiles;
 import io.TableBuilder;
-import statistics.ReadCollectedInformation;
-import statistics.StatusListParser;
-import user.UserInformations;
-import user.offline.OfflineStatusStructure;
+import io.WriteFiles;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Test {
     public static void main(String[] args) {
-        ArrayList<UserInformations> userList;
-        ReadFiles getUserFromData = new ReadFiles();
-        userList = getUserFromData.getUserList();
-
-        //control start date and end date -- START
-        // we need these dates for check simulation interval ie: 15 days
-        String startDate = Constants.getSimulationStartDate();
-        String endDate = Constants.getSimulationEndDate();
-        SimpleDateFormat simpleStartFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-        Date parsedStartDate = null;
-        Date parsedEndDate = null;
-        try {
-            parsedStartDate = simpleStartFormat.parse(startDate);
-            parsedEndDate = simpleStartFormat.parse(endDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        //control start date and end date -- END
-        for (int i = 0; i < userList.size(); i++) {
-            File file;
-            System.out.println("File deletion for user = " + userList.get(i).getUserId());
-            for (int j = 0; j < userList.get(i).getUserActivites().size(); j++) {
-                if (userList.get(i).getUserActivites().get(j).getCurrentTimestamp().after(parsedEndDate) ||
-                        userList.get(i).getUserActivites().get(j).getCurrentTimestamp().before(parsedStartDate)   ){
-                file = new File(userList.get(i).getUserActivites().get(j).getFileName());
-                file.delete();
-                }
-            }
-            System.out.println("All files deleted for user = " + userList.get(i).getUserId());
-        }
+        TableBuilder tb1 = new TableBuilder();
+        String chainInfos = "[CL=0 CD=0, CL=1 CD=8135, CL=2 CD=3464, CL=3 CD=1604, CL=4 CD=279, CL=5 CD=145, CL=6 CD=47]";
+        ArrayList<String> ch = new ArrayList<>();
+        ch.add(chainInfos);
+        tb1.addRow("Total Offline Time Minutes\t","Chain Lengths and Durations" , "\n");
+        tb1.addRow(String.valueOf(321351613), ch.toString());
+        String dirPath = "C:\\Users\\dauut\\Desktop\\testout";
+        File fileChainInfo = new File(dirPath + "\\" + "Chain_Duration_info" + ".txt");
+        WriteFiles writeFiles = new WriteFiles();
+        writeFiles.writeFile(fileChainInfo,tb1.toString());
     }
 
 }

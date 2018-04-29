@@ -40,7 +40,7 @@ public class Main {
         ArrayList<DelegationInfo> delegationInfoArrayList = new ArrayList<>();
         DelegationInfo delegationInfo; // it may be arraylist in the future
         ArrayList<Long> delegatedUserIDList;
-        ArrayList<Date> delegationTimeList;
+        ArrayList<Date> delegationTimeList = new ArrayList<>();
         ArrayList<Integer> chainList;
         WriteFiles write = new WriteFiles();
         ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList;
@@ -50,7 +50,8 @@ public class Main {
         TableBuilder tb;
         ArrayList<String> tbList;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
-        ArrayList<EachChainDuration> chainDurations;
+        ArrayList<EachChainDuration> chainDurationsList;
+        EachChainDuration eachChainDuration = new EachChainDuration();
 
         //load data and variables
         long delegatedUserID;
@@ -95,13 +96,22 @@ public class Main {
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
                 statusList = new ArrayList<>();
                 chainListList = new ArrayList<>();
-
+                chainDurationsList = new ArrayList<>();
+                eachChainDuration = new EachChainDuration();
+                eachChainDuration.setChainIndex(0);// firs index intentionally filled up
+                eachChainDuration.setChainDuration(0);//because we will keep every chain size duration in their indexes
+                chainDurationsList.add(eachChainDuration);
+                eachChainDuration = new EachChainDuration();
+                eachChainDuration.setChainIndex(1);
+                eachChainDuration.setChainDuration(1);
+                chainDurationsList.add(eachChainDuration); //in this point we have chain size 1 for 1 minute
                 long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
                 int interruptedSessionCount = 0;
                 int interruptionTime = 0;
                 int totalOfflineTime = 0;
                 //System.out.println("Delegation timeline for = " + friendUserID);
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
+
                 for (int k = 0; k < statusList.size() - 1; k++) {
 
                     /*with this list we collect the every session then write
@@ -110,12 +120,11 @@ public class Main {
                     delegatedUserIDList = new ArrayList<>();
                     delegationTimeList = new ArrayList<>();
                     chainList = new ArrayList<>();
-                    chainDurations = new ArrayList<>();
-                    chainDurations.get(0).setChainDuration(0); // firs index intentionally filled up
-                    chainDurations.get(0).setChainIndex(0);//because we will keep every chain size duration in their indexes
+
 
                     //calculate total offline time during simulation
-                    totalOfflineTime = totalOfflineTime + (statusList.get(k)[1] - statusList.get(k)[0]);
+//                    totalOfflineTime = totalOfflineTime + statusList.get(k)[1] - statusList.get(k)[0];
+
 
                     // start offline time to end offline time
                     // and set first delegation
@@ -131,11 +140,11 @@ public class Main {
                     delegatedUserIDList.add(delegatedUserID);
                     delegationTimeList.add(usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getCurrentTimestamp());
                     chainList.add(delegatedUserIDList.size());
-                    chainDurations.get(1).setChainIndex(1);
-                    chainDurations.get(1).setChainDuration(1); //in this point we have chain size 1 for 1 minute
+
                     //move forward during time intervals
                     for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                         tb = new TableBuilder();
+                        totalOfflineTime++;
                         if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                             //System.out.println("There is no user for delegation, end this session");
                             while (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
@@ -206,9 +215,18 @@ public class Main {
                         delegatedUserlistList.add(delegatedUserIDList);
                         delegatedUserTimeListList.add(delegationTimeList);
                         chainListList.add(chainList);
-
-                        if (chainDurations.size() < chainList.get(chainList.size() - 1)) {
-
+                        int latestChainDepth = chainList.get(chainList.size()-1);
+                        if (chainDurationsList.size() > latestChainDepth) {
+                            for (int x = 0; x < chainDurationsList.size(); x++) {
+                                if (chainDurationsList.get(x).getChainIndex() == latestChainDepth) {
+                                    chainDurationsList.get(x).setChainDuration(chainDurationsList.get(x).getChainDuration() + 1);
+                                }
+                            }
+                        }else{
+                            eachChainDuration = new EachChainDuration();
+                            eachChainDuration.setChainIndex(latestChainDepth);
+                            eachChainDuration.setChainDuration(1);
+                            chainDurationsList.add(eachChainDuration);
                         }
                     }
                     write.arrayListWrite(usersList, i, tbList, friendUserID);
@@ -221,6 +239,7 @@ public class Main {
                 delegationInfo.setTotalOfflineCount(statusList.size());
                 delegationInfo.setInterruptedSessionCount(interruptedSessionCount);
                 delegationInfo.setInterruptTime(interruptionTime);
+                delegationInfo.setChainDurationListsList(chainDurationsList);
                 delegationInfoArrayList.add(delegationInfo);
                 write.writeAllResult(delegationInfoArrayList, i, friendUserID, usersList.get(i).getUserId());
                 offlineIndex++;

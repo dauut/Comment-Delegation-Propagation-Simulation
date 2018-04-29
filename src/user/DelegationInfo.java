@@ -12,9 +12,18 @@ public class DelegationInfo {
     private ArrayList<ArrayList<Integer>> chainDepth;
     private ArrayList<ArrayList<Long>> delegatedUserIDList;
     private ArrayList<ArrayList<Date>> delegationTimeList;
+    private ArrayList<EachChainDuration> chainDurationListsList;
 
     public int getInterruptTime() {
         return interruptTime;
+    }
+
+    public ArrayList<EachChainDuration> getChainDurationListsList() {
+        return chainDurationListsList;
+    }
+
+    public void setChainDurationListsList(ArrayList<EachChainDuration> chainDurationListsList) {
+        this.chainDurationListsList = chainDurationListsList;
     }
 
     public void setInterruptTime(int interruptTime) {
