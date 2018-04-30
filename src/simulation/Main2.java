@@ -200,7 +200,7 @@ public class Main2 {
                         delegatedUserTimeListList.add(delegationTimeList);
                         chainListList.add(chainList);
                     }
-                    write.arrayListWrite(usersList, i, tbList, friendUserID);
+                    //write.arrayListWrite(usersList, i, tbList, friendUserID);
                 }
 
                 delegationInfo.setDelegatedUserIDList(delegatedUserlistList);
