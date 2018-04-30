@@ -97,7 +97,7 @@ public class PickUser {
         while (!find && i < mostOnlineFriends.getMostOnlineFriendsList().size()){
             if (timeBasedInformation.getOnlineFriendsHashSet().contains(mostOnlineFriends.getMostOnlineFriendsList().get(i))){
                 find = true;
-                System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
+                //System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
                 delegatedUserId = mostOnlineFriends.getMostOnlineFriendsList().get(i);
             }else{
                 i++;

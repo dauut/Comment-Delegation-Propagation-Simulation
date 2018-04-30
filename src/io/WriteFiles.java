@@ -82,9 +82,9 @@ public class WriteFiles {
         }
     }
 
-    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID, long mainUserId) {
+    public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser, long friendUserID, long mainUserId, String delegationType) {
         File dir;
-        String dirPath = Constants.getOutputFolderPath() + "\\" + mainUserId;
+        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationType + "\\" + mainUserId;
         dir = new File(dirPath);
         if (!dir.exists()) {
             if (dir.mkdir()) {
@@ -150,9 +150,10 @@ public class WriteFiles {
         writeFile(file, tb.toString());
     }
 
-    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID, ArrayList<String> tableBuilder1) {
+    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder,
+                               long friendUserID, ArrayList<String> tableBuilder1, String delegationType) {
         File dir;
-        String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
+        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationType + "\\" + userList.get(userIndex).getUserId();
         dir = new File(dirPath);
         if (!dir.exists()) {
             if (dir.mkdir()) {
