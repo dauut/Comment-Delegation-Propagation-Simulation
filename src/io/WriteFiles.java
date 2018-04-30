@@ -117,6 +117,11 @@ public class WriteFiles {
                     + String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainDuration());
             chainInfos.add(tmp);
         }
+        String chainInfosFormatted = chainInfos.toString()
+                .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();
 
         TableBuilder tb = new TableBuilder();
 
@@ -142,11 +147,11 @@ public class WriteFiles {
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount())
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptTime())
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime())
-                , chainInfos.toString());
+                , chainInfosFormatted);
         writeFile(file, tb.toString());
     }
 
-    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID) {
+    public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder, long friendUserID, ArrayList<String> tableBuilder1) {
         File dir;
         String dirPath = Constants.getOutputFolderPath() + "\\" + userList.get(userIndex).getUserId();
         dir = new File(dirPath);
@@ -165,6 +170,24 @@ public class WriteFiles {
                 .replace("]", "")  //remove the left bracket
                 .trim();
         writeFile(chainFlow, formattedString);
+        File dirLog;
+        String dirLogPath = dirPath + "\\DetailedLogs";
+        dirLog = new File(dirLogPath);
+        if (!dirLog.exists()) {
+            if (dirLog.mkdir()) {
+                System.out.println("Directory is created! " + userList.get(userIndex).getUserId());
+            } else {
+                System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
+            }
+        }
+
+        File detailedSimulationLog = new File(dirLogPath + "\\" + friendUserID + "_detailedLog.txt");
+        String formattedDetailString = tableBuilder1.toString()
+                .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();
+        writeFile(detailedSimulationLog, formattedDetailString);
 //        writeFile(chainFlow, tableBuilder.toString());
     }
 
