@@ -125,7 +125,7 @@ public class WriteFiles {
 
         TableBuilder tb = new TableBuilder();
 
-        tb.addRow(" UserId", " Time Interval of FriendID", " Offline Days", " Hours", " Minutes", " TOT in Minutes"
+        tb.addRow(" UserId", " Time Interval of FriendID", " Offline Days", " Hours", " Minutes"
                 , " TotalOfflineCount", " LCD", " Interrupted Session Count"
                 , " interruption total time", " Total Off Minutes", "Chain Length and Durations", "\n");
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
@@ -141,7 +141,6 @@ public class WriteFiles {
                 , String.valueOf(days)
                 , String.valueOf(hours)
                 , String.valueOf(minutes)
-                , String.valueOf(delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime())
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount())
                 , String.valueOf(longestChainDepth)
                 , String.valueOf(delegationInfosArrayList.get(indexOfUser).getInterruptedSessionCount())
@@ -175,9 +174,9 @@ public class WriteFiles {
         dirLog = new File(dirLogPath);
         if (!dirLog.exists()) {
             if (dirLog.mkdir()) {
-                System.out.println("Directory is created! " + userList.get(userIndex).getUserId());
+                System.out.println("Directory is created! " + "DetailedLogs");
             } else {
-                System.out.println("Failed to create directory! " + userList.get(userIndex).getUserId());
+                System.out.println("Failed to create directory! " + "DetailedLogs");
             }
         }
 
