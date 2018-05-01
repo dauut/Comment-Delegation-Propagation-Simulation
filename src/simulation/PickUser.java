@@ -1,6 +1,7 @@
 package simulation;
 
 import jdk.nashorn.internal.ir.WhileNode;
+import user.MostDisjointFriends;
 import user.MostOnlineFriends;
 import user.TimeBasedInformation;
 import user.offline.OfflineStatusStructure;
@@ -13,6 +14,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * this class pick delegated user
  * it needs time based information of current time
  * */
+
+@SuppressWarnings("Duplicates")
 public class PickUser {
     public long findRandomDelegation(TimeBasedInformation timeBasedInformation) {
 
@@ -88,6 +91,10 @@ public class PickUser {
         return result;
     }
 
+    /*
+    * this two methods are same intentionally
+    * due to openness
+    * */
     public long findAndPickMostOnlineFriendsAsDelegatedUser(TimeBasedInformation timeBasedInformation, MostOnlineFriends mostOnlineFriends) {
         long delegatedUserId = 0;
         int sizeCurrentOnlineFriends = timeBasedInformation.getOnlineFriendsList().size();
@@ -105,12 +112,28 @@ public class PickUser {
 
         }
 
-
-
         return delegatedUserId;
     }
 
+    public long findAndPickMostDisjointedFriendsAsDelegatedUser(TimeBasedInformation timeBasedInformation, MostDisjointFriends mostDisjointFriends) {
+        long delegatedUserId = 0;
+        int sizeCurrentOnlineFriends = timeBasedInformation.getOnlineFriendsList().size();
+        int i = 0;
+        boolean find = false;
 
+        while (!find && i < mostDisjointFriends.getMostOnlineFriendsList().size()){
+            if (timeBasedInformation.getOnlineFriendsHashSet().contains(mostDisjointFriends.getMostOnlineFriendsList().get(i))){
+                find = true;
+                //System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
+                delegatedUserId = mostDisjointFriends.getMostOnlineFriendsList().get(i);
+            }else{
+                i++;
+            }
+
+        }
+
+        return delegatedUserId;
+    }
     /*
      * take a bulk session to parts
      * retired

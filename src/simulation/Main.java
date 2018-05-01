@@ -4,27 +4,33 @@ import constants.Constants;
 import io.ReadFiles;
 import io.TableBuilder;
 import io.WriteFiles;
+import statistics.FindMostDisjointFriends;
 import statistics.FindMostOnlineFriends;
 import statistics.StatusListParser;
-import user.DelegationInfo;
-import user.EachChainDuration;
-import user.MostOnlineFriends;
-import user.UserInformations;
+import user.*;
 import user.offline.OfflineStatusStructure;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 @SuppressWarnings("Duplicates")
 public class Main {
-    public static void main(String[] args) throws ParseException {
-        Main main = new Main();
+    public static void main(String[] args) {
         long startTime = System.nanoTime();
-        System.out.println(Constants.getRandomDelegation() +" session is started !!");
-        main.randomUserDelegationSimulation(Constants.getRandomDelegation());
-        System.out.println(Constants.getMostOnlineFriendDelegation() +" session is started !!");
-        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation());
+        Main main = new Main();
+        ArrayList<UserInformations> usersList;
+        ArrayList<OfflineStatusStructure> offlineStatusStructuresList;
+        StatusListParser parser = new StatusListParser();
+        ReadFiles getUserFromData = new ReadFiles();
+        usersList = getUserFromData.getUserList();
+        offlineStatusStructuresList = parser.parseOneFriendStatusListToArraylist(usersList);/* get all offline times */
+        System.out.println(Constants.getRandomDelegation() + " session is started !!");
+        main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList);
+        System.out.println(Constants.getMostOnlineFriendDelegation() + " session is started !!");
+        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList);
+        System.out.println(Constants.getMostDisjointFriendDelegation() + " session is started !!");
+        main.randomUserDelegationSimulation(Constants.getMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList);
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
         double seconds = (double) totalTime / 1000000000.0;
@@ -33,44 +39,34 @@ public class Main {
         System.out.println("hours = " + seconds / 3600);
     }
 
-    private void randomUserDelegationSimulation(String delegationType) {
-
-        ArrayList<UserInformations> usersList;
+    private void randomUserDelegationSimulation(String delegationType, ArrayList<UserInformations> usersList, ArrayList<OfflineStatusStructure> offlineStatusStructuresList) {
         ArrayList<int[]> statusList;
-        ReadFiles getUserFromData = new ReadFiles();
-        StatusChanger statusChanger = new StatusChanger();
+        //StatusChanger statusChanger = new StatusChanger();
         PickUser pickUser = new PickUser();
-        ArrayList<DelegationInfo> delegationInfoArrayList = new ArrayList<>();
+        ArrayList<DelegationInfo> delegationInfoArrayList;
         DelegationInfo delegationInfo; // it may be arraylist in the future
         ArrayList<Long> delegatedUserIDList;
-        ArrayList<Date> delegationTimeList = new ArrayList<>();
+        ArrayList<Date> delegationTimeList;
         ArrayList<Integer> chainList;
         WriteFiles write = new WriteFiles();
         ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList;
-        ArrayList<OfflineStatusStructure> offlineStatusStructuresList;
-        StatusListParser parser = new StatusListParser();
+        ArrayList<MostDisjointFriends> mostDisjointFriendsArrayList;
         FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
+        FindMostDisjointFriends findMostDisjointFriends = new FindMostDisjointFriends();
         TableBuilder tb;
         TableBuilder tbDetailed;
         ArrayList<String> tbList;
         ArrayList<String> tbDetailedList;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
         ArrayList<EachChainDuration> chainDurationsList;
-        EachChainDuration eachChainDuration = new EachChainDuration();
+        EachChainDuration eachChainDuration;
 
         //load data and variables
         long delegatedUserID;
-        usersList = getUserFromData.getUserList();
+
+        /*find most online and most disjoint friends for delegation*/
         mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
-
-        //how many times he/she will be offline during 15 days
-        //int statusChangeCount = ThreadLocalRandom.current().nextInt(20, 40);
-
-        /*
-         * get all offline times
-         * */
-        offlineStatusStructuresList = parser.parseOneFriendStatusListToArraylist(usersList);
-
+        mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
 
         //get all offline times
         //statusList = statusChanger.getUserStatusList(usersList.get(0).getUserActivites().size(), statusChangeCount);
@@ -89,7 +85,7 @@ public class Main {
 
             ArrayList<ArrayList<Long>> delegatedUserlistList = new ArrayList<>();
             ArrayList<ArrayList<Date>> delegatedUserTimeListList = new ArrayList<>();
-            ArrayList<ArrayList<Integer>> chainListList = new ArrayList<>();
+            ArrayList<ArrayList<Integer>> chainListList;
             // offline time intervals
 
             int offlineIndex = 0;
@@ -125,10 +121,8 @@ public class Main {
                     delegationTimeList = new ArrayList<>();
                     chainList = new ArrayList<>();
 
-
                     //calculate total offline time during simulation
 //                    totalOfflineTime = totalOfflineTime + statusList.get(k)[1] - statusList.get(k)[0];
-
 
                     // start offline time to end offline time
                     // and set first delegation
@@ -137,7 +131,8 @@ public class Main {
                     } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
                         delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostOnlineFriendsArrayList.get(i));
                     } else {
-                        delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                        //delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                        delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostDisjointFriendsArrayList.get(i));
                     }
 
                     //System.out.println("First delegation = " + delegatedUserID);
@@ -174,13 +169,13 @@ public class Main {
                                 } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
                                     delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostOnlineFriendsArrayList.get(i));
                                 } else {
-                                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
+                                    //delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
+                                    delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostDisjointFriendsArrayList.get(i));
                                 }
                                 delegatedUserIDList.add(delegatedUserID);
                                 delegationTimeList.add(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
                                 chainList.add(delegatedUserIDList.size());
                                 //System.out.println("new delegation = " + delegatedUserID);
-
 
                                 String dateString = sdf.format(usersList.get(i).getUserActivites().get(j).getCurrentTimestamp());
                                 tb.addRow(String.valueOf(k), dateString, String.valueOf(usersList.get(i).getUserActivites().get(j).getOnlineFriendsList().size()), chainList.toString());
@@ -252,7 +247,7 @@ public class Main {
                 delegationInfo.setInterruptTime(interruptionTime);
                 delegationInfo.setChainDurationListsList(chainDurationsList);
                 delegationInfoArrayList.add(delegationInfo);
-                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(),delegationType);
+                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(), delegationType);
                 offlineIndex++;
                 delegationArrayListCounter++;
             }
