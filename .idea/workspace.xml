@@ -4,7 +4,8 @@
     <list default="true" id="632f2ea0-7572-467e-bd75-e555c2abac62" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/WriteFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/WriteFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulation/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="34">
+              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -59,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="11" column="95" selection-start-line="11" selection-start-column="95" selection-end-line="11" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -71,8 +72,8 @@
       <file leaf-file-name="FindMostDisjointFriends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="51" column="90" lean-forward="true" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
+            <state relative-caret-position="172">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -80,8 +81,8 @@
       <file leaf-file-name="WriteFiles.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/WriteFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-521">
-              <caret line="153" column="70" selection-start-line="153" selection-start-column="70" selection-end-line="153" selection-end-column="70" />
+            <state relative-caret-position="293">
+              <caret line="214" column="37" lean-forward="true" selection-start-line="214" selection-start-column="37" selection-end-line="214" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -114,8 +115,8 @@
       <find>chainDurationsList</find>
       <find>mostonl</find>
       <find>pickUser.findAndP</find>
-      <find />
-      <find />
+      <find>most online friends in</find>
+      <find>delegatedUserID = pickUser.findRandomDel</find>
       <find>write</find>
       <find>write.</find>
       <find>getOutputFolderPath</find>
@@ -166,10 +167,10 @@
         <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src/simulation/Main2.java" />
         <option value="$PROJECT_DIR$/src/simulation/PickUser.java" />
+        <option value="$PROJECT_DIR$/src/simulation/Main.java" />
         <option value="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" />
         <option value="$PROJECT_DIR$/src/io/WriteFiles.java" />
         <option value="$PROJECT_DIR$/src/constants/Constants.java" />
-        <option value="$PROJECT_DIR$/src/simulation/Main.java" />
       </list>
     </option>
   </component>
@@ -186,8 +187,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="978" />
+    <option name="x" value="-8" />
+    <option name="width" value="1210" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -372,7 +373,7 @@
       <workItem from="1524982220849" duration="27079000" />
       <workItem from="1525021958172" duration="24000" />
       <workItem from="1525108191723" duration="10353000" />
-      <workItem from="1525150210827" duration="14669000" />
+      <workItem from="1525150210827" duration="25443000" />
     </task>
     <task id="LOCAL-00001" summary="Write user friens offline time intervals to files&#10;Fetch user friens offline time intervals from files">
       <created>1524340955445</created>
@@ -584,14 +585,22 @@
       <option name="project" value="LOCAL" />
       <updated>1525172893279</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="performance improvement &#10;reduced disk read process">
+      <created>1525174474778</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1525174474778</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205944000" />
+    <option name="totallyTimeSpent" value="216718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -602,20 +611,20 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27248323" side_tool="true" weight="0.63342696" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.3295302" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.6530899" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.26123595" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.51825845" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" weight="0.12013423" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
       <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
       <window_info id="Structure" order="1" sideWeight="0.19589977" side_tool="true" weight="0.12013423" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6852349" weight="0.46488765" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6852349" weight="0.56320226" />
       <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -707,11 +716,12 @@
     <MESSAGE value="chain duration added" />
     <MESSAGE value="avoid indexoutofbound exception&#10;bug fixed&#10;complete run" />
     <MESSAGE value="most disjoint friend" />
-    <option name="LAST_COMMIT_MESSAGE" value="most disjoint friend" />
+    <MESSAGE value="performance improvement &#10;reduced disk read process" />
+    <option name="LAST_COMMIT_MESSAGE" value="performance improvement &#10;reduced disk read process" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="256" />
+      <option name="time" value="258" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -726,6 +736,16 @@
   <component name="debuggerHistoryManager">
     <expressions id="setValue">
       <expression>
+        <expression-string>12</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>100</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>1</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -738,13 +758,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simulation/PickUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -1082,13 +1095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="51" column="90" lean-forward="true" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/simulation/StatusChanger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -1096,24 +1102,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/WriteFiles.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-521">
-          <caret line="153" column="70" selection-start-line="153" selection-start-column="70" selection-end-line="153" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="131">
+          <caret line="378" selection-start-line="378" selection-end-line="378" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simulation/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        <state relative-caret-position="34">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/WriteFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="214" column="37" lean-forward="true" selection-start-line="214" selection-start-column="37" selection-end-line="214" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="95" selection-start-line="11" selection-start-column="95" selection-end-line="11" selection-end-column="95" />
         </state>
       </provider>
     </entry>

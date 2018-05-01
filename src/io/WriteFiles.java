@@ -170,7 +170,7 @@ public class WriteFiles {
                 .replace("]", "")  //remove the left bracket
                 .trim();
         writeFile(chainFlow, formattedString);
-        File dirLog;
+        /*File dirLog;
         String dirLogPath = dirPath + "\\DetailedLogs";
         dirLog = new File(dirLogPath);
         if (!dirLog.exists()) {
@@ -188,7 +188,7 @@ public class WriteFiles {
                 .replace("]", "")  //remove the left bracket
                 .trim();
         writeFile(detailedSimulationLog, formattedDetailString);
-//        writeFile(chainFlow, tableBuilder.toString());
+//        writeFile(chainFlow, tableBuilder.toString());*/
     }
 
 

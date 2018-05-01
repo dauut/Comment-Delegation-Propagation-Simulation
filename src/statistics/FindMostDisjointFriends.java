@@ -20,6 +20,7 @@ public class FindMostDisjointFriends {
         ArrayList<MostDisjointFriends> mostDisjointFriendsArrayList = new ArrayList<>();
 
         for (int i = 0; i < usersList.size(); i++) {
+            System.out.println("Find most disjoint friend for user = " + usersList.get(i).getUserId());
             mostDisjointFriends = new MostDisjointFriends();
             /*we choose random friend timeline for finding disjointed friends list*/
             int offlineIndex = 0;
@@ -33,9 +34,27 @@ public class FindMostDisjointFriends {
                 offlineIndex++;
             }
 
+            System.out.println("startindex = " + startIndex);
             int endIndex = offlineIndex - 1;
+            System.out.println("endindex   = " + endIndex);
 
-            int mostDisjointOfflineFriendIndex = ThreadLocalRandom.current().nextInt(startIndex, endIndex);
+//            try{
+            //some users have no online friends so this time interval index came 0 and pop up exception
+            if (startIndex>= endIndex){
+                startIndex = 0;
+            }
+                int mostDisjointOfflineFriendIndex = ThreadLocalRandom.current().nextInt(startIndex, endIndex);
+//            }catch (IllegalArgumentException e ){
+//                System.out.println(startIndex);
+//                System.out.println(endIndex);
+//                if (endIndex <= startIndex){
+//                    startIndex = 0;
+//                    endIndex = usersList.get(i).getUserActivites().get(0).getOnlineFriendsList().size();
+//                }
+//                mostDisjointOfflineFriendIndex
+//            }
+
+
             statusList = offlineStatusStructuresList.get(mostDisjointOfflineFriendIndex).getStatustList();
             mostDisjointFriends.setUserID(usersList.get(i).getUserId());
             mostDisjointFriends.setMostOnlineFriendsList(findMostDisjointFriends(usersList, i, statusList));
