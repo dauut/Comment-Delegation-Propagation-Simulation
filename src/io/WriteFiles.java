@@ -58,7 +58,7 @@ public class WriteFiles {
          * DD/MM/yyyy hh:mm format
          * */
 //        File chainFlow = new File(dirPath + "\\" + "ChainFlow_" + userList.get(userIndex).getUserId() + ".txt");
-        File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
+        /*File chainFlow = new File(dirPath + "\\" + friendUserID + "_ChainFlow" + ".txt");
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
         String dateString = sdf.format(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getCurrentTimestamp());
@@ -68,7 +68,7 @@ public class WriteFiles {
         tb.addRow(String.valueOf(theTour), dateString, String.valueOf(userList.get(userIndex).getUserActivites().get(theTimestampIndex).getOnlineFriendsList().size()), chainList.toString());
 
         String chainData = theTour + ". " + dateString + " || " + chainList.toString();
-        writeFile(chainFlow, tb.toString());
+        writeFile(chainFlow, tb.toString());*/
     }
 
     public void deleteFile(String filePath) {
@@ -124,10 +124,10 @@ public class WriteFiles {
                 .trim();
 
         TableBuilder tb = new TableBuilder();
-
+/*
         tb.addRow(" UserId", " Time Interval of FriendID", " Offline Days", " Hours", " Minutes"
                 , " TotalOfflineCount", " LCD", " Interrupted Session Count"
-                , " interruption total time", " Total Off Minutes", "Chain Length and Durations", "\n");
+                , " interruption total time", " Total Off Minutes", "Chain Length and Durations", "\n");*/
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
 //                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
 //                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
@@ -170,7 +170,8 @@ public class WriteFiles {
                 .replace("]", "")  //remove the left bracket
                 .trim();
         writeFile(chainFlow, formattedString);
-        /*File dirLog;
+
+        File dirLog;
         String dirLogPath = dirPath + "\\DetailedLogs";
         dirLog = new File(dirLogPath);
         if (!dirLog.exists()) {
@@ -188,7 +189,7 @@ public class WriteFiles {
                 .replace("]", "")  //remove the left bracket
                 .trim();
         writeFile(detailedSimulationLog, formattedDetailString);
-//        writeFile(chainFlow, tableBuilder.toString());*/
+//        writeFile(chainFlow, tableBuilder.toString());
     }
 
 

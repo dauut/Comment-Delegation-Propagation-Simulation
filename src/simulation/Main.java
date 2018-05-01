@@ -36,11 +36,11 @@ public class Main {
         mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
 
         System.out.println(Constants.getRandomDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
+//        main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList,
+//                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
         System.out.println(Constants.getMostOnlineFriendDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
+//        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList,
+//                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
         System.out.println(Constants.getMostDisjointFriendDelegation() + " session is started !!");
         main.randomUserDelegationSimulation(Constants.getMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList,
                 mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
