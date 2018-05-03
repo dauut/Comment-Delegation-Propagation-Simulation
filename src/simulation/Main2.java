@@ -95,8 +95,8 @@ public class Main2 {
         ArrayList<EachChainDuration> chainDurationsList;
         EachChainDuration eachChainDuration;
         long delegatedUserID;
-        ArrayList<HashMap<Integer, Integer>> onlineFriendsCountByChainLenghtList = new ArrayList<>();
-        HashSet<Long> currentOnlineFriends;
+        HashSet<Long> totalOnlineFriendsInCurrentOfflineSession;
+        HashMap<HashSet<Long>, Integer> chainLengthAndUsers;
 
         /*
          * Thus far we have user list with their activities
@@ -110,6 +110,7 @@ public class Main2 {
             delegationInfo = new DelegationInfo();
             delegationInfo.setUserId(usersList.get(i).getUserId());
 
+
             ArrayList<ArrayList<Long>> delegatedUserlistList = new ArrayList<>();
             ArrayList<ArrayList<Date>> delegatedUserTimeListList = new ArrayList<>();
             ArrayList<ArrayList<Integer>> chainListList;
@@ -120,6 +121,8 @@ public class Main2 {
                 offlineIndex++;
             }
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
+                totalOnlineFriendsInCurrentOfflineSession = new HashSet<>();
+                HashSet<Long> tmpFriendsHashSet = new HashSet<>();
                 statusList = new ArrayList<>();
                 chainListList = new ArrayList<>();
                 chainDurationsList = new ArrayList<>();
@@ -142,6 +145,9 @@ public class Main2 {
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
 
                 for (int k = 0; k < statusList.size() - 1; k++) {
+                    //collect all online friends during simulation for that user
+                    totalOnlineFriendsInCurrentOfflineSession.addAll(usersList.get(i).getUserActivites().get(k).getOnlineFriendsHashSet());
+
                     /*with this list we collect the every session then write
                      * thats give us magnificent performance improvement*/
                     tbList = new ArrayList<>();
@@ -266,7 +272,7 @@ public class Main2 {
                 delegationInfo.setInterruptTime(interruptionTime);
                 delegationInfo.setChainDurationListsList(chainDurationsList);
                 delegationInfoArrayList.add(delegationInfo);
-                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(), delegationType, mostOnlineFriendsArrayList.get(i).getMostOnlineFriendsList().size());
+                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(), delegationType, totalOnlineFriendsInCurrentOfflineSession.size());
                 offlineIndex++;
                 delegationArrayListCounter++;
             }
