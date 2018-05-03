@@ -2,6 +2,7 @@ package user;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class DelegationInfo {
     private long userId;
@@ -13,6 +14,15 @@ public class DelegationInfo {
     private ArrayList<ArrayList<Long>> delegatedUserIDList;
     private ArrayList<ArrayList<Date>> delegationTimeList;
     private ArrayList<EachChainDuration> chainDurationListsList;
+    private ArrayList<HashSet<Long>> chainLengthAndUsers;
+
+    public ArrayList<HashSet<Long>> getChainLengthAndUsers() {
+        return chainLengthAndUsers;
+    }
+
+    public void setChainLengthAndUsers(ArrayList<HashSet<Long>> chainLengthAndUsers) {
+        this.chainLengthAndUsers = chainLengthAndUsers;
+    }
 
     public int getInterruptTime() {
         return interruptTime;
