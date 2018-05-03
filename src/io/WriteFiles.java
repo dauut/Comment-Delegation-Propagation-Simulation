@@ -83,7 +83,6 @@ public class WriteFiles {
 //                "\n interruption total time = " + delegationInfosArrayList.get(indexOfUser).getInterruptTime();// + "; Longest Chain Delegation Tour = " + longestChainDelegationTour;
 //        writeFile(file, line);
 
-
         tb.addRow(String.valueOf(delegationInfosArrayList.get(indexOfUser).getUserId())
                 , String.valueOf(friendUserID)
                 , String.valueOf(days)

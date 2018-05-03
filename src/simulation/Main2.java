@@ -66,13 +66,12 @@ public class Main2 {
         System.out.println("minutes = " + seconds / 60);
         System.out.println("hours = " + seconds / 3600);
 
-        /*
+
         String totalRuntime = "Total Runtime: \n" + "\tSeconds = " + String.valueOf(seconds) + "\n"
                 + "\tMinutes = " + String.valueOf(seconds / 60) + "\n"
                 + "\tHours = " + String.valueOf(seconds / 3600);
-        WriteFiles writeFiles = new WriteFiles();
         File file = new File("C:\\Users\\dauut\\Desktop\\testout\\runtimeInformation.txt");
-        writeFiles.writeFile(file,totalRuntime);*/
+        writeFiles.writeFile(file,totalRuntime);
     }
 
     private void randomUserDelegationSimulation(String delegationType, ArrayList<UserInformations> usersList,
