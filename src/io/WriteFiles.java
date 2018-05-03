@@ -53,8 +53,15 @@ public class WriteFiles {
         ArrayList<String> chainInfos = new ArrayList<>();
         String tmp;
         for (int i = 0; i < delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().size(); i++) {
-            tmp = "\t\tCL=" + String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainIndex()) + "\t\t CD="
-                    + String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainDuration());
+            String CL = String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainIndex());
+            String CD = String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainDuration());
+            String OFC = String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainLengthAndUsers().get(i).size());
+
+            CL = fixedLengthString(CL,5);
+            CD = fixedLengthString(CD,5);
+            OFC = fixedLengthString(OFC,5);
+
+            tmp = "\t\tCL=" + CL + "\t\t CD=" + CD + "\t\tOFC=" + OFC + "\t||\t";
             chainInfos.add(tmp);
         }
         String chainInfosFormatted = chainInfos.toString()
@@ -68,7 +75,7 @@ public class WriteFiles {
         tb.addRow(" UserId", " Time Interval of FriendID", " Days", " Hours", " Minutes"
                 , " OfflineCount", " LCD", " Interrupted Count"
                 , " interruption total time", " Total Off Minutes",
-                "Total OF Count" , "Chain Length and Durations", "\n");
+                "Total OF Count", "Chain Length and Durations", "\n");
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
 //                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
 //                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
@@ -114,40 +121,48 @@ public class WriteFiles {
         writeFile(chainFlow, formattedString);
 
 
-        /* detailed log
-        File dirLog;
-        String dirLogPath = dirPath + "\\DetailedLogs";
-        dirLog = new File(dirLogPath);
-        if (!dirLog.exists()) {
-            if (dirLog.mkdir()) {
-                System.out.println("Directory is created! " + "DetailedLogs");
+        //detailedLog
+        boolean detailedLog = false;
+        if (detailedLog) {
+            File dirLog;
+            String dirLogPath = dirPath + "\\DetailedLogs";
+            dirLog = new File(dirLogPath);
+            if (!dirLog.exists()) {
+                if (dirLog.mkdir()) {
+                    System.out.println("Directory is created! " + "DetailedLogs");
+                } else {
+                    System.out.println("Failed to create directory! " + "DetailedLogs");
+                }
+            }
+
+            File detailedSimulationLog = new File(dirLogPath + "\\" + friendUserID + "_detailedLog.txt");
+            String formattedDetailString = tableBuilder1.toString()
+                    .replace(",", "")  //remove the commas
+                    .replace("[", "")  //remove the right bracket
+                    .replace("]", "")  //remove the left bracket
+                    .trim();
+            writeFile(detailedSimulationLog, formattedDetailString);
+        }
+    }
+
+    /* FOR DECENT OUTPUT THIS METHOD IS CRUCIAL*/
+    public static String fixedLengthString(String string, int length) {
+        return String.format("%1$" + length + "s", string);
+    }
+
+    public void createFolder(String path) {
+        File dir;
+        String dirPath = Constants.getOutputFolderPath() + "\\" + path + "\\";
+        dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Directory is created! " + path);
             } else {
-                System.out.println("Failed to create directory! " + "DetailedLogs");
+                System.out.println("Failed to create directory! " + path);
             }
         }
-
-        File detailedSimulationLog = new File(dirLogPath + "\\" + friendUserID + "_detailedLog.txt");
-        String formattedDetailString = tableBuilder1.toString()
-                .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();
-        writeFile(detailedSimulationLog, formattedDetailString);*/
-//        writeFile(chainFlow, tableBuilder.toString());
     }
 
-public void createFolder(String path){
-    File dir;
-    String dirPath = Constants.getOutputFolderPath() + "\\" + path + "\\";
-    dir = new File(dirPath);
-    if (!dir.exists()) {
-        if (dir.mkdir()) {
-            System.out.println("Directory is created! " + path);
-        } else {
-            System.out.println("Failed to create directory! " + path);
-        }
-    }
-}
     public void writeFile(File file, String line) {
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
