@@ -24,17 +24,18 @@ public class WriteFiles {
                                long friendUserID, long mainUserId, String delegationType,
                                int onlineFriendsCount) {
         File dir;
-        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationType + "\\" + mainUserId;
+        //String dirPath = Constants.getOutputFolderPath() + "\\" + delegationType + "\\" + mainUserId;
+        String dirPath = Constants.getOutputFolderPath() + "\\" + delegationType + "\\" + "summary";
         dir = new File(dirPath);
         if (!dir.exists()) {
             if (dir.mkdir()) {
-                System.out.println("Directory is created! " + mainUserId);
+                System.out.println("Directory is created! " + "summary");
             } else {
-                System.out.println("Failed to create directory! " + mainUserId);
+                System.out.println("Failed to create directory! " + "summary");
             }
         }
 //        File file = new File(dirPath + "\\" + friendUserID + "_Simulation_general_info" + ".txt");
-        File file = new File(dirPath + "\\" + "Simulation_general_info" + ".txt");
+        File file = new File(dirPath + "\\" + mainUserId + "_Simulation_general_info" + ".txt");
         File fileChainInfo = new File(dirPath + "\\" + "Chain_Duration_info" + ".txt");
         int days = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 24 / 60;
         int hours = delegationInfosArrayList.get(indexOfUser).getTotalOfflineTime() / 60 % 24;
@@ -57,9 +58,9 @@ public class WriteFiles {
             String CD = String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainDurationListsList().get(i).getChainDuration());
             String OFC = String.valueOf(delegationInfosArrayList.get(indexOfUser).getChainLengthAndUsers().get(i).size());
 
-            CL = fixedLengthString(CL,5);
-            CD = fixedLengthString(CD,5);
-            OFC = fixedLengthString(OFC,5);
+            CL = fixedLengthString(CL, 5);
+            CD = fixedLengthString(CD, 5);
+            OFC = fixedLengthString(OFC, 5);
 
             tmp = "\t\tCL=" + CL + "\t\t CD=" + CD + "\t\tOFC=" + OFC + "\t||\t";
             chainInfos.add(tmp);

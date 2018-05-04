@@ -14,7 +14,10 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 
+@SuppressWarnings("Duplicates")
 public class Main {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
@@ -36,7 +39,7 @@ public class Main {
         mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
 
         /*create necessary folders auto
-        * delete folders manually*/
+         * delete folders manually*/
         WriteFiles writeFiles = new WriteFiles();
         String randomPath = Constants.getRandomDelegation();
         String msofPath = Constants.getMostOnlineFriendDelegation();
@@ -63,13 +66,12 @@ public class Main {
         System.out.println("minutes = " + seconds / 60);
         System.out.println("hours = " + seconds / 3600);
 
-        /*
+
         String totalRuntime = "Total Runtime: \n" + "\tSeconds = " + String.valueOf(seconds) + "\n"
                 + "\tMinutes = " + String.valueOf(seconds / 60) + "\n"
                 + "\tHours = " + String.valueOf(seconds / 3600);
-        WriteFiles writeFiles = new WriteFiles();
         File file = new File("C:\\Users\\dauut\\Desktop\\testout\\runtimeInformation.txt");
-        writeFiles.writeFile(file,totalRuntime);*/
+        writeFiles.writeFile(file,totalRuntime);
     }
 
     private void randomUserDelegationSimulation(String delegationType, ArrayList<UserInformations> usersList,
@@ -90,8 +92,10 @@ public class Main {
         ArrayList<String> tbDetailedList;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
         ArrayList<EachChainDuration> chainDurationsList;
+        ArrayList<HashSet<Long>> chainLengthAndUsers;
         EachChainDuration eachChainDuration;
         long delegatedUserID;
+        HashSet<Long> totalOnlineFriendsInCurrentOfflineSession;
 
         /*
          * Thus far we have user list with their activities
@@ -105,6 +109,7 @@ public class Main {
             delegationInfo = new DelegationInfo();
             delegationInfo.setUserId(usersList.get(i).getUserId());
 
+
             ArrayList<ArrayList<Long>> delegatedUserlistList = new ArrayList<>();
             ArrayList<ArrayList<Date>> delegatedUserTimeListList = new ArrayList<>();
             ArrayList<ArrayList<Integer>> chainListList;
@@ -115,18 +120,26 @@ public class Main {
                 offlineIndex++;
             }
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
+                totalOnlineFriendsInCurrentOfflineSession = new HashSet<>();
                 statusList = new ArrayList<>();
                 chainListList = new ArrayList<>();
                 chainDurationsList = new ArrayList<>();
                 eachChainDuration = new EachChainDuration();
+                chainLengthAndUsers = new ArrayList<>();
+                HashSet<Long> tmpFriendsInChainDepth = new HashSet<>();
 
-                eachChainDuration.setChainIndex(0);// firs index intentionally filled up
+                eachChainDuration.setChainIndex(0);// first index intentionally filled up
                 eachChainDuration.setChainDuration(0);//because we will keep every chain size duration in their indexes
                 chainDurationsList.add(eachChainDuration);
+                chainLengthAndUsers.add(tmpFriendsInChainDepth);
+
                 eachChainDuration = new EachChainDuration();
                 eachChainDuration.setChainIndex(1);
                 eachChainDuration.setChainDuration(1);
                 chainDurationsList.add(eachChainDuration); //in this point we have chain size 1 for 1 minute
+                tmpFriendsInChainDepth = new HashSet<>();
+                tmpFriendsInChainDepth.addAll(usersList.get(i).getUserActivites().get(0).getOnlineFriendsHashSet()); //first minute
+                chainLengthAndUsers.add(tmpFriendsInChainDepth);
 
                 long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
                 int interruptedSessionCount = 0;
@@ -136,6 +149,9 @@ public class Main {
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
 
                 for (int k = 0; k < statusList.size() - 1; k++) {
+                    //collect all online friends during simulation for that user
+                    totalOnlineFriendsInCurrentOfflineSession.addAll(usersList.get(i).getUserActivites().get(k).getOnlineFriendsHashSet());
+
                     /*with this list we collect the every session then write
                      * thats give us magnificent performance improvement*/
                     tbList = new ArrayList<>();
@@ -164,6 +180,8 @@ public class Main {
                     for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
                         tb = new TableBuilder();
                         tbDetailed = new TableBuilder();
+                        tmpFriendsInChainDepth = new HashSet<>();
+                        tmpFriendsInChainDepth.addAll(usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet());
                         totalOfflineTime++;
                         if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                             //System.out.println("There is no user for delegation, end this session");
@@ -234,8 +252,9 @@ public class Main {
                         delegatedUserlistList.add(delegatedUserIDList);
                         delegatedUserTimeListList.add(delegationTimeList);
                         chainListList.add(chainList);
-                        int latestChainDepth = chainList.get(chainList.size() - 1);
+                        int latestChainDepth = chainList.get(chainList.size() - 1); //last element is current chain size
                         if (chainDurationsList.size() > latestChainDepth) {
+                            chainLengthAndUsers.get(latestChainDepth).addAll(tmpFriendsInChainDepth);
                             for (int x = 0; x < chainDurationsList.size(); x++) {
                                 if (chainDurationsList.get(x).getChainIndex() == latestChainDepth) {
                                     chainDurationsList.get(x).setChainDuration(chainDurationsList.get(x).getChainDuration() + 1);
@@ -246,6 +265,7 @@ public class Main {
                             eachChainDuration.setChainIndex(latestChainDepth);
                             eachChainDuration.setChainDuration(1);
                             chainDurationsList.add(eachChainDuration);
+                            chainLengthAndUsers.add(tmpFriendsInChainDepth);
                         }
                     }
                     write.arrayListWrite(usersList, i, tbList, friendUserID, tbDetailedList, delegationType);
@@ -259,8 +279,9 @@ public class Main {
                 delegationInfo.setInterruptedSessionCount(interruptedSessionCount);
                 delegationInfo.setInterruptTime(interruptionTime);
                 delegationInfo.setChainDurationListsList(chainDurationsList);
+                delegationInfo.setChainLengthAndUsers(chainLengthAndUsers);
                 delegationInfoArrayList.add(delegationInfo);
-                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(), delegationType, mostOnlineFriendsArrayList.get(i).getMostOnlineFriendsList().size());
+                write.writeAllResult(delegationInfoArrayList, delegationArrayListCounter, friendUserID, usersList.get(i).getUserId(), delegationType, totalOnlineFriendsInCurrentOfflineSession.size());
                 offlineIndex++;
                 delegationArrayListCounter++;
             }
