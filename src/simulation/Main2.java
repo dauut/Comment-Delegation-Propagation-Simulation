@@ -39,7 +39,7 @@ public class Main2 {
         mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
 
         /*create necessary folders auto
-        * delete folders manually*/
+         * delete folders manually*/
         WriteFiles writeFiles = new WriteFiles();
         String randomPath = Constants.getRandomDelegation();
         String msofPath = Constants.getMostOnlineFriendDelegation();
@@ -51,13 +51,13 @@ public class Main2 {
         /*start simulation*/
         System.out.println(Constants.getRandomDelegation() + " session is started !!");
         main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
+                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
         System.out.println(Constants.getMostOnlineFriendDelegation() + " session is started !!");
         main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
+                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
         System.out.println(Constants.getMostDisjointFriendDelegation() + " session is started !!");
         main.randomUserDelegationSimulation(Constants.getMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList,mostDisjointFriendsArrayList);
+                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
 
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
@@ -71,7 +71,7 @@ public class Main2 {
                 + "\tMinutes = " + String.valueOf(seconds / 60) + "\n"
                 + "\tHours = " + String.valueOf(seconds / 3600);
         File file = new File("C:\\Users\\dauut\\Desktop\\testout\\runtimeInformation.txt");
-        writeFiles.writeFile(file,totalRuntime);
+        writeFiles.writeFile(file, totalRuntime);
     }
 
     private void randomUserDelegationSimulation(String delegationType, ArrayList<UserInformations> usersList,
@@ -120,14 +120,13 @@ public class Main2 {
                 offlineIndex++;
             }
             while (offlineIndex < offlineStatusStructuresList.size() && usersList.get(i).getUserId() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
-                totalOnlineFriendsInCurrentOfflineSession = new HashSet<>();
                 statusList = new ArrayList<>();
                 chainListList = new ArrayList<>();
                 chainDurationsList = new ArrayList<>();
                 eachChainDuration = new EachChainDuration();
                 chainLengthAndUsers = new ArrayList<>();
                 HashSet<Long> tmpFriendsInChainDepth = new HashSet<>();
-
+                totalOnlineFriendsInCurrentOfflineSession= new HashSet<>();
                 eachChainDuration.setChainIndex(0);// first index intentionally filled up
                 eachChainDuration.setChainDuration(0);//because we will keep every chain size duration in their indexes
                 chainDurationsList.add(eachChainDuration);
@@ -149,9 +148,6 @@ public class Main2 {
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
 
                 for (int k = 0; k < statusList.size() - 1; k++) {
-                    //collect all online friends during simulation for that user
-                    totalOnlineFriendsInCurrentOfflineSession.addAll(usersList.get(i).getUserActivites().get(k).getOnlineFriendsHashSet());
-
                     /*with this list we collect the every session then write
                      * thats give us magnificent performance improvement*/
                     tbList = new ArrayList<>();
@@ -178,6 +174,8 @@ public class Main2 {
 
                     //move forward through time intervals
                     for (int j = statusList.get(k)[0] + 1; j < statusList.get(k)[1]; j++) {
+                        //collect all online friends during simulation for that user
+                        totalOnlineFriendsInCurrentOfflineSession.addAll(usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet());
                         tb = new TableBuilder();
                         tbDetailed = new TableBuilder();
                         tmpFriendsInChainDepth = new HashSet<>();
@@ -268,7 +266,7 @@ public class Main2 {
                             chainLengthAndUsers.add(tmpFriendsInChainDepth);
                         }
                     }
-                    write.arrayListWrite(usersList, i, tbList, friendUserID, tbDetailedList, delegationType);
+                    //write.arrayListWrite(usersList, i, tbList, friendUserID, tbDetailedList, delegationType);
                 }
 
                 delegationInfo.setDelegatedUserIDList(delegatedUserlistList);
