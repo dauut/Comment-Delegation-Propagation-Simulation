@@ -38,22 +38,11 @@ public class FindMostDisjointFriends {
             int endIndex = offlineIndex - 1;
             System.out.println("endindex   = " + endIndex);
 
-//            try{
             //some users have no online friends so this time interval index came 0 and pop up exception
             if (startIndex>= endIndex){
                 startIndex = 0;
             }
-                int mostDisjointOfflineFriendIndex = ThreadLocalRandom.current().nextInt(startIndex, endIndex);
-//            }catch (IllegalArgumentException e ){
-//                System.out.println(startIndex);
-//                System.out.println(endIndex);
-//                if (endIndex <= startIndex){
-//                    startIndex = 0;
-//                    endIndex = usersList.get(i).getUserActivites().get(0).getOnlineFriendsList().size();
-//                }
-//                mostDisjointOfflineFriendIndex
-//            }
-
+            int mostDisjointOfflineFriendIndex = ThreadLocalRandom.current().nextInt(startIndex, endIndex);
 
             statusList = offlineStatusStructuresList.get(mostDisjointOfflineFriendIndex).getStatustList();
             mostDisjointFriends.setUserID(usersList.get(i).getUserId());
@@ -62,6 +51,15 @@ public class FindMostDisjointFriends {
         }
 
         return mostDisjointFriendsArrayList;
+    }
+
+    public MostDisjointFriends findOptimizedMostDisjointFriends(ArrayList<UserInformations> usersList, int userIndex,ArrayList<int[]> statusList, long friendUserID){
+        MostDisjointFriends mostDisjointFriends = new MostDisjointFriends();
+
+        mostDisjointFriends.setUserID(friendUserID);
+        mostDisjointFriends.setMostOnlineFriendsList(findMostDisjointFriends(usersList,userIndex,statusList));
+
+        return mostDisjointFriends;
     }
 
     /*

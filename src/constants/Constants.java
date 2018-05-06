@@ -9,7 +9,7 @@ public final class Constants {
 //    private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\DavutU\\Desktop\\testout\\simulationGeneralInfo";
 //    private static final String COLLECTION_OUTPUT_PATH = "C:\\Users\\DavutU\\Desktop\\UsersOfflineStatus\\";
 
-    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status1";
+    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
     private static final String OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulation";
     private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulationGeneralInfo";
     private static final String OUTPUT_FOLDER_PATH = "C:\\Users\\dauut\\Desktop\\testout";
@@ -23,6 +23,11 @@ public final class Constants {
     private static final String RANDOM_DELEGATION = "RANDOM";
     private static final String MOST_ONLINE_FRIEND_DELEGATION = "MOST_ONLINE";
     private static final String MOST_DISJOINT_FRIEND_DELEGATION = "MOST_DISJOINT";
+    private static final String OPTIMIZED_MOST_DISJOINT_FRIEND_DELEGATION = "OPTIMIZED_MOST_DISJOINT";
+
+    public static String getOptimizedMostDisjointFriendDelegation() {
+        return OPTIMIZED_MOST_DISJOINT_FRIEND_DELEGATION;
+    }
 
     public static String getMostDisjointFriendDelegation() {
         return MOST_DISJOINT_FRIEND_DELEGATION;

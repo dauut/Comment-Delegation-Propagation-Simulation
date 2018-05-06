@@ -44,7 +44,7 @@ public class ParseLines {
         String onlineStatusTokens[];
         HashSet<Long> onlineFriendsHashSet = new HashSet<>();
         ArrayList<OnlineFriendsAndStatus> friensStatusList = new ArrayList<>();
-        for (int i = 3; i < lines.size() - 2; i++) {
+        for (int i = 3; i < lines.size() - 1; i++) {
             OnlineFriendsAndStatus onlineFriendsAndStatus = new OnlineFriendsAndStatus();
             onlineStatusTokens = lines.get(i).split(delims);
 
