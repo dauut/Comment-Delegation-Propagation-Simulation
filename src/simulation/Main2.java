@@ -109,7 +109,6 @@ public class Main2 {
             delegationInfo = new DelegationInfo();
             delegationInfo.setUserId(usersList.get(i).getUserId());
 
-
             ArrayList<ArrayList<Long>> delegatedUserlistList = new ArrayList<>();
             ArrayList<ArrayList<Date>> delegatedUserTimeListList = new ArrayList<>();
             ArrayList<ArrayList<Integer>> chainListList;
@@ -183,10 +182,13 @@ public class Main2 {
                         totalOfflineTime++;
                         if (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                             //System.out.println("There is no user for delegation, end this session");
+                            int tmp = j; // for calculate total off time it is important
                             while (usersList.get(i).getUserActivites().get(j).getOnlineFriendsHashSet().size() == 0) {
                                 interruptionTime++;
                                 j++;
                             }
+                            interruptionTime = interruptionTime + statusList.get(k)[1] - j;
+                            totalOfflineTime = totalOfflineTime + statusList.get(k)[1] - tmp;
                             j = statusList.get(k)[1];
                             interruptedSessionCount++;
                         } else {

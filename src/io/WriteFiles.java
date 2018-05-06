@@ -76,7 +76,7 @@ public class WriteFiles {
         tb.addRow(" UserId", " Time Interval of FriendID", " Days", " Hours", " Minutes"
                 , " OfflineCount", " LCD", " Interrupted Count"
                 , " interruption total time", " Total Off Minutes",
-                "Total OF Count", "Chain Length and Durations", "\n");
+                "Total Online Friends", "Chain Length and Durations", "\n");
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
 //                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
 //                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +

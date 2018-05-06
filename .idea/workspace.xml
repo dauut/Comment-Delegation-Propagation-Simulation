@@ -4,6 +4,7 @@
     <list default="true" id="632f2ea0-7572-467e-bd75-e555c2abac62" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/WriteFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/WriteFiles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Main2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,32 +39,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PickUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulation/PickUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="117" column="146" selection-start-line="117" selection-start-column="127" selection-end-line="117" selection-end-column="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="187">
               <caret line="11" column="95" selection-start-line="11" selection-start-column="95" selection-end-line="11" selection-end-column="95" />
               <folding>
-                <marker date="1525466459006" expanded="true" signature="76:479" ph="..." />
+                <marker date="1525589141936" expanded="true" signature="76:479" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindMostDisjointFriends.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
+      <file leaf-file-name="Main2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="61">
+              <caret line="187" column="36" lean-forward="true" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReadFiles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -71,50 +72,8 @@
       <file leaf-file-name="WriteFiles.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/WriteFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="96" column="51" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CollectUsersOfflineTimeStatus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DelegationInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/user/DelegationInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
-              <folding>
-                <element signature="e#1028#1029#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main2.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="268" column="22" selection-start-line="268" selection-start-column="22" selection-end-line="268" selection-end-column="22" />
-              <folding>
-                <element signature="e#456#487#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulation/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="1281">
+              <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -130,8 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chainListli</find>
-      <find>simul</find>
       <find>system</find>
       <find>chaınflow</find>
       <find>iterator</find>
@@ -139,13 +96,12 @@
       <find>chainDurations</find>
       <find>interr</find>
       <find>totaloff</find>
-      <find>totalOfflineTime</find>
       <find>chainListList</find>
       <find>chainDurationsList</find>
       <find>mostonl</find>
       <find>pickUser.findAndP</find>
-      <find>most online friends in</find>
-      <find>delegatedUserID = pickUser.findRandomDel</find>
+      <find />
+      <find />
       <find>write</find>
       <find>write.</find>
       <find>getOutputFolderPath</find>
@@ -160,6 +116,9 @@
       <find>file</find>
       <find>interruptionTime</find>
       <find>totalOnlineFriendsInCurrentOfflineSession</find>
+      <find>totaloffl</find>
+      <find>totalof</find>
+      <find>totalOfflineTime</find>
     </findStrings>
     <replaceStrings>
       <replace>User</replace>
@@ -201,8 +160,8 @@
         <option value="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" />
         <option value="$PROJECT_DIR$/src/simulation/Main.java" />
         <option value="$PROJECT_DIR$/src/io/WriteFiles.java" />
-        <option value="$PROJECT_DIR$/src/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/simulation/Main2.java" />
+        <option value="$PROJECT_DIR$/src/constants/Constants.java" />
       </list>
     </option>
   </component>
@@ -229,8 +188,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,7 +242,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -464,7 +423,9 @@
       <workItem from="1525150210827" duration="27529000" />
       <workItem from="1525366952424" duration="5192000" />
       <workItem from="1525433972011" duration="4262000" />
-      <workItem from="1525460955329" duration="1681000" />
+      <workItem from="1525460955329" duration="1776000" />
+      <workItem from="1525539819628" duration="7548000" />
+      <workItem from="1525587057116" duration="2763000" />
     </task>
     <task id="LOCAL-00001" summary="Write user friens offline time intervals to files&#10;Fetch user friens offline time intervals from files">
       <created>1524340955445</created>
@@ -711,14 +672,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525453875579</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="online friends count error fixed">
+      <created>1525466786217</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1525466786217</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229939000" />
+    <option name="totallyTimeSpent" value="240345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -726,22 +694,22 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27248323" side_tool="true" weight="0.63342696" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.2852349" side_tool="true" weight="0.29353932" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.3295302" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.5744382" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.41292134" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.5758427" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" visible="true" weight="0.12751678" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" visible="true" weight="0.13020134" />
       <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
       <window_info id="Structure" order="1" sideWeight="0.19589977" side_tool="true" weight="0.12013423" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6852349" weight="0.56320226" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" weight="0.38342696" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -751,33 +719,33 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.56882024" />
+      <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.51825845" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" weight="0.12013423" />
       <window_info id="Structure" order="1" sideWeight="0.19589977" side_tool="true" weight="0.12013423" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.56882024" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6852349" weight="0.56320226" />
-      <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27248323" side_tool="true" weight="0.63342696" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.51825845" />
-      <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.16292135" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.3295302" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" weight="0.12013423" />
+      <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -836,15 +804,28 @@
     <MESSAGE value="most disjoint friend" />
     <MESSAGE value="performance improvement &#10;reduced disk read process" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="online friends count error fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="online friends count error fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="258" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/simulation/Main2.java</url>
+          <line>192</line>
+          <properties />
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="267" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="delegationArrayListCounter" />
+        <watch expression="interruptionTime" />
+        <watch expression="totalOfflineTime" />
+        <watch expression="k" />
+        <watch expression="j" />
       </configuration>
     </watches-manager>
   </component>
@@ -1119,13 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/user/MostOnlineFriends.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1200,42 +1174,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
-          <folding>
-            <element signature="e#1028#1029#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simulation/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="136">
           <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/WriteFiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="96" column="51" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="95" selection-start-line="11" selection-start-column="95" selection-end-line="11" selection-end-column="95" />
-          <folding>
-            <marker date="1525466459006" expanded="true" signature="76:479" ph="..." />
-          </folding>
+        <state relative-caret-position="1281">
+          <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="268" column="22" selection-start-line="268" selection-start-column="22" selection-end-line="268" selection-end-column="22" />
+        <state relative-caret-position="61">
+          <caret line="187" column="36" lean-forward="true" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="95" selection-start-line="11" selection-start-column="95" selection-end-line="11" selection-end-column="95" />
           <folding>
-            <element signature="e#456#487#0" expanded="true" />
+            <marker date="1525589141936" expanded="true" signature="76:479" ph="..." />
           </folding>
         </state>
       </provider>
