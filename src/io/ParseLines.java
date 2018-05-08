@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.HashSet;
 
 public class ParseLines {
+    /*
+    * Convert lines to useful datastructures type
+    * */
     public TimeBasedInformation parseLines(ArrayList<String> lines) {
         String delims = "[ ]";
 

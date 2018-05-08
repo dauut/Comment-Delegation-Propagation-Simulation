@@ -1,6 +1,5 @@
 package simulation;
 
-import jdk.nashorn.internal.ir.WhileNode;
 import user.MostDisjointFriends;
 import user.MostOnlineFriends;
 import user.TimeBasedInformation;
@@ -8,7 +7,6 @@ import user.offline.OfflineStatusStructure;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-
 
 /*
  * this class pick delegated user

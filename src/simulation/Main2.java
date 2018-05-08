@@ -18,6 +18,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 @SuppressWarnings("Duplicates")
+/*
+* This class used for testing mostly
+* It is duplicate of Main
+* */
 public class Main2 {
     public static void main(String[] args) {
         long startTime = System.nanoTime();

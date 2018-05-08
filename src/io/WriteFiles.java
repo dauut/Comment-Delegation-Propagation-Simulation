@@ -19,7 +19,15 @@ import java.util.Date;
  * */
 
 public class WriteFiles {
-
+    /*
+    * In this method there are summary results
+    * @main user id
+    * @time interval owner friend user id,
+    * @Longest Chain Depth
+    * @Offline Days, Hours and Minutes
+    * @Total online friends count during time intervals
+    * @Chain length, chain duration in current length and online friends count
+    * */
     public void writeAllResult(ArrayList<DelegationInfo> delegationInfosArrayList, int indexOfUser,
                                long friendUserID, long mainUserId, String delegationType,
                                int onlineFriendsCount) {
@@ -98,7 +106,9 @@ public class WriteFiles {
                 , chainInfosFormatted);
         writeFile(file, tb.toString());
     }
-
+    /*
+    * Detailed logs, this method causes heavy io processes
+    * */
     public void arrayListWrite(ArrayList<UserInformations> userList, int userIndex, ArrayList<String> tableBuilder,
                                long friendUserID, ArrayList<String> tableBuilder1, String delegationType) {
         File dir;

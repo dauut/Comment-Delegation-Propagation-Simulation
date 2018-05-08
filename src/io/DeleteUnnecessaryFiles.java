@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DeleteUnnecessaryFiles {
+
+    /*
+    * Exclude unnecessary data files
+    * This operation reduced process time
+    * */
     public static void main(String[] args) {
         ArrayList<UserInformations> userList;
         ReadFiles getUserFromData = new ReadFiles();

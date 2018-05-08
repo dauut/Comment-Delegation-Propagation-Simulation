@@ -14,6 +14,10 @@ import java.util.Scanner;
 
 @SuppressWarnings("Duplicates")
 public class ReadFiles {
+    /*
+    * Read data files line by line
+    * This method calls Parseline class and collect useful data in data structures
+    * */
     public ArrayList<UserInformations> getUserList() {
         System.out.println("Collect all users information for once! ");
         String mainFolderPath = Constants.getDataPath();
