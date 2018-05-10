@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="632f2ea0-7572-467e-bd75-e555c2abac62" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/commentdelegation/user/UserInformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commentdelegation/user/UserInformations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/post/TimeBasedPostInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/post/TimeBasedPostInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReadPostInformations.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReadPostInformations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/post/ReadPostInformations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="78" column="61" selection-start-line="78" selection-start-column="61" selection-end-line="78" selection-end-column="61" />
+            <state relative-caret-position="-197">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#338#369#0" expanded="true" />
@@ -110,15 +107,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="81" column="20" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/Test.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,24 +116,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
+      <file leaf-file-name="ReadFiles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="328">
+              <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInformations.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/user/UserInformations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding>
-                <element signature="method#getOptimizedMostDisjointFriendDelegation#0;class#Constants#0" />
-                <marker date="1525984439246" expanded="true" signature="1016:1085" ph="..." />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#570#571#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadFiles.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
+      <file leaf-file-name="FriendsPostInformation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/user/post/FriendsPostInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="38" column="94" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="94" />
+            <state relative-caret-position="221">
+              <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+              <folding>
+                <element signature="e#420#421#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,13 +240,13 @@
         <option value="$PROJECT_DIR$/src/user/post/MainUserPosts.java" />
         <option value="$PROJECT_DIR$/src/user/post/TimeBasedPostInformations.java" />
         <option value="$PROJECT_DIR$/src/user/post/FriendsPostInformations.java" />
-        <option value="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" />
         <option value="$PROJECT_DIR$/src/user/UserInformations.java" />
         <option value="$PROJECT_DIR$/src/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/test/Test.java" />
         <option value="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" />
         <option value="$PROJECT_DIR$/src/user/post/TimeBasedPostInformation.java" />
         <option value="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" />
+        <option value="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" />
       </list>
     </option>
   </component>
@@ -529,7 +529,7 @@
       <workItem from="1525795002536" duration="4220000" />
       <workItem from="1525891952859" duration="4469000" />
       <workItem from="1525932476070" duration="3923000" />
-      <workItem from="1525981176085" duration="3824000" />
+      <workItem from="1525981176085" duration="3929000" />
     </task>
     <task id="LOCAL-00001" summary="Write user friens offline time intervals to files&#10;Fetch user friens offline time intervals from files">
       <created>1524340955445</created>
@@ -825,11 +825,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525984061408</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="post simulation start">
+      <created>1525985525160</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1525985525160</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270785000" />
+    <option name="totallyTimeSpent" value="270890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -856,7 +863,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" visible="true" weight="0.18539326" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" visible="true" weight="0.24438202" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.24966443" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1370,33 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/user/UserInformations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#168#190#0" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/user/post/FriendsPostInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-          <folding>
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1458,13 +1438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="38" column="94" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/post/ParsePostInformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1477,11 +1450,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/post/ReadPostInformations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="78" column="61" selection-start-line="78" selection-start-column="61" selection-end-line="78" selection-end-column="61" />
+        <state relative-caret-position="-197">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#338#369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/user/UserInformations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/user/post/FriendsPostInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+          <folding>
+            <element signature="e#420#421#0" expanded="true" />
           </folding>
         </state>
       </provider>

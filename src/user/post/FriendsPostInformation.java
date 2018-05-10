@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class FriendsPostInformation {
 
     private long userID;
-    private ArrayList<TimeBasedPostInformation> timeBasedPostInformation;
+    private ArrayList<TimeBasedPostInformation> postActivities;
 
     public long getUserID() {
         return userID;
@@ -15,11 +15,11 @@ public class FriendsPostInformation {
         this.userID = userID;
     }
 
-    public ArrayList<TimeBasedPostInformation> getTimeBasedPostInformation() {
-        return timeBasedPostInformation;
+    public ArrayList<TimeBasedPostInformation> getPostActivities() {
+        return postActivities;
     }
 
-    public void setTimeBasedPostInformation(ArrayList<TimeBasedPostInformation> timeBasedPostInformation) {
-        this.timeBasedPostInformation = timeBasedPostInformation;
+    public void setPostActivities(ArrayList<TimeBasedPostInformation> postActivities) {
+        this.postActivities = postActivities;
     }
 }
