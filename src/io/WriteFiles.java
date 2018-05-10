@@ -70,7 +70,8 @@ public class WriteFiles {
             CD = fixedLengthString(CD, 5);
             OFC = fixedLengthString(OFC, 5);
 
-            tmp = "\t\tCL=" + CL + "\t\t CD=" + CD + "\t\tOFC=" + OFC + "\t||\t";
+//            tmp = "\t\tCL=" + CL + "\t\t CD=" + CD + "\t\tOFC=" + OFC + "\t||\t";
+            tmp = "\t" + CL + "\t" + CD + "\t" + OFC + "\t";
             chainInfos.add(tmp);
         }
         String chainInfosFormatted = chainInfos.toString()
@@ -81,10 +82,10 @@ public class WriteFiles {
 
         TableBuilder tb = new TableBuilder();
 
-        tb.addRow(" UserId", " Time Interval of FriendID", " Days", " Hours", " Minutes"
+        tb.addRow("\tUserId", " Time Interval of FriendID", " Days", " Hours", " Minutes"
                 , " OfflineCount", " LCD", " Interrupted Count"
                 , " interruption total time", " Total Off Minutes",
-                "Total Online Friends", "Chain Length and Durations", "\n");
+                "Total Online Friends", "CL - CD - OFC", "\n");
 //        String line = "UserId = " + delegationInfosArrayList.get(indexOfUser).getUserId() +
 //                "; Offline Days = " + days + " Hours = " + hours + " Minutes = " + minutes +
 //                "\n TotalOfflineCount = " + delegationInfosArrayList.get(indexOfUser).getTotalOfflineCount() +
