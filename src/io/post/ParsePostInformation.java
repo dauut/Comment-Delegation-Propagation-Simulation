@@ -15,7 +15,6 @@ public class ParsePostInformation {
 
         String timestamp = firstLineToken[4] + " " + firstLineToken[5] + " " + firstLineToken[6];
 
-
         return timeBasedPostInformation;
 
     }

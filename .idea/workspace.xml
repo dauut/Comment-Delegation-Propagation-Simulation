@@ -4,7 +4,8 @@
     <list default="true" id="632f2ea0-7572-467e-bd75-e555c2abac62" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/commentdelegation/user/UserInformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/commentdelegation/user/UserInformations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +42,8 @@
       <file leaf-file-name="ReadPostInformations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/post/ReadPostInformations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-197">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="1136">
+              <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#338#369#0" expanded="true" />
@@ -86,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParsePostInformation.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ParsePostInformation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/post/ParsePostInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state relative-caret-position="255">
+              <caret line="15" column="97" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +120,8 @@
       <file leaf-file-name="ReadFiles.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+            <state relative-caret-position="-496">
+              <caret line="42" column="57" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -138,7 +139,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FriendsPostInformation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FriendsPostInformation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/user/post/FriendsPostInformation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -243,10 +244,10 @@
         <option value="$PROJECT_DIR$/src/user/UserInformations.java" />
         <option value="$PROJECT_DIR$/src/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/test/Test.java" />
-        <option value="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" />
         <option value="$PROJECT_DIR$/src/user/post/TimeBasedPostInformation.java" />
-        <option value="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" />
         <option value="$PROJECT_DIR$/src/user/post/FriendsPostInformation.java" />
+        <option value="$PROJECT_DIR$/src/io/post/ReadPostInformations.java" />
+        <option value="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" />
       </list>
     </option>
   </component>
@@ -529,7 +530,7 @@
       <workItem from="1525795002536" duration="4220000" />
       <workItem from="1525891952859" duration="4469000" />
       <workItem from="1525932476070" duration="3923000" />
-      <workItem from="1525981176085" duration="3929000" />
+      <workItem from="1525981176085" duration="4055000" />
     </task>
     <task id="LOCAL-00001" summary="Write user friens offline time intervals to files&#10;Fetch user friens offline time intervals from files">
       <created>1524340955445</created>
@@ -832,11 +833,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525985525160</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="post simulation start">
+      <created>1525985590418</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1525985590418</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270890000" />
+    <option name="totallyTimeSpent" value="271016000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -1438,34 +1446,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/post/ParsePostInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/post/ReadPostInformations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-197">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#338#369#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/user/UserInformations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1483,6 +1463,34 @@
           <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
           <folding>
             <element signature="e#420#421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/post/ReadPostInformations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1136">
+          <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#338#369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/ReadFiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-496">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/post/ParsePostInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="97" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
