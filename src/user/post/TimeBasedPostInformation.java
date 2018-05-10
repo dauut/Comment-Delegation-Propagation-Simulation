@@ -11,6 +11,15 @@ public class TimeBasedPostInformation {
     private int totalMessages;
     private ArrayList<MainUserPosts> mainUserPostsList;
     private ArrayList<Posts> postsArrayList;
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public Date getCurrentTimestamp() {
         return currentTimestamp;
