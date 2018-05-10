@@ -11,6 +11,15 @@ public class MainUserPosts {
     private int likeCount;
     private int commentCount;
     private int commentCharCount;
+    private int postSize;
+
+    public int getPostSize() {
+        return postSize;
+    }
+
+    public void setPostSize(int postSize) {
+        this.postSize = postSize;
+    }
 
     public int getMainUserPostCount() {
         return mainUserPostCount;

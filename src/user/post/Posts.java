@@ -11,6 +11,15 @@ public class Posts {
     private int likeCount;
     private int commentCount;
     private int commentCharCount;
+    private int postSize;
+
+    public int getPostSize() {
+        return postSize;
+    }
+
+    public void setPostSize(int postSize) {
+        this.postSize = postSize;
+    }
 
     public long getFriendUserID() {
         return friendUserID;
