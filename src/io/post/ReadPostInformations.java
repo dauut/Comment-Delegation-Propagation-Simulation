@@ -36,8 +36,8 @@ public class ReadPostInformations {
         for (int i = 0; i < listOfUsers.length; i++) {
             FriendsPostInformation user = new FriendsPostInformation();
 
-            user.setUserId(Long.parseLong(listOfUsers[i].getName()));
-            System.out.println(user.getUserId());
+            user.setUserID(Long.parseLong(listOfUsers[i].getName()));
+            System.out.println(user.getUserID());
             folder = new File(listOfUsers[i].toString());
             listOfFiles = folder.listFiles();
             ArrayList<TimeBasedPostInformation> timeBasedPostInformationArrayList = new ArrayList<>();
@@ -89,7 +89,7 @@ public class ReadPostInformations {
                 }
 
             }
-            user.setUserActivites(timeBasedPostInformationArrayList);
+            user.setPostActivities(timeBasedPostInformationArrayList);
             usersList.add(user);
         }
         return usersList;
