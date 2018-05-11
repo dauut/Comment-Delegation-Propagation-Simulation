@@ -25,6 +25,7 @@ public final class Constants {
 
     //post simulation constants
     private static final String POST_DATA_PATH="C:\\Users\\dauut\\Desktop\\Facebook_activity";
+//    private static final String POST_DATA_PATH="C:\\Users\\dauut\\Desktop\\a";
     private static final String POST_OUTPUT_PATH="C:\\Users\\dauut\\Desktop\\post_testout\\simulation";
 
 

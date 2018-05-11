@@ -6,18 +6,18 @@ public class Posts {
     private long friendUserID;
     private int numOfPost;
     private String postType;
-    private int postID;
+    private long postID;
     private Date postCreateDate;
     private int likeCount;
     private int commentCount;
     private int commentCharCount;
-    private int postSize;
+    private long postSize;
 
-    public int getPostSize() {
+    public long getPostSize() {
         return postSize;
     }
 
-    public void setPostSize(int postSize) {
+    public void setPostSize(long postSize) {
         this.postSize = postSize;
     }
 
@@ -45,11 +45,11 @@ public class Posts {
         this.postType = postType;
     }
 
-    public int getPostID() {
+    public long getPostID() {
         return postID;
     }
 
-    public void setPostID(int postID) {
+    public void setPostID(long postID) {
         this.postID = postID;
     }
 

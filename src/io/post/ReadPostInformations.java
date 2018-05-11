@@ -48,7 +48,7 @@ public class ReadPostInformations {
                 ArrayList<String> lines = new ArrayList<>();
                 lines.clear();
                 file = new File(listOfFiles[j].toString());
-
+                System.out.println(listOfFiles[j].getName());
                 try {
                     Scanner scanner = new Scanner(file);
                     while (scanner.hasNext()){
@@ -86,8 +86,6 @@ public class ReadPostInformations {
                 }catch (FileNotFoundException e){
                     e.printStackTrace();
                     System.out.println("File not found");
-                } catch (ParseException e) {
-                    e.printStackTrace();
                 }
 
             }
