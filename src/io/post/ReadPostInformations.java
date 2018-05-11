@@ -47,7 +47,7 @@ public class ReadPostInformations {
                 ParsePostInformation parsePostInformation = new ParsePostInformation();
                 ArrayList<String> lines = new ArrayList<>();
                 lines.clear();
-                file = new File(listOfFiles[i].toString());
+                file = new File(listOfFiles[j].toString());
 
                 try {
                     Scanner scanner = new Scanner(file);
@@ -86,6 +86,8 @@ public class ReadPostInformations {
                 }catch (FileNotFoundException e){
                     e.printStackTrace();
                     System.out.println("File not found");
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
             }
