@@ -90,9 +90,9 @@ public class PickUser {
     }
 
     /*
-    * this two methods are same intentionally
-    * due to openness
-    * */
+     * this two methods are same intentionally
+     * due to openness
+     * */
     public long findAndPickMostOnlineFriendsAsDelegatedUser(TimeBasedInformation timeBasedInformation, MostOnlineFriends mostOnlineFriends) {
         long delegatedUserId = 0;
         int i = 0;
@@ -136,7 +136,6 @@ public class PickUser {
 
     public long findAndPickMostDisjointedFriendsAsDelegatedUser(TimeBasedInformation timeBasedInformation, MostDisjointFriends mostDisjointFriends) {
         long delegatedUserId = 0;
-        int sizeCurrentOnlineFriends = timeBasedInformation.getOnlineFriendsList().size();
         int i = 0;
         boolean find = false;
 
@@ -145,6 +144,25 @@ public class PickUser {
                 find = true;
                 //System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
                 delegatedUserId = mostDisjointFriends.getMostOnlineFriendsList().get(i);
+            }else{
+                i++;
+            }
+
+        }
+
+        return delegatedUserId;
+    }
+
+    public long findAndPickMostDisjointedFriendsAsDelegatedUser5Days(TimeBasedInformation timeBasedInformation, ArrayList<Long> mostDisjointFriendsList) {
+        long delegatedUserId = 0;
+        int i = 0;
+        boolean find = false;
+
+        while (!find && i < mostDisjointFriendsList.size()){
+            if (timeBasedInformation.getOnlineFriendsHashSet().contains(mostDisjointFriendsList.get(i))){
+                find = true;
+                //System.out.println("most online friends in that list is = " + mostOnlineFriends.getMostOnlineFriendsList().get(i));
+                delegatedUserId = mostDisjointFriendsList.get(i);
             }else{
                 i++;
             }

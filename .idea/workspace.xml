@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="632f2ea0-7572-467e-bd75-e555c2abac62" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/user/post/FriendsPosts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/post/ParsePostInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/Main2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/PickUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/PickUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistics/Collect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/Collect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/post/Posts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/post/Posts.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +43,8 @@
       <file leaf-file-name="FindMostOnlineFriends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="127" column="57" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="57" />
+            <state relative-caret-position="492">
+              <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#330#363#0" expanded="true" />
@@ -71,9 +65,10 @@
       <file leaf-file-name="Main2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="152" column="46" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="46" />
+            <state relative-caret-position="293">
+              <caret line="171" column="119" lean-forward="true" selection-start-line="171" selection-start-column="119" selection-end-line="171" selection-end-column="119" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#456#487#0" expanded="true" />
               </folding>
             </state>
@@ -83,8 +78,12 @@
       <file leaf-file-name="PickUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/simulation/PickUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="116" column="18" lean-forward="true" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="18" />
+            <state relative-caret-position="604">
+              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#335#366#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +100,8 @@
       <file leaf-file-name="Collect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statistics/Collect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="82" column="17" lean-forward="true" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+            <state relative-caret-position="123">
+              <caret line="33" column="52" lean-forward="true" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -110,10 +109,11 @@
       <file leaf-file-name="FindMostDisjointFriends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1857">
-              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            <state relative-caret-position="2273">
+              <caret line="291" lean-forward="true" selection-start-line="291" selection-end-line="291" />
               <folding>
-                <element signature="e#296#327#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#333#364#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,8 +122,8 @@
       <file leaf-file-name="CollectUsersOfflineTimeStatus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+            <state relative-caret-position="232">
+              <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -131,10 +131,12 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="92" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
+            <state relative-caret-position="342">
+              <caret line="19" column="95" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
               <folding>
                 <element signature="e#2115#2244#0" />
+                <element signature="e#2305#2306#0" expanded="true" />
+                <element signature="e#2359#2360#0" expanded="true" />
                 <element signature="e#2615#2616#0" expanded="true" />
                 <element signature="e#2660#2661#0" expanded="true" />
                 <element signature="e#2845#2846#0" expanded="true" />
@@ -185,8 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pickUser.findAndP</find>
-      <find />
       <find>write</find>
       <find>write.</find>
       <find>getOutputFolderPath</find>
@@ -215,6 +215,8 @@
       <find>mainUserPost</find>
       <find>friendsPost</find>
       <find>getMostOnlineFriendDelegation</find>
+      <find>usersList</find>
+      <find>statusList</find>
     </findStrings>
     <replaceStrings>
       <replace>User</replace>
@@ -268,11 +270,11 @@
         <option value="$PROJECT_DIR$/src/test/CollectUsersOfflineTimeStatus.java" />
         <option value="$PROJECT_DIR$/src/test/CollectUsersOfflineTimeStatus1.java" />
         <option value="$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java" />
-        <option value="$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java" />
-        <option value="$PROJECT_DIR$/src/simulation/PickUser.java" />
-        <option value="$PROJECT_DIR$/src/simulation/Main2.java" />
         <option value="$PROJECT_DIR$/src/io/WriteFiles.java" />
         <option value="$PROJECT_DIR$/src/statistics/Collect.java" />
+        <option value="$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java" />
+        <option value="$PROJECT_DIR$/src/simulation/Main2.java" />
+        <option value="$PROJECT_DIR$/src/simulation/PickUser.java" />
         <option value="$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java" />
         <option value="$PROJECT_DIR$/src/constants/Constants.java" />
       </list>
@@ -371,6 +373,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main2">
+    <configuration name="Collect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="statistics.Collect" />
+      <module name="CommentDelegation" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="statistics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="simulation.Main" />
       <module name="CommentDelegation" />
@@ -403,11 +416,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="CommentDelegation" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Test" />
@@ -462,19 +470,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="Application.Test" />
       <item itemvalue="Application.Main2" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.SortResults" />
       <item itemvalue="Application.Test (1)" />
+      <item itemvalue="Application.Collect" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.Collect" />
         <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.SortResults" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -524,7 +532,7 @@
       <workItem from="1525981176085" duration="5115000" />
       <workItem from="1525987937986" duration="133000" />
       <workItem from="1526061614247" duration="9970000" />
-      <workItem from="1526100998306" duration="30281000" />
+      <workItem from="1526100998306" duration="36302000" />
     </task>
     <task id="LOCAL-00001" summary="Write user friens offline time intervals to files&#10;Fetch user friens offline time intervals from files">
       <created>1524340955445</created>
@@ -862,15 +870,21 @@
       <option name="project" value="LOCAL" />
       <updated>1526072779009</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="SIMULATION PARAMETERS GOES BACK FOR 5 DAYS">
+      <created>1526156258143</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1526156258143</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312460000" />
+    <option name="totallyTimeSpent" value="318481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -882,7 +896,7 @@
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.3295302" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.18960674" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.35452586" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.1875" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
@@ -893,7 +907,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.519084" side_tool="true" weight="0.12013423" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" weight="0.35560346" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" weight="0.38793105" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.24966443" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -906,7 +920,7 @@
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.24966443" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7275168" visible="true" weight="0.35452586" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7275168" weight="0.40301725" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.24966443" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48091602" weight="0.27680525" />
@@ -918,7 +932,7 @@
       <window_info id="Designer" order="3" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" weight="0.35560346" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.7147651" visible="true" weight="0.38793105" />
       <window_info anchor="right" id="Database" order="6" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="bottom" id="Terminal" order="8" />
@@ -965,7 +979,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="minor fix&#10;performance issues &#10;mostonline friends in simulation" />
     <MESSAGE value="initial most disjoint friends" />
     <MESSAGE value="There are some interrupted offline sessions&#10;calculate and write interrupted sessions" />
     <MESSAGE value="comment added" />
@@ -990,31 +1003,26 @@
     <MESSAGE value="parse post lines" />
     <MESSAGE value="&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;post size" />
     <MESSAGE value="parsing post files" />
-    <option name="LAST_COMMIT_MESSAGE" value="parsing post files" />
+    <MESSAGE value="SIMULATION PARAMETERS GOES BACK FOR 5 DAYS" />
+    <option name="LAST_COMMIT_MESSAGE" value="SIMULATION PARAMETERS GOES BACK FOR 5 DAYS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/simulation/PickUser.java</url>
-          <line>142</line>
-          <properties />
-          <option name="timeStamp" value="288" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/simulation/PickUser.java</url>
-          <line>144</line>
-          <properties />
-          <option name="timeStamp" value="289" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/io/post/ParsePostInformation.java</url>
           <line>127</line>
           <properties />
           <option name="timeStamp" value="341" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="349" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="349" />
+      <option name="time" value="353" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1238,6 +1246,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1363,24 +1375,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/user/offline/UserFriendsOfflineStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/statistics/Collect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="82" column="17" lean-forward="true" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1391,27 +1389,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulation/PickUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="116" column="18" lean-forward="true" selection-start-line="116" selection-start-column="18" selection-end-line="116" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="152" column="46" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="46" />
-          <folding>
-            <element signature="e#456#487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/statistics/FindMostOnlineFriends.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="127" column="57" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="57" />
+        <state relative-caret-position="492">
+          <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#330#363#0" expanded="true" />
@@ -1419,22 +1400,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulation/PickUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#335#366#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statistics/Collect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="33" column="52" lean-forward="true" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statistics/CollectUsersOfflineTimeStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulation/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="171" column="119" lean-forward="true" selection-start-line="171" selection-start-column="119" selection-end-line="171" selection-end-column="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#456#487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/statistics/FindMostDisjointFriends.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1857">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        <state relative-caret-position="2273">
+          <caret line="291" lean-forward="true" selection-start-line="291" selection-end-line="291" />
           <folding>
-            <element signature="e#296#327#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#333#364#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="92" selection-start-line="9" selection-start-column="92" selection-end-line="9" selection-end-column="92" />
+        <state relative-caret-position="342">
+          <caret line="19" column="95" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
           <folding>
             <element signature="e#2115#2244#0" />
+            <element signature="e#2305#2306#0" expanded="true" />
+            <element signature="e#2359#2360#0" expanded="true" />
             <element signature="e#2615#2616#0" expanded="true" />
             <element signature="e#2660#2661#0" expanded="true" />
             <element signature="e#2845#2846#0" expanded="true" />
