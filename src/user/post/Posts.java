@@ -3,8 +3,6 @@ package user.post;
 import java.util.Date;
 
 public class Posts {
-    private long friendUserID;
-    private int numOfPost;
     private String postType;
     private long postID;
     private Date postCreateDate;
@@ -21,21 +19,6 @@ public class Posts {
         this.postSize = postSize;
     }
 
-    public long getFriendUserID() {
-        return friendUserID;
-    }
-
-    public void setFriendUserID(long friendUserID) {
-        this.friendUserID = friendUserID;
-    }
-
-    public int getNumOfPost() {
-        return numOfPost;
-    }
-
-    public void setNumOfPost(int numOfPost) {
-        this.numOfPost = numOfPost;
-    }
 
     public String getPostType() {
         return postType;

@@ -12,6 +12,8 @@ import java.util.HashSet;
  * In this class, we collect all online friends in simulation time.
  * we will use every friends online - offline time interval for simulation
  * */
+
+@SuppressWarnings("Duplicates")
 public class CollectUsersOfflineTimeStatus {
 
     //find status list

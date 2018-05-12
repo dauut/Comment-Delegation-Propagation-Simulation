@@ -1,5 +1,6 @@
 package io.post;
 
+import user.post.FriendsPosts;
 import user.post.MainUserPosts;
 import user.post.Posts;
 import user.post.TimeBasedPostInformation;
@@ -14,8 +15,9 @@ public class ParsePostInformation {
     public TimeBasedPostInformation parsePostLines(ArrayList<String> lines) {
         TimeBasedPostInformation timeBasedPostInformation = new TimeBasedPostInformation();
         MainUserPosts mainUserPosts; // posts of main user
+        FriendsPosts friendsPosts;
         Posts mainUserPost; // one post line
-        Posts friendsPost = new Posts();
+        Posts friendPost = new Posts();
         ArrayList<Posts> mainUserPostLists = new ArrayList<>(); // list of all individual posts
         ArrayList<Posts> friendsPostLists = new ArrayList<>();
 
@@ -114,15 +116,16 @@ public class ParsePostInformation {
                 if (!lines.get(i).equals("")){
                     String[] friendsPostLine = lines.get(i).split(delims);
                     if (lines.get(i).substring(0,6).equals("Friend")){
-                        friendsPost = new Posts();
-                        friendsPost.setFriendUserID(Long.parseLong(friendsPostLine[1]));
+                        friendsPosts = new FriendsPosts();
+
+                        friendsPosts.setFriendUserId(Long.parseLong(friendsPostLine[1]));
 
                         String[] friendsNumOfPost =lines.get(i+2).split(delims);
-                        friendsPost.setNumOfPost(Integer.parseInt(friendsNumOfPost[3]));
+                        friendsPosts.setNumOfPost(Integer.parseInt(friendsNumOfPost[3]));
 
-                        if (friendsPost.getNumOfPost()>0){
-// checkout data structure in right here
-                            for (int j = 0; j < friendsPost.getNumOfPost(); j++){
+                        if (friendsPosts.getNumOfPost()>0){
+                            // checkout data structure in right here
+                            for (int j = 0; j < friendsPosts.getNumOfPost(); j++){
 
                             }
 

@@ -50,7 +50,8 @@ public class Collect {
         File file;
         File dir;
         for (int i = 0; i < userFriendsOfflineStatusList.size(); i++) {
-            String dirPath = Constants.getCollectionOutputPath() + "\\" + mainUserID + "\\";
+//            String dirPath = Constants.getCollectionOutputPath() + "\\" + mainUserID + "\\"; //offline status
+            String dirPath = Constants.getCollectionOutputPathOnline() + "\\" + mainUserID + "\\";  //online status
             dir = new File(dirPath);
             if (!dir.exists()) {
                 if (dir.mkdir()) {
@@ -60,11 +61,13 @@ public class Collect {
                 }
             }
             try {
-                file = new File(dirPath+userFriendsOfflineStatusList.get(i).getFriendUserId() + "_userOfflineTimesIndexes"  + ".txt");
+//                file = new File(dirPath+userFriendsOfflineStatusList.get(i).getFriendUserId() + "_userOfflineTimesIndexes"  + ".txt"); //offline
+                file = new File(dirPath+userFriendsOfflineStatusList.get(i).getFriendUserId() + "_userOnlineTimesIndexes"  + ".txt"); //online
                 // true = append file
                 fileWriter = new FileWriter(file.getAbsoluteFile(), true);
                 bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write(userFriendsOfflineStatusList.get(i).getFriendOfflineStatus().toString());
+//                bufferedWriter.write(userFriendsOfflineStatusList.get(i).getFriendOfflineStatus().toString()); //offline
+                bufferedWriter.write(userFriendsOfflineStatusList.get(i).getFriendOnlineStatus().toString());  //online
                 bufferedWriter.newLine();
             } catch (IOException e) {
                 e.printStackTrace();
