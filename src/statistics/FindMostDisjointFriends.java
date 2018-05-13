@@ -69,13 +69,13 @@ public class FindMostDisjointFriends {
     public ArrayList<Long> getMostDisjointFriendsLast5Days(ArrayList<UserInformations> usersList, int userIndex
             , ArrayList<int[]> statusList, int leftIndex) {
         ArrayList<Long> userMostDisjointFriendsList = new ArrayList<>();
-        ArrayList<int[]> statusList1 = statusList;
+        ArrayList<int[]> statusList1 = new ArrayList<>(statusList);
         ArrayList<Long> userOnlineFriendsList;
         CollectUsersOfflineTimeStatus userFriendsOnline = new CollectUsersOfflineTimeStatus();
         userOnlineFriendsList = userFriendsOnline.findAllOnlineFrineds(usersList, userIndex);
         HashMap<Long, Integer> disjointFriendsStatistics = new HashMap<>();
         ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
-
+        ArrayList<Long> sortedDisjointFriendsStatistics = null;
         for (int i = 0; i < userOnlineFriendsList.size(); i++) {
             disjointFriendsStatistics.put(userOnlineFriendsList.get(i), 0);
         }
@@ -106,6 +106,7 @@ public class FindMostDisjointFriends {
 
             if (flagEnd * flagStart == 1) {
                 // there is no time interval during 5 days
+                System.out.println("");
             } else if (flagStart == 1) {
                 first = 0;
             } else if (flagEnd == -1) {
@@ -120,10 +121,10 @@ public class FindMostDisjointFriends {
 
                 if (i >= statusList1.size() - 1) {
                     first = statusList1.size() - 1;
-                    statusList1.get(first)[0] = fiveDaysAgoIndex;
+//                    statusList1.get(first)[0] = fiveDaysAgoIndex;
                 } else if (fiveDaysAgoIndex <= statusList1.get(i - 1)[1]) {
                     first = i - 1;
-                    statusList1.get(first)[0] = fiveDaysAgoIndex;
+//                    statusList1.get(first)[0] = fiveDaysAgoIndex;
                 } else {
                     first = i; //online a dustu
                 }
@@ -137,10 +138,10 @@ public class FindMostDisjointFriends {
 
                 if (i >= statusList1.size() - 1) {
                     last = statusList1.size() - 1;
-                    statusList1.get(last)[1] = leftIndex;
+//                    statusList1.get(last)[1] = leftIndex;
                 } else if (leftIndex >= statusList1.get(i)[0]) {
                     last = i;
-                    statusList1.get(last)[1] = leftIndex;
+//                    statusList1.get(last)[1] = leftIndex;
                 } else {
                     last = i - 1; //online
                 }
@@ -148,7 +149,7 @@ public class FindMostDisjointFriends {
             }
 
 
-            if (flagEnd * flagStart != 1) {
+            if (flagEnd * flagStart != 1 && first < last) {
                 for (int x = first; x < last; x++) {
 
                     for (int intervalIndex = statusList1.get(x)[0]; intervalIndex < statusList1.get(x)[1]; intervalIndex++) {
@@ -172,7 +173,7 @@ public class FindMostDisjointFriends {
 
                 List<Map.Entry<Long, Integer>> list = new ArrayList<>(disjointFriendsStatistics.entrySet());
                 list.sort(Map.Entry.comparingByValue());
-                ArrayList<Long> sortedDisjointFriendsStatistics = new ArrayList<>();
+                sortedDisjointFriendsStatistics = new ArrayList<>();
 
                 for (int k = list.size() - 1; k > 0; k--) {
                     sortedDisjointFriendsStatistics.add(list.get(k).getKey());
@@ -181,7 +182,8 @@ public class FindMostDisjointFriends {
                 return sortedDisjointFriendsStatistics;
             } else {
                 // bu kisimda 5 gun once offline interval yok. bakalim buraya dusecek mi
-                System.out.println("5 gun oncesinde userin offline oldugu hicbir time interval bulunmamaktadir.");
+//                System.out.println("5 gun oncesinde userin offline oldugu hicbir time interval bulunmamaktadir.");
+                userMostDisjointFriendsList = null;
                 return userMostDisjointFriendsList;
             }
 
@@ -201,18 +203,23 @@ public class FindMostDisjointFriends {
                 flagStart = 1;
             }
 
+            if (flagEnd * flagStart == 1) {
+                first = 0;
+                last = statusList.size();
+            }
+
             if (flagEnd == 0) {
                 int i = 0;
-                while (leftIndex > statusList1.get(i)[0] && i < statusList1.size() - 1) {
+                while (leftIndex >= statusList1.get(i)[0] && i < statusList1.size() - 1) {
                     i++;
                 }
 
                 if (i > statusList1.size() - 1) {
                     first = statusList1.size() - 1;
-                    statusList1.get(first)[1]=leftIndex;
+//                    statusList1.get(first)[1]=leftIndex;
                 } else if (leftIndex <= statusList1.get(i - 1)[1]) {
                     first = i - 1;
-                    statusList1.get(first)[1]=leftIndex;
+//                    statusList1.get(first)[1]=leftIndex;
                 } else {
                     first = i - 1;
                 }
@@ -221,12 +228,14 @@ public class FindMostDisjointFriends {
 
             if (flagStart == 0) {
                 int i = statusList1.size() - 1;
-                while (fiveDaysAgoIndex < statusList1.get(i)[1] && i > 0) {
+                while (fiveDaysAgoIndex <= statusList1.get(i)[1] && i > 0) {
                     i--;
                 }
-                if (fiveDaysAgoIndex >= statusList1.get(i + 1)[0]) {
+                if (i < 0) {
                     last = i + 1;
-                    statusList1.get(last)[0] = fiveDaysAgoIndex;
+                } else if (fiveDaysAgoIndex >= statusList1.get(i + 1)[0]) {
+                    last = i + 1;
+//                    statusList1.get(last)[0] = fiveDaysAgoIndex;
                 } else {
                     last = i + 1;
                 }
@@ -234,59 +243,66 @@ public class FindMostDisjointFriends {
 
 
             //first part
+            if (flagEnd * flagStart != 1) {
+                for (int x = 0; x < first; x++) {
 
-            for (int x = 0; x < first; x++) {
+                    for (int intervalIndex = statusList1.get(x)[0]; intervalIndex < statusList1.get(x)[1]; intervalIndex++) {
+                        Iterator iter = usersList.get(userIndex).getUserActivites().get(intervalIndex).getOnlineFriendsHashSet().iterator();
 
-                for (int intervalIndex = statusList1.get(x)[0]; intervalIndex < statusList1.get(x)[1]; intervalIndex++) {
-                    Iterator iter = usersList.get(userIndex).getUserActivites().get(intervalIndex).getOnlineFriendsHashSet().iterator();
-
-                    // turn for every online user in that time interval activity
-                    while (iter.hasNext()) {
-                        long friendUserId = (long) iter.next();
-                        for (long disjointUserId : disjointFriendsStatistics.keySet()) {
-                            if (disjointUserId == friendUserId) {
-                                if (disjointFriendsStatistics.containsKey(friendUserId)) {
-                                    disjointFriendsStatistics.put(friendUserId,
-                                            disjointFriendsStatistics.get(friendUserId) + 1);
+                        // turn for every online user in that time interval activity
+                        while (iter.hasNext()) {
+                            long friendUserId = (long) iter.next();
+                            for (long disjointUserId : disjointFriendsStatistics.keySet()) {
+                                if (disjointUserId == friendUserId) {
+                                    if (disjointFriendsStatistics.containsKey(friendUserId)) {
+                                        disjointFriendsStatistics.put(friendUserId,
+                                                disjointFriendsStatistics.get(friendUserId) + 1);
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
 
-            }
+                for (int x = last; x < statusList1.size(); x++) {
 
-            for (int x = last; x < statusList1.size(); x++) {
+                    for (int intervalIndex = statusList1.get(x)[0]; intervalIndex < statusList1.get(x)[1]; intervalIndex++) {
+                        Iterator iter = usersList.get(userIndex).getUserActivites().get(intervalIndex).getOnlineFriendsHashSet().iterator();
 
-                for (int intervalIndex = statusList1.get(x)[0]; intervalIndex < statusList1.get(x)[1]; intervalIndex++) {
-                    Iterator iter = usersList.get(userIndex).getUserActivites().get(intervalIndex).getOnlineFriendsHashSet().iterator();
-
-                    // turn for every online user in that time interval activity
-                    while (iter.hasNext()) {
-                        long friendUserId = (long) iter.next();
-                        for (long disjointUserId : disjointFriendsStatistics.keySet()) {
-                            if (disjointUserId == friendUserId) {
-                                if (disjointFriendsStatistics.containsKey(friendUserId)) {
-                                    disjointFriendsStatistics.put(friendUserId,
-                                            disjointFriendsStatistics.get(friendUserId) + 1);
+                        // turn for every online user in that time interval activity
+                        while (iter.hasNext()) {
+                            long friendUserId = (long) iter.next();
+                            for (long disjointUserId : disjointFriendsStatistics.keySet()) {
+                                if (disjointUserId == friendUserId) {
+                                    if (disjointFriendsStatistics.containsKey(friendUserId)) {
+                                        disjointFriendsStatistics.put(friendUserId,
+                                                disjointFriendsStatistics.get(friendUserId) + 1);
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
 
+                List<Map.Entry<Long, Integer>> list = new ArrayList<>(disjointFriendsStatistics.entrySet());
+                list.sort(Map.Entry.comparingByValue());
+                sortedDisjointFriendsStatistics = new ArrayList<>();
+
+                for (int k = list.size() - 1; k > 0; k--) {
+                    sortedDisjointFriendsStatistics.add(list.get(k).getKey());
+                }
+
+                return sortedDisjointFriendsStatistics;
+            }else {
+                // bu kisimda 5 gun once offline interval yok. bakalim buraya dusecek mi
+//                System.out.println("5 gun oncesinde userin offline oldugu hicbir time interval bulunmamaktadir.");
+                userMostDisjointFriendsList = null;
+                return userMostDisjointFriendsList;
             }
-
-            List<Map.Entry<Long, Integer>> list = new ArrayList<>(disjointFriendsStatistics.entrySet());
-            list.sort(Map.Entry.comparingByValue());
-            ArrayList<Long> sortedDisjointFriendsStatistics = new ArrayList<>();
-
-            for (int k = list.size() - 1; k > 0; k--) {
-                sortedDisjointFriendsStatistics.add(list.get(k).getKey());
-            }
-
-            return sortedDisjointFriendsStatistics;
         }
+
 
     }
 
