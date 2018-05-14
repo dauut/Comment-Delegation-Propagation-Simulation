@@ -6,10 +6,7 @@ import user.MostOnlineFriends;
 import user.TimeBasedInformation;
 import user.UserInformations;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
  * it returns object of MostOnlineFriendsList
@@ -113,7 +110,23 @@ public class FindMostOnlineFriends {
         }
 
     }
+    public Long mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList, int leftIndex) {
+        HashSet<Long> leftTimeOnlineFriendsList = usersList.get(userIndex).getUserActivites().get(leftIndex).getOnlineFriendsHashSet();
+        ArrayList<Long> delegateUserList = new ArrayList<>(leftTimeOnlineFriendsList);
+        ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
 
+        for (int j = leftIndex; j < statusList[1]; j++) {
+            for (Long l : leftTimeOnlineFriendsList) {
+                if (!timeBasedInformationArrayList.get(j).getOnlineFriendsHashSet().contains(l)) {
+                    int deleteIndex = delegateUserList.indexOf(l);
+                    if (delegateUserList.contains(l) && delegateUserList.size()>1 ){
+                        delegateUserList.remove(deleteIndex);
+                    }
+                }
+            }
+        }
+        return delegateUserList.get(0);
+    }
     public ArrayList<Long> mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList) {
 
         ArrayList<Long> userOnlineFriendsList;

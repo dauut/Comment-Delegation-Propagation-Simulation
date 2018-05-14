@@ -19,7 +19,7 @@ public final class Constants {
 
     //comments constants
 //    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
-    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\10";
+    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\11";
     private static final String COLLECTION_OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\UsersOfflineStatus\\";
     private static final String COLLECTION_OUTPUT_PATH_ONLINE = "C:\\Users\\dauut\\Desktop\\UsersOnlineStatus\\";
     private static final String OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulation";
