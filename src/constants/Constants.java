@@ -9,7 +9,7 @@ public final class Constants {
     private static final String MOST_ONLINE_FRIEND_DELEGATION = "Most_Online_5_Days_Back";
     private static final String MOST_DISJOINT_FRIEND_DELEGATION = "MOST_DISJOINT_5_DAYS_BACK";
     private static final String OPTIMIZED_MOST_DISJOINT_FRIEND_DELEGATION = "OPTIMIZED_MOST_DISJOINT";
-    private static final String IDEAL_FRIEND_DELEGATION = "IDEAL_FRIEND_DELEGATION";
+    private static final String IDEAL_FRIEND_DELEGATION = "IDEAL_FRIEND_DELEGATION_BEST_RESULTS_EVER";
 
     //    private static final String COLLECTION_OUTPUT_PATH = "C:\\Users\\DavutU\\Desktop\\UsersOfflineStatus\\";
     //    private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\DavutU\\Desktop\\testout\\simulationGeneralInfo";
