@@ -110,23 +110,50 @@ public class FindMostOnlineFriends {
         }
 
     }
-    public Long mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList, int leftIndex) {
-        HashSet<Long> leftTimeOnlineFriendsList = usersList.get(userIndex).getUserActivites().get(leftIndex).getOnlineFriendsHashSet();
-        ArrayList<Long> delegateUserList = new ArrayList<>(leftTimeOnlineFriendsList);
-        ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
 
-        for (int j = leftIndex; j < statusList[1]; j++) {
-            for (Long l : leftTimeOnlineFriendsList) {
-                if (!timeBasedInformationArrayList.get(j).getOnlineFriendsHashSet().contains(l)) {
-                    int deleteIndex = delegateUserList.indexOf(l);
-                    if (delegateUserList.contains(l) && delegateUserList.size()>1 ){
-                        delegateUserList.remove(deleteIndex);
+
+    public Long mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList, int leftIndex) {
+        HashSet<Long> leftTimeOnlineFriendsSet = usersList.get(userIndex).getUserActivites().get(leftIndex).getOnlineFriendsHashSet();
+        ArrayList<Long> leftTimeOnlineFriendsList = new ArrayList<>(leftTimeOnlineFriendsSet);
+        ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
+        HashMap<Long, Integer> onlineFriendsStatistics = new HashMap<>();
+
+        for (int i = 0; i < leftTimeOnlineFriendsList.size(); i++) {
+            onlineFriendsStatistics.put(leftTimeOnlineFriendsList.get(i), 0);
+        }
+
+        for (int j = leftIndex; j < statusList[1]; j++) { //during next offline session
+//            for (Long l : leftTimeOnlineFriendsSet) { //initial list for delegation, one by one
+                for (int k = 0; k < timeBasedInformationArrayList.get(j).getOnlineFriendsList().size(); k++) {
+                    if (onlineFriendsStatistics.containsKey(timeBasedInformationArrayList.
+                            get(j).getOnlineFriendsList().get(k).getFriendUserID())) {
+                        onlineFriendsStatistics.put(timeBasedInformationArrayList.
+                                        get(j).getOnlineFriendsList().get(k).getFriendUserID(),
+                                onlineFriendsStatistics.get(timeBasedInformationArrayList.
+                                        get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
                     }
+                //this delete users but thats not efficient
+                //                if (!timeBasedInformationArrayList.get(j).getOnlineFriendsHashSet().contains(l)) { //every timestamp we willl check for out initial list
+                //                    int deleteIndex = delegateUserList.indexOf(l);
+                //                    if (delegateUserList.contains(l) && delegateUserList.size()>1 ){
+                //                        delegateUserList.remove(deleteIndex);
+                //                    }
                 }
             }
+
+//        }
+        List<Map.Entry<Long, Integer>> list = new ArrayList<>(onlineFriendsStatistics.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        ArrayList<Long> sortedMostOnlineFriends = new ArrayList<>();
+
+        for (int k = list.size() - 1; k >= 0; k--) {
+            sortedMostOnlineFriends.add(list.get(k).getKey());
         }
-        return delegateUserList.get(0);
+
+
+        return sortedMostOnlineFriends.get(0);
     }
+    /*
     public ArrayList<Long> mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList) {
 
         ArrayList<Long> userOnlineFriendsList;
@@ -161,7 +188,7 @@ public class FindMostOnlineFriends {
 
         return sortedMostOnlineFriends;
     }
-
+*/
     private ArrayList<Long> findMostOnlineFriends(ArrayList<UserInformations> usersList, int userIndex) {
         ArrayList<Long> userOnlineFriendsList;
         CollectUsersOfflineTimeStatus userFriendsOnline = new CollectUsersOfflineTimeStatus();
