@@ -183,10 +183,10 @@ public class Main2 {
                         tmpCurrentMostDisjointList = currentMostDisjointFriendsList;
                     } else if (delegationType.equals(Constants.getIdealFriendDelegation())) {
 //                        delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), currentIdealList);
-                        if (usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getOnlineFriendsList().size() == 0){
+                        if (usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getOnlineFriendsList().size() == 0) {
                             delegatedUserID = 0;
-                        }else {
-                            delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList, i, statusList.get(k), statusList.get(k)[0]);
+                        } else {
+                            delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList, i, statusList.get(k), statusList.get(k)[0],delegatedUserIDList);
                         }
                     } else {
                         delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
@@ -247,7 +247,7 @@ public class Main2 {
                                     }
                                 } else if (delegationType.equals(Constants.getIdealFriendDelegation())) {
 //                                    delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(j), currentIdealList);
-                                    delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList,i,statusList.get(k),j);
+                                    delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList, i, statusList.get(k), j, delegatedUserIDList);
 
                                 } else {
                                     delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));

@@ -112,7 +112,7 @@ public class FindMostOnlineFriends {
     }
 
 
-    public Long mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList, int leftIndex) {
+    public Long mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList, int leftIndex, ArrayList<Long> delegatedUserIDList) {
         HashSet<Long> leftTimeOnlineFriendsSet = usersList.get(userIndex).getUserActivites().get(leftIndex).getOnlineFriendsHashSet();
         ArrayList<Long> leftTimeOnlineFriendsList = new ArrayList<>(leftTimeOnlineFriendsSet);
         ArrayList<TimeBasedInformation> timeBasedInformationArrayList = new ArrayList<>(usersList.get(userIndex).getUserActivites());
@@ -122,24 +122,52 @@ public class FindMostOnlineFriends {
             onlineFriendsStatistics.put(leftTimeOnlineFriendsList.get(i), 0);
         }
 
-        for (int j = leftIndex; j < statusList[1]; j++) { //during next offline session
-//            for (Long l : leftTimeOnlineFriendsSet) { //initial list for delegation, one by one
-                for (int k = 0; k < timeBasedInformationArrayList.get(j).getOnlineFriendsList().size(); k++) {
-                    if (onlineFriendsStatistics.containsKey(timeBasedInformationArrayList.
-                            get(j).getOnlineFriendsList().get(k).getFriendUserID())) {
-                        onlineFriendsStatistics.put(timeBasedInformationArrayList.
-                                        get(j).getOnlineFriendsList().get(k).getFriendUserID(),
-                                onlineFriendsStatistics.get(timeBasedInformationArrayList.
-                                        get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
+        int counter = 0;
+        boolean found = false;
+        int tmpleft = leftIndex;
+        while (counter < delegatedUserIDList.size() && !found) {
+            while (tmpleft < statusList[1] && !found) {
+                int friendsCounter = 0;
+                while (friendsCounter < timeBasedInformationArrayList.get(tmpleft).getOnlineFriendsList().size() && !found) {
+                    if (timeBasedInformationArrayList.get(tmpleft).getOnlineFriendsHashSet().contains(delegatedUserIDList.get(counter))) {
+                        found = true;
+                    } else {
+                        friendsCounter++;
                     }
-                //this delete users but thats not efficient
-                //                if (!timeBasedInformationArrayList.get(j).getOnlineFriendsHashSet().contains(l)) { //every timestamp we willl check for out initial list
-                //                    int deleteIndex = delegateUserList.indexOf(l);
-                //                    if (delegateUserList.contains(l) && delegateUserList.size()>1 ){
-                //                        delegateUserList.remove(deleteIndex);
-                //                    }
+                }
+                tmpleft++;
+            }
+            counter++;
+        }
+
+        if (tmpleft == leftIndex){
+            tmpleft = statusList[1];
+        }
+
+
+        for (int j = leftIndex; j < tmpleft; j++) { //during next offline session
+            for (int k = 0; k < timeBasedInformationArrayList.get(j).getOnlineFriendsList().size(); k++) {
+                if (onlineFriendsStatistics.containsKey(timeBasedInformationArrayList.
+                        get(j).getOnlineFriendsList().get(k).getFriendUserID())) {
+                    onlineFriendsStatistics.put(timeBasedInformationArrayList.
+                                    get(j).getOnlineFriendsList().get(k).getFriendUserID(),
+                            onlineFriendsStatistics.get(timeBasedInformationArrayList.
+                                    get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
                 }
             }
+        }
+
+//        for (int j = leftIndex; j < statusList[1]; j++) { //during next offline session
+//            for (int k = 0; k < timeBasedInformationArrayList.get(j).getOnlineFriendsList().size(); k++) {
+//                if (onlineFriendsStatistics.containsKey(timeBasedInformationArrayList.
+//                        get(j).getOnlineFriendsList().get(k).getFriendUserID())) {
+//                    onlineFriendsStatistics.put(timeBasedInformationArrayList.
+//                                    get(j).getOnlineFriendsList().get(k).getFriendUserID(),
+//                            onlineFriendsStatistics.get(timeBasedInformationArrayList.
+//                                    get(j).getOnlineFriendsList().get(k).getFriendUserID()) + 1);
+//                }
+//            }
+//        }
 
 //        }
         List<Map.Entry<Long, Integer>> list = new ArrayList<>(onlineFriendsStatistics.entrySet());
@@ -153,6 +181,7 @@ public class FindMostOnlineFriends {
 
         return sortedMostOnlineFriends.get(0);
     }
+
     /*
     public ArrayList<Long> mostOnlineFriendsIdealCase(ArrayList<UserInformations> usersList, int userIndex, int[] statusList) {
 
