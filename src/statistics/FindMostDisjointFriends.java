@@ -122,8 +122,9 @@ public class FindMostDisjointFriends {
                 if (i >= statusList1.size() - 1) {
                     first = statusList1.size() - 1;
 //                    statusList1.get(first)[0] = fiveDaysAgoIndex;
-                } else if (fiveDaysAgoIndex <= statusList1.get(i - 1)[1]) {
+                } else if (i != 0 && fiveDaysAgoIndex <= statusList1.get(i - 1)[1]) {
                     first = i - 1;
+                    // i -1 in 0 i fiveindex
 //                    statusList1.get(first)[0] = fiveDaysAgoIndex;
                 } else {
                     first = i; //online a dustu
@@ -141,12 +142,15 @@ public class FindMostDisjointFriends {
 //                    statusList1.get(last)[1] = leftIndex;
                 } else if (leftIndex >= statusList1.get(i)[0]) {
                     last = i;
+                    //indisi i'nin 1 i left index oluyor
 //                    statusList1.get(last)[1] = leftIndex;
                 } else {
                     last = i - 1; //online
                 }
 
             }
+
+
 
 
             if (flagEnd * flagStart != 1 && first < last) {
@@ -219,6 +223,7 @@ public class FindMostDisjointFriends {
 //                    statusList1.get(first)[1]=leftIndex;
                 } else if (leftIndex <= statusList1.get(i - 1)[1]) {
                     first = i - 1;
+                    // indis degisiyor 1 degisiyor
 //                    statusList1.get(first)[1]=leftIndex;
                 } else {
                     first = i - 1;
@@ -235,6 +240,8 @@ public class FindMostDisjointFriends {
                     last = i + 1;
                 } else if (fiveDaysAgoIndex >= statusList1.get(i + 1)[0]) {
                     last = i + 1;
+
+                    //indis degisiyor 0i degisiyor
 //                    statusList1.get(last)[0] = fiveDaysAgoIndex;
                 } else {
                     last = i + 1;
@@ -295,7 +302,7 @@ public class FindMostDisjointFriends {
                 }
 
                 return sortedDisjointFriendsStatistics;
-            }else {
+            } else {
                 // bu kisimda 5 gun once offline interval yok. bakalim buraya dusecek mi
 //                System.out.println("5 gun oncesinde userin offline oldugu hicbir time interval bulunmamaktadir.");
                 userMostDisjointFriendsList = null;

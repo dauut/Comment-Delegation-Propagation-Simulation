@@ -42,7 +42,7 @@ public class Main2 {
          * delete folders manually*/
         WriteFiles writeFiles = new WriteFiles();
 //        writeFiles.createFolder(Constants.getRandomDelegation());
-        writeFiles.createFolder(Constants.getMostOnlineFriendDelegation());
+//        writeFiles.createFolder(Constants.getMostOnlineFriendDelegation());
         writeFiles.createFolder(Constants.getMostDisjointFriendDelegation());
 //        writeFiles.createFolder(Constants.getIdealFriendDelegation());
 //        writeFiles.createFolder(Constants.getOptimizedMostDisjointFriendDelegation());
