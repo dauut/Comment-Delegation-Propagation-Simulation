@@ -37,7 +37,7 @@ public class ReadPostInformations {
             FriendsPostInformation user = new FriendsPostInformation();
 
             user.setUserID(Long.parseLong(listOfUsers[i].getName()));
-            System.out.println(user.getUserID());
+//            System.out.println(user.getUserID());
             folder = new File(listOfUsers[i].toString());
             listOfFiles = folder.listFiles();
             ArrayList<TimeBasedPostInformation> timeBasedPostInformationArrayList = new ArrayList<>();
@@ -48,10 +48,10 @@ public class ReadPostInformations {
                 ArrayList<String> lines = new ArrayList<>();
                 lines.clear();
                 file = new File(listOfFiles[j].toString());
-                System.out.println(listOfFiles[j].getName());
+//                System.out.println(listOfFiles[j].getName());
                 try {
                     Scanner scanner = new Scanner(file);
-                    while (scanner.hasNext()){
+                    while (scanner.hasNext()) {
                         lines.add(scanner.nextLine());
                     }
 
@@ -74,16 +74,18 @@ public class ReadPostInformations {
                         timeBasedPostInformation = parsePostInformation.parsePostLines(lines);
                         timeBasedPostInformation.setFileName(listOfFiles[j].toString());
                         //add only between two
-                        if (parsedStartDate != null && parsedEndDate != null &&
-                                timeBasedPostInformation.getCurrentTimestamp().after(parsedStartDate) &&
-                                timeBasedPostInformation.getCurrentTimestamp().before(parsedEndDate)) {
-                            timeBasedPostInformationArrayList.add(timeBasedPostInformation);
-                        }
+//                        if (parsedStartDate != null && parsedEndDate != null &&
+//                                timeBasedPostInformation.getCurrentTimestamp().after(parsedStartDate) &&
+//                                timeBasedPostInformation.getCurrentTimestamp().before(parsedEndDate)) {
+//                            timeBasedPostInformationArrayList.add(timeBasedPostInformation);
+//                        }
+                        timeBasedPostInformationArrayList.add(timeBasedPostInformation);
+
                     }
                     scanner.close();
 
 
-                }catch (FileNotFoundException e){
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                     System.out.println("File not found");
                 }
