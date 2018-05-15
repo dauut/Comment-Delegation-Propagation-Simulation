@@ -53,8 +53,8 @@ public class DataThroghPutSimulation {
             while (offlineIndex < offlineStatusStructuresList.size() && usersListPost.get(i).getUserID() != offlineStatusStructuresList.get(offlineIndex).getUserID()) {
                 offlineIndex++;
             }
+            long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
             while (offlineIndex < offlineStatusStructuresList.size() && usersListPost.get(i).getUserID() == offlineStatusStructuresList.get(offlineIndex).getUserID()) {
-                long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
                 for (int k = 0; k < statusList.size() - 1; k++) {
 
@@ -95,6 +95,7 @@ public class DataThroghPutSimulation {
                     }
                 }
             }
+            writeFiles.writeDataTPResult(postsSizesWithCount,usersListPost.get(i).getUserID(), friendUserID);
         }
     }
 
