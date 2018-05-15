@@ -5,12 +5,13 @@ import java.util.Date;
 
 public class TimeBasedPostInformation {
 
+    private long mainUserId;
     private Date currentTimestamp;
     private int totalFriendsCount;
     private int numOfMobileUsers;
     private int totalMessages;
-    private ArrayList<MainUserPosts> mainUserPostsList;
-    private ArrayList<Posts> postsArrayList;
+    private MainUserPosts mainUserPosts;
+    private ArrayList<FriendsPosts> friendsPosts;
     private String fileName;
 
     public String getFileName() {
@@ -53,19 +54,27 @@ public class TimeBasedPostInformation {
         this.totalMessages = totalMessages;
     }
 
-    public ArrayList<MainUserPosts> getMainUserPostsList() {
-        return mainUserPostsList;
+    public MainUserPosts getMainUserPosts() {
+        return mainUserPosts;
     }
 
-    public void setMainUserPostsList(ArrayList<MainUserPosts> mainUserPostsList) {
-        this.mainUserPostsList = mainUserPostsList;
+    public void setMainUserPosts(MainUserPosts mainUserPosts) {
+        this.mainUserPosts = mainUserPosts;
     }
 
-    public ArrayList<Posts> getPostsArrayList() {
-        return postsArrayList;
+    public ArrayList<FriendsPosts> getFriendsPosts() {
+        return friendsPosts;
     }
 
-    public void setPostsArrayList(ArrayList<Posts> postsArrayList) {
-        this.postsArrayList = postsArrayList;
+    public void setFriendsPosts(ArrayList<FriendsPosts> friendsPosts) {
+        this.friendsPosts = friendsPosts;
+    }
+
+    public long getMainUserId() {
+        return mainUserId;
+    }
+
+    public void setMainUserId(long mainUserId) {
+        this.mainUserId = mainUserId;
     }
 }

@@ -1,9 +1,6 @@
 package user.post;
 
-import javafx.geometry.Pos;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MainUserPosts {
     private int numOfPost;
