@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 
 /*
  * write necessary log files
@@ -172,6 +173,33 @@ public class WriteFiles {
                 System.out.println("Failed to create directory! " + path);
             }
         }
+    }
+
+    public void writeDataTPResult(HashMap<Long, Integer> postSizeCounts, long userId, long friendUserId){
+        File dir;
+        String dirPath = Constants.getPostOutputPath() + "\\" + userId;
+        dir = new File(dirPath);
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Directory is created! " + userId);
+            } else {
+                System.out.println("Failed to create directory! " + userId);
+            }
+        }
+        File file = new File(dirPath + "\\" + "_Simulation_general_info" + ".txt");
+
+        String postSizeCounterStr = postSizeCounts.toString();
+        String formattedpostSizeCounterStr = postSizeCounterStr.toString()
+                .replace(",", "")  //remove the commas
+                .replace("{", "")  //remove the right bracket
+                .replace("}", "")  //remove the left bracket
+                .trim();
+
+        TableBuilder tb = new TableBuilder();
+
+        tb.addRow("\tUserId", " Time Interval of FriendID", " Total Off Minutes", "Post Size = Count", "\n");
+        tb.addRow(String.valueOf(userId), String.valueOf(friendUserId), String.valueOf(1), formattedpostSizeCounterStr);
+        writeFile(file,tb.toString());
     }
 
     public void writeFile(File file, String line) {
