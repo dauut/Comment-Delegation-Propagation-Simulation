@@ -10,11 +10,9 @@ import statistics.StatusListParser;
 import user.*;
 import user.offline.OfflineStatusStructure;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 
 @SuppressWarnings("Duplicates")
@@ -26,39 +24,36 @@ public class Main {
         ArrayList<OfflineStatusStructure> offlineStatusStructuresList;
         StatusListParser parser = new StatusListParser();
         ReadFiles getUserFromData = new ReadFiles();
-        ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList;
-        ArrayList<MostDisjointFriends> mostDisjointFriendsArrayList;
-        FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
-        FindMostDisjointFriends findMostDisjointFriends = new FindMostDisjointFriends();
 
         usersList = getUserFromData.getUserList();
         offlineStatusStructuresList = parser.parseOneFriendStatusListToArraylist(usersList);/* get all offline times */
 
         /*find most online and most disjoint friends for delegation*/
-        mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
-        mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
+//        mostOnlineFriendsArrayList = findMostOnlineFriends.findMostOnlineFriendsList(usersList);
+//        mostDisjointFriendsArrayList = findMostDisjointFriends.findMostDisjointFriendsList(usersList, offlineStatusStructuresList);
 
         /*create necessary folders auto
          * delete folders manually*/
         WriteFiles writeFiles = new WriteFiles();
-        writeFiles.createFolder(Constants.getRandomDelegation());
-        writeFiles.createFolder(Constants.getMostOnlineFriendDelegation());
-        writeFiles.createFolder(Constants.getMostDisjointFriendDelegation());
-        writeFiles.createFolder(Constants.getOptimizedMostDisjointFriendDelegation());
+//        writeFiles.createFolder(Constants.getRandomDelegation());
+//        writeFiles.createFolder(Constants.getMostOnlineFriendDelegation());
+//        writeFiles.createFolder(Constants.getMostDisjointFriendDelegation());
+        writeFiles.createFolder(Constants.getIdealFriendDelegation());
+//        writeFiles.createFolder(Constants.getOptimizedMostDisjointFriendDelegation());
 
         /*start simulation*/
-        System.out.println(Constants.getRandomDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
-        System.out.println(Constants.getMostOnlineFriendDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
-        System.out.println(Constants.getMostDisjointFriendDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
-        System.out.println(Constants.getOptimizedMostDisjointFriendDelegation() + " session is started !!");
-        main.randomUserDelegationSimulation(Constants.getOptimizedMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList,
-                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
+//        System.out.println(Constants.getRandomDelegation() + " session is started !!");
+//        main.randomUserDelegationSimulation(Constants.getRandomDelegation(), usersList, offlineStatusStructuresList,
+//                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
+//        System.out.println(Constants.getMostOnlineFriendDelegation() + " session is started !!");
+//        main.randomUserDelegationSimulation(Constants.getMostOnlineFriendDelegation(), usersList, offlineStatusStructuresList);
+//        System.out.println(Constants.getMostDisjointFriendDelegation() + " session is started !!");
+//        main.randomUserDelegationSimulation(Constants.getMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList);
+        System.out.println(Constants.getIdealFriendDelegation() + " session is started !!");
+        main.randomUserDelegationSimulation(Constants.getIdealFriendDelegation(), usersList, offlineStatusStructuresList);
+//        System.out.println(Constants.getOptimizedMostDisjointFriendDelegation() + " session is started !!");
+//        main.randomUserDelegationSimulation(Constants.getOptimizedMostDisjointFriendDelegation(), usersList, offlineStatusStructuresList,
+//                mostOnlineFriendsArrayList, mostDisjointFriendsArrayList);
 
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
@@ -70,14 +65,12 @@ public class Main {
         String totalRuntime = "Total Runtime: \n" + "\tSeconds = " + String.valueOf(seconds) + "\n"
                 + "\tMinutes = " + String.valueOf(seconds / 60) + "\n"
                 + "\tHours = " + String.valueOf(seconds / 3600);
-        File file = new File("C:\\Users\\dauut\\Desktop\\testout\\runtimeInformation.txt");
-        writeFiles.writeFile(file, totalRuntime);
+//        File file = new File("C:\\Users\\dauut\\Desktop\\testout\\runtimeInformation.txt");
+//        writeFiles.writeFile(file, totalRuntime);
     }
 
     private void randomUserDelegationSimulation(String delegationType, ArrayList<UserInformations> usersList,
-                                                ArrayList<OfflineStatusStructure> offlineStatusStructuresList,
-                                                ArrayList<MostOnlineFriends> mostOnlineFriendsArrayList,
-                                                ArrayList<MostDisjointFriends> mostDisjointFriendsArrayList) {
+                                                ArrayList<OfflineStatusStructure> offlineStatusStructuresList) {
         ArrayList<int[]> statusList;
         PickUser pickUser = new PickUser();
         ArrayList<DelegationInfo> delegationInfoArrayList;
@@ -96,9 +89,8 @@ public class Main {
         EachChainDuration eachChainDuration;
         long delegatedUserID;
         HashSet<Long> totalOnlineFriendsInCurrentOfflineSession;
-        MostDisjointFriends optimizedMostDisjointFriends;
         FindMostDisjointFriends findMostDisjointFriends = new FindMostDisjointFriends();
-
+        FindMostOnlineFriends findMostOnlineFriends = new FindMostOnlineFriends();
 
         /*
          * Thus far we have user list with their activities
@@ -141,15 +133,16 @@ public class Main {
                 tmpFriendsInChainDepth.addAll(usersList.get(i).getUserActivites().get(0).getOnlineFriendsHashSet()); //first minute
                 chainLengthAndUsers.add(tmpFriendsInChainDepth);
 
+                ArrayList<Long> tmpCurrentMostDisjointList = new ArrayList<>();
+
                 long friendUserID = offlineStatusStructuresList.get(offlineIndex).getFriendUserID();
                 int interruptedSessionCount = 0;
                 int interruptionTime = 0;
                 int totalOfflineTime = 0;
 
                 statusList = offlineStatusStructuresList.get(offlineIndex).getStatustList();
-
-                optimizedMostDisjointFriends = findMostDisjointFriends.findOptimizedMostDisjointFriends(usersList, i, statusList, friendUserID);
-
+                //optimizedMostDisjointFriends = findMostDisjointFriends.findOptimizedMostDisjointFriends(usersList, i, statusList, friendUserID);
+                ArrayList<Long> currentIdealList = new ArrayList<>();
                 for (int k = 0; k < statusList.size() - 1; k++) {
                     /*with this list we collect the every session then write
                      * thats give us magnificent performance improvement*/
@@ -164,11 +157,29 @@ public class Main {
                     if (delegationType.equals(Constants.getRandomDelegation())) {
                         delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
                     } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
-                        delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostOnlineFriendsArrayList.get(i));
-                    } else if (delegationType.equals(Constants.getMostDisjointFriendDelegation())) {
-                        delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostDisjointFriendsArrayList.get(i));
+//                        delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), mostOnlineFriendsArrayList.get(i));
+                        ArrayList<Long> currentMostOnlineFriendsList = new ArrayList<>(findMostOnlineFriends.getMostOnlineFriendLast5Days(usersList, i, statusList.get(k)[0]));
+                        delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), currentMostOnlineFriendsList);
+                    } else if (delegationType.equals(Constants.getMostDisjointFriendDelegation())) { //disjoint
+                        ArrayList<Long> currentMostDisjointFriendsList;
+                        if (findMostDisjointFriends.getMostDisjointFriendsLast5Days(usersList, i, statusList, statusList.get(k)[0]) == null) {
+                            currentMostDisjointFriendsList = new ArrayList<>(findMostOnlineFriends.getMostOnlineFriendLast5Days(usersList, i, statusList.get(k)[0]));
+                            delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser5Days(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), currentMostDisjointFriendsList);
+//                            System.out.println("5 gunluk data yok !! ilk atama icin 5 gunluk most online data kullanildi");
+                        } else {
+                            currentMostDisjointFriendsList = new ArrayList<>(findMostDisjointFriends.getMostDisjointFriendsLast5Days(usersList, i, statusList, statusList.get(k)[0]));
+                            delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser5Days(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), currentMostDisjointFriendsList);
+                        }
+                        tmpCurrentMostDisjointList = currentMostDisjointFriendsList;
+                    } else if (delegationType.equals(Constants.getIdealFriendDelegation())) {
+//                        delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), currentIdealList);
+                        if (usersList.get(i).getUserActivites().get(statusList.get(k)[0]).getOnlineFriendsList().size() == 0) {
+                            delegatedUserID = 0;
+                        } else {
+                            delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList, i, statusList.get(k), statusList.get(k)[0],delegatedUserIDList);
+                        }
                     } else {
-                        delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(statusList.get(k)[0]), optimizedMostDisjointFriends);
+                        delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
                     }
 
                     //System.out.println("First delegation = " + delegatedUserID);
@@ -211,12 +222,25 @@ public class Main {
                                 if (delegationType.equals(Constants.getRandomDelegation())) {
                                     delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
                                 } else if (delegationType.equals(Constants.getMostOnlineFriendDelegation())) {
-                                    delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostOnlineFriendsArrayList.get(i));
+                                    //delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostOnlineFriendsArrayList.get(i));
+                                    ArrayList<Long> currentMostOnlineFriendsList = new ArrayList<>(findMostOnlineFriends.getMostOnlineFriendLast5Days(usersList, i, j));
+                                    delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(j), currentMostOnlineFriendsList);
                                 } else if (delegationType.equals(Constants.getMostDisjointFriendDelegation())) {
-                                    //delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(statusList.get(k)[0]));
-                                    delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), mostDisjointFriendsArrayList.get(i));
+
+                                    if (findMostDisjointFriends.getMostDisjointFriendsLast5Days(usersList, i, statusList, j) == null) {
+                                        ArrayList<Long> currentMostDisjointFriendsList = tmpCurrentMostDisjointList;
+                                        delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser5Days(usersList.get(i).getUserActivites().get(j), currentMostDisjointFriendsList);
+//                                        System.out.println("j= "+j +  "indisi icin 5 gunluk geriye most disjoint yok. Bir onceki atandi");
+                                    } else {
+                                        ArrayList<Long> currentMostDisjointFriendsList = new ArrayList<>(findMostDisjointFriends.getMostDisjointFriendsLast5Days(usersList, i, statusList, j));
+                                        delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser5Days(usersList.get(i).getUserActivites().get(j), currentMostDisjointFriendsList);
+                                    }
+                                } else if (delegationType.equals(Constants.getIdealFriendDelegation())) {
+//                                    delegatedUserID = pickUser.findAndPickMostOnlineFriendsAsDelegatedUserLast5Days(usersList.get(i).getUserActivites().get(j), currentIdealList);
+                                    delegatedUserID = findMostOnlineFriends.mostOnlineFriendsIdealCase(usersList, i, statusList.get(k), j, delegatedUserIDList);
+
                                 } else {
-                                    delegatedUserID = pickUser.findAndPickMostDisjointedFriendsAsDelegatedUser(usersList.get(i).getUserActivites().get(j), optimizedMostDisjointFriends);
+                                    delegatedUserID = pickUser.findRandomDelegation(usersList.get(i).getUserActivites().get(j));
                                 }
 
                                 delegatedUserIDList.add(delegatedUserID);
