@@ -18,18 +18,18 @@ public final class Constants {
     //    private static final String DATA_PATH = "C:\\Users\\DavutU\\Desktop\\test";
 
     //comments constants
-    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
-//    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\13";
-    private static final String COLLECTION_OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\UsersOfflineStatus\\";
-    private static final String COLLECTION_OUTPUT_PATH_ONLINE = "C:\\Users\\dauut\\Desktop\\UsersOnlineStatus\\";
-    private static final String OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulation";
-    private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\dauut\\Desktop\\testout\\simulationGeneralInfo";
-    private static final String OUTPUT_FOLDER_PATH = "C:\\Users\\dauut\\Desktop\\testout";
+//    private static final String DATA_PATH = "C:\\Users\\dauut\\Desktop\\Facebook_online_status";
+    private static final String DATA_PATH = "C:\\Users\\davut\\Desktop\\2";
+    private static final String COLLECTION_OUTPUT_PATH = "C:\\Users\\davut\\Desktop\\UsersOfflineStatus\\";
+    private static final String COLLECTION_OUTPUT_PATH_ONLINE = "C:\\Users\\davut\\Desktop\\UsersOnlineStatus\\";
+    private static final String OUTPUT_PATH = "C:\\Users\\davut\\Desktop\\testout\\simulation";
+    private static final String GENERAL_INFO_OUTPUT_PATH = "C:\\Users\\davut\\Desktop\\testout\\simulationGeneralInfo";
+    private static final String OUTPUT_FOLDER_PATH = "C:\\Users\\davut\\Desktop\\testout";
 
     //post simulation constants
-    private static final String POST_DATA_PATH="C:\\Users\\dauut\\Desktop\\Facebook_activity";
-//    private static final String POST_DATA_PATH="C:\\Users\\dauut\\Desktop\\a";
-    private static final String POST_OUTPUT_PATH="C:\\Users\\dauut\\Desktop\\post_testout\\simulation";
+    private static final String POST_DATA_PATH="C:\\Users\\davut\\Desktop\\Facebook_activity";
+//    private static final String POST_DATA_PATH="C:\\Users\\davut\\Desktop\\a";
+    private static final String POST_OUTPUT_PATH="C:\\Users\\davut\\Desktop\\post_testout\\simulation";
 
 
 

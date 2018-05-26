@@ -29,11 +29,13 @@ public class ParseLines {
             e.printStackTrace();
         }
 
+        /*
         //third line has online friends count
         String[] thirdLineTokens = lines.get(2).split(delims);
         timeBasedInformation.setOnlineFriendsCount(Integer.parseInt(thirdLineTokens[2]));
 
         //last line has various information
+
         String[] lastLineTokens = lines.get(lines.size() - 1).split(delims);
         if (lastLineTokens[0].equals("idle:")) {
             timeBasedInformation.setIdleFriendsCount(Integer.parseInt(lastLineTokens[1]));
@@ -42,7 +44,7 @@ public class ParseLines {
             timeBasedInformation.setWebUsersCount(Integer.parseInt(lastLineTokens[9]));
             timeBasedInformation.setMobileActiveCount(Integer.parseInt(lastLineTokens[12]));
             timeBasedInformation.setMobileIdleCount(Integer.parseInt(lastLineTokens[15]));
-        }
+        }*/
 
         String onlineStatusTokens[];
         HashSet<Long> onlineFriendsHashSet = new HashSet<>();
@@ -53,8 +55,8 @@ public class ParseLines {
 
             onlineFriendsAndStatus.setFriendUserID(Long.parseLong(onlineStatusTokens[0]));
             onlineFriendsHashSet.add(Long.parseLong(onlineStatusTokens[0]));
-            onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
-            onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);
+//            onlineFriendsAndStatus.setStatus(onlineStatusTokens[1]);
+//            onlineFriendsAndStatus.setDeviceType(onlineStatusTokens[2]);
 
             friensStatusList.add(onlineFriendsAndStatus);
         }

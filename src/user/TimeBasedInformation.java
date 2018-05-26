@@ -5,15 +5,15 @@ import java.util.Date;
 import java.util.HashSet;
 
 public class TimeBasedInformation {
-    private int onlineFriendsCount;
+//    private int onlineFriendsCount;
     private Date currentTimestamp;
     private ArrayList<OnlineFriendsAndStatus> onlineFriendsList = new ArrayList<OnlineFriendsAndStatus>();
-    private int idleFriendsCount;
-    private int activeFriendsCount;
-    private int mobileUsersCount;
-    private int webUsersCount;
-    private int mobileActiveCount;
-    private int mobileIdleCount;
+//    private int idleFriendsCount;
+//    private int activeFriendsCount;
+//    private int mobileUsersCount;
+//    private int webUsersCount;
+//    private int mobileActiveCount;
+//    private int mobileIdleCount;
     private HashSet<Long> onlineFriendsHashSet;
     private String fileName;
 
@@ -33,13 +33,13 @@ public class TimeBasedInformation {
         this.fileName = fileName;
     }
 
-    public int getOnlineFriendsCount() {
-        return onlineFriendsCount;
-    }
-
-    public void setOnlineFriendsCount(int onlineFriendsCount) {
-        this.onlineFriendsCount = onlineFriendsCount;
-    }
+//    public int getOnlineFriendsCount() {
+//        return onlineFriendsCount;
+//    }
+//
+//    public void setOnlineFriendsCount(int onlineFriendsCount) {
+//        this.onlineFriendsCount = onlineFriendsCount;
+//    }
 
     public Date getCurrentTimestamp() {
         return currentTimestamp;
@@ -57,52 +57,52 @@ public class TimeBasedInformation {
         this.onlineFriendsList = onlineFriendsList;
     }
 
-    public int getIdleFriendsCount() {
-        return idleFriendsCount;
-    }
-
-    public void setIdleFriendsCount(int idleFriendsCount) {
-        this.idleFriendsCount = idleFriendsCount;
-    }
-
-    public int getActiveFriendsCount() {
-        return activeFriendsCount;
-    }
-
-    public void setActiveFriendsCount(int activeFriendsCount) {
-        this.activeFriendsCount = activeFriendsCount;
-    }
-
-    public int getMobileUsersCount() {
-        return mobileUsersCount;
-    }
-
-    public void setMobileUsersCount(int mobileUsersCount) {
-        this.mobileUsersCount = mobileUsersCount;
-    }
-
-    public int getWebUsersCount() {
-        return webUsersCount;
-    }
-
-    public void setWebUsersCount(int webUsersCount) {
-        this.webUsersCount = webUsersCount;
-    }
-
-    public int getMobileActiveCount() {
-        return mobileActiveCount;
-    }
-
-    public void setMobileActiveCount(int mobileActiveCount) {
-        this.mobileActiveCount = mobileActiveCount;
-    }
-
-    public int getMobileIdleCount() {
-        return mobileIdleCount;
-    }
-
-    public void setMobileIdleCount(int mobileIdleCount) {
-        this.mobileIdleCount = mobileIdleCount;
-    }
+//    public int getIdleFriendsCount() {
+//        return idleFriendsCount;
+//    }
+//
+//    public void setIdleFriendsCount(int idleFriendsCount) {
+//        this.idleFriendsCount = idleFriendsCount;
+//    }
+//
+//    public int getActiveFriendsCount() {
+//        return activeFriendsCount;
+//    }
+//
+//    public void setActiveFriendsCount(int activeFriendsCount) {
+//        this.activeFriendsCount = activeFriendsCount;
+//    }
+//
+//    public int getMobileUsersCount() {
+//        return mobileUsersCount;
+//    }
+//
+//    public void setMobileUsersCount(int mobileUsersCount) {
+//        this.mobileUsersCount = mobileUsersCount;
+//    }
+//
+//    public int getWebUsersCount() {
+//        return webUsersCount;
+//    }
+//
+//    public void setWebUsersCount(int webUsersCount) {
+//        this.webUsersCount = webUsersCount;
+//    }
+//
+//    public int getMobileActiveCount() {
+//        return mobileActiveCount;
+//    }
+//
+//    public void setMobileActiveCount(int mobileActiveCount) {
+//        this.mobileActiveCount = mobileActiveCount;
+//    }
+//
+//    public int getMobileIdleCount() {
+//        return mobileIdleCount;
+//    }
+//
+//    public void setMobileIdleCount(int mobileIdleCount) {
+//        this.mobileIdleCount = mobileIdleCount;
+//    }
 
 }

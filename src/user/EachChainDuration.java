@@ -1,8 +1,8 @@
 package user;
 
 public class EachChainDuration {
-    int chainIndex;
-    int chainDuration;
+    private int chainIndex;
+    private int chainDuration;
 
     public int getChainIndex() {
         return chainIndex;

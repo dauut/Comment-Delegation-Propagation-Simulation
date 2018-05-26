@@ -10,10 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 /*
  * write necessary log files
@@ -58,7 +55,13 @@ public class WriteFiles {
             longestChainLengthList.add(Collections.max(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i)));
             //longestChainDelegationTourList.add(delegationInfosArrayList.get(indexOfUser).getChainDepth().get(i).size());
         }
-        longestChainDepth = Collections.max(longestChainLengthList);
+        longestChainDepth = 0;
+        try {
+            longestChainDepth = Collections.max(longestChainLengthList);
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
+            System.out.println(longestChainLengthList);
+        }
         //longestChainDelegationTour = Collections.max(longestChainDelegationTourList);
         ArrayList<String> chainInfos = new ArrayList<>();
         String tmp;

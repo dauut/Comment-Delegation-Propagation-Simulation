@@ -50,8 +50,8 @@ public class Collect {
         File file;
         File dir;
         for (int i = 0; i < userFriendsOfflineStatusList.size(); i++) {
-//            String dirPath = Constants.getCollectionOutputPath() + "\\" + mainUserID + "\\"; //offline status
-            String dirPath = Constants.getCollectionOutputPathOnline() + "\\" + mainUserID + "\\";  //online status
+            String dirPath = Constants.getCollectionOutputPath() + "\\" + mainUserID + "\\"; //offline status
+//            String dirPath = Constants.getCollectionOutputPathOnline() + "\\" + mainUserID + "\\";  //online status
             dir = new File(dirPath);
             if (!dir.exists()) {
                 if (dir.mkdir()) {

@@ -75,11 +75,11 @@ public class ReadFiles {
                         timeBasedInformation = parseLines.parseLines(lines);
                         timeBasedInformation.setFileName(listOfFiles[j].toString());
                         //add only between two
-                        if (parsedStartDate != null && parsedEndDate != null &&
-                                timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
-                                timeBasedInformation.getCurrentTimestamp().before(parsedEndDate)) {
+//                        if (parsedStartDate != null && parsedEndDate != null &&
+//                                timeBasedInformation.getCurrentTimestamp().after(parsedStartDate) &&
+//                                timeBasedInformation.getCurrentTimestamp().before(parsedEndDate)) {
                             timeBasedInformationArrayList.add(timeBasedInformation);
-                        }
+//                        }
                     }
                     scanner.close();
                 } catch (FileNotFoundException e) {
