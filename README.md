@@ -21,4 +21,4 @@ the 2,266 timing samples from 16 users’ friend circles where probabilities are
 independently ranked for clarity. We determined the most disjointly online
 and most online persons based on the 5 previous day’s data assuming a circular time to use on the first five day’s calculations.
 
-![Average Results](img/avg_results.png) 
+![Average Results](img/avg_results2.png) 
