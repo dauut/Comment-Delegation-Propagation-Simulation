@@ -20,5 +20,14 @@ Figure 12 presents the chain length probability of each simulation case of
 the 2,266 timing samples from 16 users’ friend circles where probabilities are
 independently ranked for clarity. We determined the most disjointly online
 and most online persons based on the 5 previous day’s data assuming a circular time to use on the first five day’s calculations.
-
-![Average Results](img/avg_results2.png) 
+<p align="center">
+  <img width="460" height="300" src="https://github.com/dauut/Comment-Delegation-Propagation-Simulation/blob/master/img/avg_results2.png?raw=true">
+</p>
+We also analyzed the average likelihood of each chain length for all
+data sets. Figure 13 shows the performance of each approach in linear and
+logarithmic scales. The offline probability of each friend – 74% and the
+likelihood of having no online friend – 7.3% are the same for all models. We
+observe on the average chain length of 1 is achieved by ideal with 61% of
+cases and both most online and most disjoint achieve it with 51%. However,
+random delegation can achieve minimal chains with 29% and performs much
+worse than others.
